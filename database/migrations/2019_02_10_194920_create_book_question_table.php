@@ -18,7 +18,6 @@ class CreateBookQuestionTable extends Migration
             $table->unsignedInteger('question_number');
             $table->unsignedInteger('correct_answer');
             $table->timestamps();
-
             $table->foreign('correct_answer')->references('id')->on('answer_responses')->onDelete('cascade')->onUpdate('cascade');
         });
     }

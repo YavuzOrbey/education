@@ -9,7 +9,7 @@ class Question extends Model
     public function subject(){
         return $this->belongsTo('App\Subject');
     }
-    public function correct_answer(){
+    public function correctAnswer(){
         return $this->belongsTo('App\AnswerResponse');
     }
     public function answer(){

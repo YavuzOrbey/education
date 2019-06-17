@@ -22,6 +22,8 @@ class CreateAssignmentUserTable extends Migration
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('assignment_id')->references('id')->on('assignments')->onDelete('cascade')->onUpdate('cascade');
+
+            $table->unique(['user_id', 'assignment_id']);
         });
     }
 

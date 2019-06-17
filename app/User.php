@@ -47,7 +47,7 @@ class User extends Authenticatable
     public function questions(){
         return $this->belongsToMany('App\Question');
     }
-    public function assignment(){
+    public function assignments(){
         return $this->belongsToMany('App\Assignment');
     }
 }

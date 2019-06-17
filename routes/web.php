@@ -10,21 +10,37 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 Route::get('/math', function () {
     return view('math');
 });
 //Route::view('/{path?}', 'app');
-Route::get("/", function(){
-    return view('main');
-});
 
+Route::group(['prefix'=>'admin', 'middleware'=>['role:administrator']], function(){
+    Route::get("/", 'AdminController@index');
+    Route::get("/dashboard", 'AdminController@dashboard')->name('admin.dashboard');
+    Route::get('assignments/edit', 'AssignmentController@edit')->name('assignments.edit');
+    Route::resource("/users", 'UserController');
+    Route::resource("/permissions", 'PermissionController');
+    Route::resource("/roles", 'RoleController')->except('destroy');
+});
 Route::resources([
-    'assignments' =>'AssignmentController',
     'questions' =>'QuestionController',
     'book_questions'=>'BookQuestionController'
-    ]);
+], ['middleware'=>'auth']);
+Route::resource('assignments','AssignmentController')->except('edit');
+Route::prefix('assignments')->group(function(){
+Route::post('/confirm', 'AssignmentController@confirm')->name('assignments.confirm');
+Route::post('/process', 'AssignmentController@process')->name('assignments.process');
 
+Route::get('/results/{assignment}', 'AssignmentController@results')->name('assignments.results');
+});
 
 Auth::routes();
-
+Route::get('/', function(){
+    return view('main');
+});
+Route::get('logout', 'Auth\LoginController@logout', function () {
+    return abort(404);
+});
 Route::get('/home', 'HomeController@index')->name('home');

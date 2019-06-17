@@ -6,6 +6,7 @@ use App\Question;
 use App\Subject;
 use App\Answer;
 use App\AnswerResponse;
+use App\Section;
 use Illuminate\Http\Request;
 use Session;
 class QuestionController extends Controller

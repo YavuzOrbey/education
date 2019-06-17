@@ -27,12 +27,13 @@ class BookQuestionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
         $sections = Subject::all()->pluck('name', 'id');
-        $tests = Assignment::all()->pluck('name', 'id');
         $answers = AnswerResponse::all()->pluck('letter', 'id');
-        return view('book_question.create', compact('tests','sections', 'answers', 'request'));
+        $assignments = Assignment::all()->pluck('name', 'id');
+        !isset($request->questionNum) ? $questionNum= 1: $questionNum = $request->questionNum;
+        return view('admin.book_question.create', compact('sections', 'answers', 'request', 'assignments', 'questionNum'));
     }
 
     /**
@@ -50,13 +51,18 @@ class BookQuestionController extends Controller
         'correct_answer'=>'required'
         ])->validate();
 
+        $section = Section::where('assignment_id', $request->test_number)->where('subject_id', $request->subject)->first();
+        $alreadyInserted = $section->questions()->where('question_number', $request->question)->first();
+        if ($alreadyInserted) {
+           return back()->withInput();
+        }
+        
         $question = new BookQuestion;
         $question->question_number = $request->question;
         $question->correct_answer = $request->correct_answer;
-
         $question->save();
-
-        $section = Section::where('assignment_id', $request->test_number)->where('subject_id', $request->subject)->first();
+        $questionNum = $question->question_number + 1;
+        
         $sectionQuestion = new SectionQuestion;
 
         $sectionQuestion->section_id = $section->id;
@@ -64,7 +70,7 @@ class BookQuestionController extends Controller
 
         $sectionQuestion->save();
         $request->flashOnly('test_number', 'subject');
-        return redirect()->route('book_questions.create');
+        return redirect()->route('book_questions.create', ['questionNum'=>$questionNum]);
     }
 
     /**

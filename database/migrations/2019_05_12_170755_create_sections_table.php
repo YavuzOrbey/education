@@ -3,7 +3,9 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
-
+use App\Assignment;
+use App\Subject;
+use Carbon\Carbon;
 class CreateSectionsTable extends Migration
 {
     /**
@@ -24,6 +26,18 @@ class CreateSectionsTable extends Migration
 
             $table->index(['assignment_id', 'subject_id']);
         });
+
+        $assignments = Assignment::all();
+        $subjects = Subject::all();
+        $sections = array();
+            foreach ($assignments as $key => $assignment) {
+                foreach ($subjects as $sKey => $subject) {
+                    array_push($sections, ['assignment_id'=>$assignment->id, 'subject_id'=>$subject->id, 'created_at'=>Carbon::now(), 'updated_at'=>Carbon::now()]);
+                }
+            }
+                
+            
+            DB::table('sections')->insert($sections);
     }
 
     /**

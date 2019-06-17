@@ -71,6 +71,13 @@ ol {
     background-color: rgba(25, 25, 25, 0.8);
 }
 */
+@import url("https://fonts.googleapis.com/css?family=Poppins:600");
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
 body {
     margin: 0;
     padding: 0;
@@ -79,6 +86,7 @@ body {
         "Helvetica Neue", sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    height: 100vh;
 }
 
 code {
@@ -87,14 +95,16 @@ code {
 }
 .container {
     width: 100vw;
-    height: 100vh;
     display: grid;
     grid-template-columns: 10% auto 10%;
-    grid-template-rows: 10% auto 10%;
+    grid-template-rows: 100px auto 100px;
     grid-template-areas:
         ". . ."
         ". content ."
         ". . .";
+}
+#content {
+    grid-area: content;
 }
 .question-block {
     display: grid;
@@ -168,4 +178,95 @@ code {
 }
 .assignments-index {
     grid-area: content;
+}
+
+nav {
+    height: 60px;
+    text-align: right;
+    font-family: "Poppins", sans-serif;
+    padding: 10px;
+}
+nav ul {
+    list-style: none;
+    display: inline-block;
+}
+nav ul li {
+    display: inline-block;
+    margin: 0 10px;
+}
+nav a {
+    color: black;
+    font-size: 18px;
+}
+nav a:hover {
+    text-decoration: none;
+}
+.nav-profile {
+    display: inline-block;
+}
+.dropdown {
+}
+.list-group {
+    list-style: none;
+}
+.results > .list-group > li {
+    display: grid;
+    grid-template-rows: 50px auto;
+    grid-template-columns: 50% 50%;
+    grid-template-areas: "header header" "answerResponse correctResponse";
+    margin: 20px 0px;
+}
+.subject-name {
+    grid-area: header;
+}
+.answerResponse {
+    grid-area: answerResponse;
+}
+th,
+td {
+    text-align: center;
+}
+.correctResponse {
+    grid-area: correctResponse;
+}
+
+.list-group-item {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    font-size: 20px;
+    font-weight: 600;
+}
+.list-group-item:nth-child(odd) {
+    background: #e2e2e2;
+}
+.list-group-item ul {
+    list-style: none;
+    display: inline-block;
+    font-family: "Poppins", sans-serif;
+}
+.list-group-item ul li {
+    display: inline-block;
+    border: 1px solid black;
+    text-align: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    padding: 5px;
+    cursor: pointer;
+    line-height: 30px;
+}
+.list-group-item ul li:hover {
+    background: #666666;
+}
+.assignments-index a {
+    vertical-align: middle;
+}
+.far.fa-check-square {
+    font-size: 30px;
+    color: green;
+    display: inline;
+    vertical-align: middle;
+    position: absolute;
+    right: 40px;
 }
