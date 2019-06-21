@@ -36,34 +36,6 @@ var leftSelect = document.getElementById('left-select'), rightSelect = document.
 let leftResults = document.getElementById('left-results'), rightResults = document.getElementById('right-results');
 let thingToSend = {}; // we have to keep track of this given any change!!
 
-
-/* buttons.forEach((button, index)=>{
-    button.addEventListener('click', function(){
-        var xhr = new XMLHttpRequest();
-         // depending on whether the button pressed was the left or right one 
-        let selection = index  === 0 ? selectionReceive : selectionSend;
-        xhr.open('GET', '/api/assignments/' + selection.value, true);
-
-        xhr.onload = function(){
-	    let results = index  === 0 ? leftResults : rightResults;
-        results.innerHTML = "";
-        var obj = JSON.parse(this.responseText);
-        let assignment = Object.entries(obj);
-        console.log(assignment);
-        let name = assignment.shift()[1];
-        let resultList = `<div class='test-title'>${name}</div>`;
-        assignment.forEach((section, index) => {
-            resultList+=`<div class="section" data-section="${index}"><div class="section-title">${section[0]}</div><ul class='section-questions'>`;
-                section[1].forEach((question, index) => {
-                resultList += `<li class='number-box'>${index + 1}</li>`
-                });
-                resultList += "</ul></div>";
-        });
-        results.innerHTML = resultList;
-    }
-    xhr.send();
-    });
-}) */
 // change this better to add this eventlistener to both 
 leftBtn.addEventListener('click', function(){
     resetRightNumberBoxes();
@@ -76,33 +48,87 @@ leftBtn.addEventListener('click', function(){
 	xhr.onload = function(){
         
         leftResults.innerHTML = "";
-
         var obj = JSON.parse(this.responseText);
-        let assignment = Object.entries(obj);
-       console.log(assignment);
-        let name = assignment.pop()[1];
+        thingToSend = obj;
+        console.log(thingToSend);
+        let resultList = `<div class='test-title'>${thingToSend['name']}</div>`;
+        thingToSend.sections.forEach((section, i) => {
+            resultList+=`<div class="section" data-section="${i}"><div class="section-title">${section.name}</div><ul class='left-question-list'>`;
+                section.questions.forEach((question, index) => {
+                    resultList += `<li class='left-number-box' data-key='${index+1}'><span>${index+1}.</span><div class="dual-number-box"><div class="top-triangle"><p>${thingToSend.id}</p></div>
+                    <div class="bot-triangle"><p>${question.question_number}</p></div></div></li>`;
+                });
+                resultList += `</ul></div>`;
+
+        });
+        resultList+=`<form action="/assignments/${currentAssignment}" method="POST">
+        <input id="obj" type="hidden" name="obj" value=${thingToSend}>@csrf @method('PUT')<button id="submission">SUBMIT</button></form>`;
         
+        
+        leftResults.innerHTML = resultList;
+    /*     let assignment = Object.entries(obj);
+        console.log(assignment); */
+        /*
+        let name = assignment.pop()[1];
+
         // need to transform all of the sections and their respective questions into an object which gets sent via a form
-        thingToSend = JSON.stringify({assignment_id: currentAssignment, sections: assignment});
-        let resultList = `<div class='test-title'>${name}</div>`;
-        assignment.forEach((section) => {
-            resultList+=`<div class="section" data-section="${section[0]}"><div class="section-title">${section[1].name}</div><ul class='question-list'>`;
+        thingToSend = {assignment_id: currentAssignment, sections: assignment};
+        let resultList = `<div class='test-title'>${name[0]}</div>`;
+        thingToSend.sections.forEach((section) => {
+            resultList+=`<div class="section" data-section="${section[0]}"><div class="section-title">${section[1].name}</div><ul class='left-question-list'>`;
                 section[1].questions.forEach((question, index) => {
-                resultList += `<li class='left-number-box'><span>${index+1}.</span><div class="dual-number-box"><div class="top-triangle"><p>1</p></div><div class="bot-triangle"><p>${index+1}</p></div></div></li>`;
+                resultList += `<li class='left-number-box' data-key='${index+1}'><span>${index+1}.</span><div class="dual-number-box"><div class="top-triangle"><p>${name[1]}</p></div><div class="bot-triangle">
+                <p>${index+1}</p></div></div></li>`;
                 });
                 resultList += `</ul></div>`;
 
         });
      
-        //let formRoute = "route('assignments.update',"+currentAssignment+")";
-        //console.log(formRoute);
         //I can't get a laravel named route to work with this
         resultList+=`<form action="/assignments/${currentAssignment}" method="POST">
-        <input id="obj" type="hidden" name="obj" value='${thingToSend}'>@csrf @method('PUT')<button>SUBMIT</button></form>`;
+        <input id="obj" type="hidden" name="obj" value=${thingToSend}>@csrf @method('PUT')<button id="submission">SUBMIT</button></form>`;
         
         
         leftResults.innerHTML = resultList;
+        
+        var removeQuestion = function(){
+            let numberBoxSection = this.closest('.section');
+            console.log(numberBoxSection);
+            thingToSend.sections.forEach((element,i) => {
+                if(element[0]===numberBoxSection.dataset.section){
+                    let index = this.dataset.key -1;
+                    element[1].questions.splice(index,1);
+                    console.log(i);
+                    //redraw that section NOTE because we're drawing the sections again they WONT have the event listener
+                    let questionListHTML = "";
+                    thingToSend.sections[i][1].questions.forEach((question,index)=>{
+                        questionListHTML += `<li class='left-number-box' data-key='${index+1}'><span>${index+1}.</span><div class="dual-number-box"><div class="top-triangle"><p>1</p></div>
+                        <div class="bot-triangle"><p>${index+1}</p></div></div></li>`;
+                    })
+                    let questionList = numberBoxSection.getElementsByTagName('ul')[0];
+                    console.log(questionList);
+                    questionList.innerHTML = questionListHTML;
+                }
+            });
+        
+        }
 
+        var numberBoxes = document.getElementsByClassName("left-question-list");
+        for (let i = 0; i < numberBoxes.length; i++) {
+            numberBoxes[i].addEventListener('click', removeQuestion, false);
+        }
+
+        var submitBtn = document.getElementById('submission');
+        submitBtn.addEventListener('click', function(e){
+            if(this.clicked){
+                this.clicked = false;
+                return;
+            }
+            this.clicked = true;
+            document.getElementById('obj').value = JSON.stringify(thingToSend);
+            e.preventDefault();
+            this.textContent = "CONFIRM";
+        }) */
 	}
     
     xhr.send();
@@ -125,7 +151,7 @@ rightBtn.addEventListener('click', function(){
         var obj = JSON.parse(this.responseText);
         let assignment = Object.entries(obj);
         let name = assignment.pop()[1];
-        let resultList = `<div class='test-title'>${name}</div>`;
+        let resultList = `<div class='test-title'>${name[0]}</div>`;
         assignment.forEach((section) => {
             resultList+=`<div class="section" data-section="${section[0]}"><div class="section-title">${section[1].name}</div><ul class='section-questions'>`;
                 section[1].questions.forEach((question, index) => {
@@ -135,18 +161,26 @@ rightBtn.addEventListener('click', function(){
         });
         rightResults.innerHTML = resultList;
 
-        var numberBoxes = document.getElementsByClassName("right-number-box");
+        var numberBoxes = document.getElementsByClassName("left-question-list");
         let insertedQuestionNum = 0;
-        var myFunction = function() {
+        var addQuestion = function() {
             if(this.disabled){
                 return;
             }
         
         
-            let sections = document.querySelectorAll('#left-results > .section');
+            let leftSections = document.querySelectorAll('#left-results > .section');
             let section;
-            sections.forEach((item)=>{
-                if(this.closest('.section').getAttribute("data-section") === item.dataset.section){
+            let rightSections = document.querySelectorAll('#right-results > .section');
+            let numberBoxSection = this.closest('.section'); // the section that this question button resides in
+            let numberBoxSectionIndex =0;
+            rightSections.forEach((element, index) => {
+                if(element===numberBoxSection)
+                numberBoxSectionIndex = index;
+            });
+            let sectionNumber = numberBoxSection.getAttribute("data-section"); 
+            leftSections.forEach((item)=>{
+                if(sectionNumber === item.dataset.section){
                 section = item;
             }
             })
@@ -162,25 +196,28 @@ rightBtn.addEventListener('click', function(){
             if(questions.length){
                 let lastQuestion = questions[questions.length-1];
                 lastQuestionNum = parseInt(lastQuestion.getElementsByTagName('span')[0].textContent);
-            }else{
+            }
+            else{
                 lastQuestionNum = 0;
             }
-        
             let questionListHTML = questionList.innerHTML;
             var attribute = this.getAttribute("data-key");
-            questionListHTML += `<li class='left-number-box'><span>${lastQuestionNum+1}.</span><div class="dual-number-box"><div class="top-triangle"><p>${rightSelect.value}</p></div><div class="bot-triangle"><p>${attribute}</p></div></div></li>`;
+            questionListHTML += `<li class='left-number-box'><span>${lastQuestionNum+1}.</span><div class="dual-number-box"><div class="top-triangle"><p>${name[1]}</p>
+            </div><div class="bot-triangle"><p>${attribute}</p></div></div></li>`;
             section.getElementsByTagName('ul')[0].innerHTML = questionListHTML;
         
-        
-        //let leftResultsOutput = leftResults.innerHTML;
-        //leftResultsOutput += `<li class='left-number-box'><span>${++insertedQuestionNum}.</span><div class="dual-number-box"><div class="top-triangle"><p>1</p></div><div class="bot-triangle"><p>${attribute}</p></div></div></li>`;
-        //leftResults.innerHTML = leftResultsOutput;
-        let currentAssignment = leftSelect.value;
-        thingToSend = JSON.stringify({assignment_id: thingToSend.assignment_id, sections: thingToSend.assignment});
+            thingToSend.sections.forEach(element => {
+                if(element[0]===sectionNumber){
+                    element[1].questions.push({id: assignment[numberBoxSectionIndex][1].questions[this.dataset.key-1].id})
+                }
+               
+            });
+            
+
     }
 
     for (var i = 0; i < numberBoxes.length; i++) {
-        numberBoxes[i].addEventListener('click', myFunction, false);
+        numberBoxes[i].addEventListener('click', addQuestion, false);
     }
 }
 

@@ -13,13 +13,22 @@ class AssignmentController extends Controller
 {
     public function all(Assignment $assignment){
         $sections = $assignment->sections;
-        $questions = array();
-        $questions['name'] = $assignment->name;
-        foreach ($sections as $section) {
+        $theData = array();
+        $theData['id'] = $assignment->id;
+        $theData['name'] = $assignment->name;
+        $theData['sections'] = array();
+        foreach ($sections as $i => $section) {
             //$questions[str_replace(" ", "_", $section->subject->name)] = $section->questions;
-            $questions[strval($section->subject_id)] = ['name'=>$section->subject->name, 'questions'=>$section->questions];
+
+            $questions = array();
+            foreach ($section->questions as $index => $question) {
+                
+                array_push($questions, ['id'=>$question->id, 'question_number'=>$question->question_number]);
+            }
+
+            $theData['sections'][$i] = ['id'=> strval($section->subject_id), 'name'=>$section->subject->name, 'questions'=>$questions];
         }
-        return response()->json($questions);
+        return response()->json($theData);
     }
     /**
      * Display a listing of the resource.
@@ -96,6 +105,8 @@ class AssignmentController extends Controller
     public function update(Request $request, Assignment $assignment)
     {
         $theData =  json_decode($request->obj);
+
+
         foreach ($theData->sections as $key => $sectionQuestions) {
             $subject_id = $sectionQuestions[0];
             $ids = array_map(function($el){
@@ -106,7 +117,7 @@ class AssignmentController extends Controller
             //$section->questions()->sync(); //sync needs the ids of the book questions
         }
         
-        
+        return redirect()->route('assignments.show', ['assignment'=>$assignment]);
     }
     public function confirm(Request $request){
         $assignment = Assignment::find($request->assignment);
@@ -152,8 +163,10 @@ class AssignmentController extends Controller
             $assignment = Assignment::find($assignment);
         }
         $completedAssignment = DB::table('assignment_user')->where('assignment_id', $assignment->id)->where('user_id', Auth::user()->id)->first();
-        if(!$completedAssignment)
+        if(!$completedAssignment){
             abort(404);
+        }
+
         $sections = $assignment->sections;
         $studentAnswers = array();
         foreach ($sections as $key=>$section) {

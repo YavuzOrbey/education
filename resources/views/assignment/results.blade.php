@@ -21,8 +21,8 @@
               @foreach($section->questions as $question)
               <tr>
                 <td>{{ $loop->index + 1 }}</td>
-                <td>{!! empty($studentAnswers[$loop->parent->index]) ? " ": $guide[$studentAnswers[$section->subject->id-1][$loop->index]]!!} </td>
-                <td>{!!$studentAnswers[$section->subject->id-1][$loop->index]==$question->correct_answer ? 
+                <td>{!! empty($studentAnswers[$loop->parent->index]) ? " ": $guide[$studentAnswers[$loop->parent->index][$loop->index]]!!} </td>
+                <td>{!!$studentAnswers[$loop->parent->index][$loop->index]==$question->correct_answer ? 
                 "<i style='color:green' class='fas fa-check'></i>": "<i style='color:red' class='fas fa-times'></i>"!!}</td>
                 <td> {{$guide[$question->correct_answer] }}</td>
               </tr>
