@@ -15,7 +15,7 @@
     {{Form::number('question', $questionNum) }}
 
   {{Form::label('correct_answer', 'Correct Answer:') }}
-  {{Form::select('correct_answer', $answers, null, ['class'=>'form-control', 'placeholder'=>'Enter an answer', 'required'=>'', 'autofocus'=>'autofocus', 'onfocus'=>"this.select()"])}}
+  {{Form::select('correct_answer', $answers, null, ['class'=>'form-control', 'placeholder'=>'Enter an answer', 'required'=>'', 'autofocus'=>'autofocus', 'onfocus'=>"this.select()", 'onmouseup'=>"return false"])}}
   
   {{Form::submit('Create', ['class'=>'btn btn-primary btn-lg btn-block', 'style'=> 'margin-top: 20px']) }}
   

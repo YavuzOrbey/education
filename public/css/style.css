@@ -237,6 +237,10 @@ td {
     font-size: 20px;
     font-weight: 600;
 }
+.list-group-item .due-date {
+    vertical-align: middle;
+    line-height: 30px;
+}
 .list-group-item:nth-child(odd) {
     background: #e2e2e2;
 }
@@ -267,6 +271,16 @@ td {
     color: green;
     display: inline;
     vertical-align: middle;
+    margin-right: 10px;
+}
+.due-date {
+    color: red;
+    font-size: 18px;
+    display: inline-block;
+    margin-left: 40px;
+}
+.result {
+    display: inline-block;
     position: absolute;
     right: 40px;
 }

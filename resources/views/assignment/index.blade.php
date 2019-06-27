@@ -1,15 +1,18 @@
-@extends('main')
+@extends('layouts.main')
 
 @section('content')
 <div class="assignments-index test-list">
-    <h2>Assignments</h2>
-    @isset($completed) <p>You've completed  {{count($completed)}} out of {{count($assignments)}} assignments</p> @endisset
+    <h2>Current Assignments</h2>
+    @isset($completed) <p>You've completed  {{count($completed)}} out of {{count($assignments)}} currently due assignments</p> @endisset
     <ul class="list-group">
         @foreach($assignments as $assignment)
         <li class="list-group-item">
             <a href="{{route('assignments.show', $assignment)}}">{{$loop->index + 1 . ". " . $assignment->name}}</a>
+            <span class='due-date'>DUE: {{date("n/j  H:i", strtotime($assignment->due_date))}}</span>
             @if(Auth::user() && Auth::user()->assignments()->where('assignments.id', $assignment->id)->exists())
-            <i class='far fa-check-square'></i><a href="{{ route('assignments.results', $assignment->id) }}">Results</a>
+            <div class="result">
+                <i class='far fa-check-square'></i><a href="{{ route('assignments.results', $assignment->id) }}">Results</a>
+            </div>
             @endif
         </li>
         @endforeach

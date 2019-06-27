@@ -1,4 +1,4 @@
-@extends('main')
+@extends('layouts.main')
 @section('content')
 <div class="assignments-index">
 <h2>{{$assignment->name}}</h2>

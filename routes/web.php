@@ -19,7 +19,7 @@ Route::get('/math', function () {
 Route::group(['prefix'=>'admin', 'middleware'=>['role:administrator']], function(){
     Route::get("/", 'AdminController@index');
     Route::get("/dashboard", 'AdminController@dashboard')->name('admin.dashboard');
-    Route::get('assignments/edit', 'AssignmentController@edit')->name('assignments.edit');
+    Route::get('assignments/insert', 'AssignmentController@insert')->name('assignments.insert');
     Route::resource("/users", 'UserController');
     Route::resource("/permissions", 'PermissionController');
     Route::resource("/roles", 'RoleController')->except('destroy');
@@ -28,7 +28,7 @@ Route::resources([
     'questions' =>'QuestionController',
     'book_questions'=>'BookQuestionController'
 ], ['middleware'=>'auth']);
-Route::resource('assignments','AssignmentController')->except('edit');
+Route::resource('assignments','AssignmentController');
 Route::prefix('assignments')->group(function(){
 Route::post('/confirm', 'AssignmentController@confirm')->name('assignments.confirm');
 Route::post('/process', 'AssignmentController@process')->name('assignments.process');
@@ -38,7 +38,7 @@ Route::get('/results/{assignment}', 'AssignmentController@results')->name('assig
 
 Auth::routes();
 Route::get('/', function(){
-    return view('main');
+    return view('layouts.main');
 });
 Route::get('logout', 'Auth\LoginController@logout', function () {
     return abort(404);

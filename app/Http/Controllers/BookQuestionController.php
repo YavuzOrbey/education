@@ -30,7 +30,9 @@ class BookQuestionController extends Controller
     public function create(Request $request)
     {
         $sections = Subject::all()->pluck('name', 'id');
-        $answers = AnswerResponse::all()->pluck('letter', 'id');
+        $answers = AnswerResponse::all()->filter(function ($value, $key){
+            return $key > 0;
+        })->pluck('letter', 'id');
         $assignments = Assignment::all()->pluck('name', 'id');
         !isset($request->questionNum) ? $questionNum= 1: $questionNum = $request->questionNum;
         return view('admin.book_question.create', compact('sections', 'answers', 'request', 'assignments', 'questionNum'));
@@ -54,7 +56,8 @@ class BookQuestionController extends Controller
         $section = Section::where('assignment_id', $request->test_number)->where('subject_id', $request->subject)->first();
         $alreadyInserted = $section->questions()->where('question_number', $request->question)->first();
         if ($alreadyInserted) {
-           return back()->withInput();
+            $errors['duplicate'] = 'Section already has that question number';
+           return back()->withInput()->withErrors(['Duplicate', 'Section already has question with that number!']);
         }
         
         $question = new BookQuestion;

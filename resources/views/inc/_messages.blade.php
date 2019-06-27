@@ -4,7 +4,7 @@
 </div>
 @endif
 
-{{-- @if (count($errors)> 0)
+@if (count($errors)> 0)
 <div class="alert alert-danger" role="alert">
 <strong>Errors:</strong>
 <ul>
@@ -13,4 +13,4 @@
 @endforeach
 </ul>
 </div>
-@endif --}}
+@endif

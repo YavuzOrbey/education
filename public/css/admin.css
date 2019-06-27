@@ -5,3 +5,25 @@
     width: 200px;
     height: 100vh;
 }
+.menu-label {
+    font-weight: 700;
+    padding: 5px;
+    margin-left: 10px;
+}
+.menu-list {
+    padding: 5px;
+    margin-left: 15px;
+}
+.menu-list a {
+    color: black;
+    text-decoration: none;
+}
+.menu-list a:hover {
+    color: red;
+}
+.main-display {
+    width: calc(100vw - 200px);
+    height: calc(100% - 60px);
+    position: relative;
+    left: 200px;
+}

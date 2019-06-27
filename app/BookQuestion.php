@@ -10,10 +10,10 @@ class BookQuestion extends Model
     {
         return $this->belongsToMany('App\Section', 'section_questions');
     }
-    public function assignments()
+/*     public function assignments()
     {
         return $this->belongsToMany('App\Assignment');
-    }
+    } */
     public function correctAnswer()
     {
         return $this->belongsTo('App\AnswerResponse', 'correct_answer');

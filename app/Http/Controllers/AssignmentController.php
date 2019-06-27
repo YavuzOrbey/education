@@ -6,6 +6,7 @@ use App\Assignment;
 use App\Question;
 use App\BookQuestion;
 use App\Section;
+use Validator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -23,7 +24,7 @@ class AssignmentController extends Controller
             $questions = array();
             foreach ($section->questions as $index => $question) {
                 
-                array_push($questions, ['id'=>$question->id, 'question_number'=>$question->question_number]);
+                array_push($questions, ['id'=>$question->id, 'question_number'=>$question->question_number, 'assignment_id'=>$question->sections()->first()->assignment_id]);
             }
 
             $theData['sections'][$i] = ['id'=> strval($section->subject_id), 'name'=>$section->subject->name, 'questions'=>$questions];
@@ -37,7 +38,28 @@ class AssignmentController extends Controller
      */
     public function index()
     {
-        $assignments = Assignment::all();
+
+        $readyAssignments = [];
+        //find only assignments that have at least one question in each of their sections
+        foreach(Assignment::all() as $assignment){
+            if(strtotime($assignment->due_date) > time()){
+                if(count($assignment->sections)){ 
+                    foreach($assignment->sections as $section){
+                        if(count($section->questions)){
+                            array_push($readyAssignments, $assignment->id);
+                            break;
+                        }
+                    }
+                }
+            }
+            
+        }
+
+        $assignments = Assignment::find($readyAssignments);
+        $assignments = $assignments->sortBy(function ($assignment, $key) {
+            return $assignment['due_date'];
+        });
+        //$assignments->sections
         if(Auth::user()){
             $completed= Auth::user()->assignments;
         }
@@ -55,7 +77,7 @@ class AssignmentController extends Controller
     public function create()
     {
         $questions = BookQuestion::all();
-        return view('assignment.create', compact('questions'));
+        return view('admin.assignments.create', compact('questions'));
     }
 
     /**
@@ -66,7 +88,17 @@ class AssignmentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $validator = Validator::make($request->assignment, 
+        ['name'=>'required|string|unique:assignments',
+          'due_date'=>'required|date'
+        ])->validate();
+        $assignment = new Assignment;
+        $assignment->name = $request->assignment['name'];
+        $assignment->due_date = date("Y-m-d H:i:s", strtotime($request->assignment['due_date']) +60*60*23 +60*59 + 59);
+        $assignment->save();
+        $assignment->subjects()->sync($request->subjects);
+        return redirect()->route('assignments.insert');
     }
 
     /**
@@ -89,10 +121,12 @@ class AssignmentController extends Controller
      * @param  \App\Assignment  $assignment
      * @return \Illuminate\Http\Response
      */
-    public function edit()
+    public function insert()
     {
-        $assignments = Assignment::all()->pluck('name', 'id');
-        return view('admin.assignments.edit', compact('assignments'));
+        $assignments = Assignment::all()->filter(function ($value, $key){
+            return !strpos($value->name, "Practice");
+        })->pluck('name', 'id');
+        return view('admin.assignments.insert', compact('assignments'));
     }
 
     /**
@@ -106,15 +140,13 @@ class AssignmentController extends Controller
     {
         $theData =  json_decode($request->obj);
 
-
-        foreach ($theData->sections as $key => $sectionQuestions) {
-            $subject_id = $sectionQuestions[0];
-            $ids = array_map(function($el){
+        foreach ($theData->sections as $key => $currentSection) {
+            $subject_id = $currentSection->id;
+            $questionIDs = array_map(function($el){
                 return $el->id;
-            }, $sectionQuestions[1]->questions);
+            }, $currentSection->questions);
             $section = Section::where('assignment_id', $assignment->id)->where('subject_id', $subject_id)->first();
-            $section->questions()->sync($ids);
-            //$section->questions()->sync(); //sync needs the ids of the book questions
+            $section->questions()->sync($questionIDs);
         }
         
         return redirect()->route('assignments.show', ['assignment'=>$assignment]);
@@ -137,12 +169,14 @@ class AssignmentController extends Controller
         return view('assignment.confirm', compact('assignment', 'studentAnswers', 'guide'));
     }
     public function process(Request $request){
-        if(!Auth::user()){
+        $assignment = Assignment::find($request->assignment);
+
+        if(!Auth::user() || time() > strtotime($assignment->due_date) ){
             abort(401);
         }
         
-        $assignmentId = DB::table('assignment_user')->insertGetId(
-            ['assignment_id' => $request->assignment, 'user_id'=>Auth::user()->id, 'score'=>90]
+        $assignmentUserId = DB::table('assignment_user')->insertGetId(
+            ['assignment_id' => $assignment->id, 'user_id'=>Auth::user()->id, 'score'=>90]
         );
         $assignment = Assignment::find($request->assignment);
         $sections = $assignment->sections;
@@ -151,7 +185,7 @@ class AssignmentController extends Controller
             $questions = $section->questions;
             foreach($questions as $qKey =>$question){
                 DB::table('question_user')->insert(
-                ['assignment_user_id' =>  $assignmentId, 'question_id'=>$question->id, 'user_answer'=>$studentAnswers[$key][$qKey+1]]
+                ['assignment_user_id' =>  $assignmentUserId, 'question_id'=>$question->id, 'user_answer'=>$studentAnswers[$key][$qKey+1]]
                 );
             }
         }

@@ -2,10 +2,13 @@
   <body>
     @include('inc._nav')
     @include('inc._admin')
-    <div class="container">
-      @include('inc._messages')
+    @include('inc._messages')
+    <div class="main-display">
+      <div class="container">
       @yield('content')
       <hr>
+      </div>
+      @include('inc._foot')
     </div>
-@include('inc._foot')
+
 

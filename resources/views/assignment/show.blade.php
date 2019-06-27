@@ -1,16 +1,16 @@
-@extends('main')
+@extends('layouts.main')
 @section('stylesheets')
 {{Html::style('css/test.css')}}
 @stop
 @section('content')
 <div class="assignments-index">
-<h2>{{$assignment->name}}</h2>
+<h2 class='assignment-title'>{{strtoupper($assignment->name)}}</h2>
 <ul class="list-group">
 <form action="{{route('assignments.confirm', ['assignment'=>$assignment])}}" method="POST">
     @csrf
         @foreach($sections as $section)
         <div class="section">
-        <h5>{{$section->subject->name}}</h5>
+        <h5 class='section-title'>{{$section->subject->name}}</h5>
         <ul>
             @foreach($section->questions as $question)
             <li class="list-group-item">
