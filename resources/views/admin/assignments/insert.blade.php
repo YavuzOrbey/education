@@ -154,10 +154,14 @@ rightBtn.addEventListener('click', function(){
         var numberBoxes = document.getElementsByClassName("left-question-list");
         let insertedQuestionNum = 0;
 
-        let disableButtons = function(thingToSend){
+        let disableButtons = function(){
+            let buttons = document.querySelectorAll('#right-results .disabled');
 
+            buttons.forEach(button => {
+                button.disabled = true;
+            });
         }
-       
+        disableButtons();
         var findSection = function(el){
                 // Need to find if there exists a section on the left that cooresponds with the section on the right and if not return an error
                 let leftSections = document.querySelectorAll('#left-assignment > .section');

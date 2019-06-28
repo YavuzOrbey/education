@@ -67,15 +67,16 @@ class Toolbar extends React.Component {
                 key={index}
                 value={i}
                 onClick={() => this.props.onClick(whatToDisplay)}
-            >
-                {/*fsdfsdfsdfsd */}
-            </ToolbarButton>
+            />
         );
     }
     render() {
         const buttonsObj = {
             "`x`": `x`,
-            "`sqrt(x)`": <MathInput changeHistory={this.props.changeHistory} />
+            "`sqrt(x)`": `sqrt(x)`,
+            "`=`": `=`,
+            "`x^2`": `x^2`
+            //<MathInput changeHistory={this.props.changeHistory} />
         };
         //"`sqrt(" + <MathInput /> + ")`"
         const buttonsAsArray = Object.keys(buttonsObj).map((key, index) => {
@@ -116,8 +117,6 @@ class MathInput extends React.Component {
 
     handleClick(event) {
         event.stopPropagation();
-        console.log(document.activeElement);
-        console.log(this.textInput.current);
         //this.textInput.current.focus();
     }
     handleKeyPress(event) {}

@@ -1,14 +1,15 @@
 @extends('layouts.main')
 
 @section('content')
-<div class="assignments-index test-list">
+<div class="assignments-index">
+<div class="test-list">
     <h2>Current Assignments</h2>
-    @isset($completed) <p>You've completed  {{count($completed)}} out of {{count($assignments)}} currently due assignments</p> @endisset
+    @isset($completed) <p>You've completed  {{count($completed)}} out of {{count($currentAssignments) + count($pastAssignments)}} assignments</p> @endisset
     <ul class="list-group">
-        @foreach($assignments as $assignment)
+        @foreach($currentAssignments as $assignment)
         <li class="list-group-item">
             <a href="{{route('assignments.show', $assignment)}}">{{$loop->index + 1 . ". " . $assignment->name}}</a>
-            <span class='due-date'>DUE: {{date("n/j  H:i", strtotime($assignment->due_date))}}</span>
+            <span class='due-date'>DUE: {{date("n/j  H:i", strtotime($assignment->due_date)-4*60*60)}}</span>
             @if(Auth::user() && Auth::user()->assignments()->where('assignments.id', $assignment->id)->exists())
             <div class="result">
                 <i class='far fa-check-square'></i><a href="{{ route('assignments.results', $assignment->id) }}">Results</a>
@@ -17,6 +18,23 @@
         </li>
         @endforeach
     </ul>
+</div>
+
+<div class="test-list">
+    <h2>Past Assignments</h2>
+    <ul class="list-group">
+        @foreach($pastAssignments as $assignment)
+        <li class="list-group-item">
+        <span>{{$loop->index + 1 . ". " . $assignment->name}}</span>
+            @if(Auth::user() && Auth::user()->assignments()->where('assignments.id', $assignment->id)->exists())
+                <div class="result">
+                    90% <a href="{{ route('assignments.results', $assignment->id) }}">Results</a>
+                </div>
+            @endif
+        </li>
+        @endforeach
+    </ul>
+</div>
 </div>
 @stop
 

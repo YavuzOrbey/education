@@ -39,34 +39,40 @@ class AssignmentController extends Controller
     public function index()
     {
 
-        $readyAssignments = [];
+        $currentAssignments = []; 
+        $pastAssignments=[];
         //find only assignments that have at least one question in each of their sections
         foreach(Assignment::all() as $assignment){
-            if(strtotime($assignment->due_date) > time()){
-                if(count($assignment->sections)){ 
                     foreach($assignment->sections as $section){
                         if(count($section->questions)){
-                            array_push($readyAssignments, $assignment->id);
-                            break;
+                            if(strtotime($assignment->due_date) > time()){
+                                array_push($currentAssignments, $assignment->id);
+                                break;
+                            }
+                            else{
+                                array_push($pastAssignments, $assignment->id);
+                                break;
+                            }
                         }
                     }
                 }
-            }
-            
-        }
 
-        $assignments = Assignment::find($readyAssignments);
-        $assignments = $assignments->sortBy(function ($assignment, $key) {
+        $currentAssignments = Assignment::find($currentAssignments);
+        $currentAssignments = $currentAssignments->sortBy(function ($assignment, $key) {
             return $assignment['due_date'];
         });
-        //$assignments->sections
+        $pastAssignments = Assignment::find($pastAssignments);
+        $pastAssignments = $pastAssignments->sortBy(function ($assignment, $key) {
+            return $assignment['due_date'];
+        });
+
         if(Auth::user()){
             $completed= Auth::user()->assignments;
         }
         else{
             $completed = array();
-        }
-        return view('assignment.index', compact('assignments', 'completed'));
+        }   
+        return view('assignment.index', compact('currentAssignments', 'pastAssignments', 'completed'));
     }
 
     /**
@@ -95,7 +101,7 @@ class AssignmentController extends Controller
         ])->validate();
         $assignment = new Assignment;
         $assignment->name = $request->assignment['name'];
-        $assignment->due_date = date("Y-m-d H:i:s", strtotime($request->assignment['due_date']) +60*60*23 +60*59 + 59);
+        $assignment->due_date = date("Y-m-d H:i:s", strtotime($request->assignment['due_date']) +60*60*23 +60*59 + 59+4*60*60);
         $assignment->save();
         $assignment->subjects()->sync($request->subjects);
         return redirect()->route('assignments.insert');

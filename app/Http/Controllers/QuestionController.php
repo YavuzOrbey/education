@@ -40,7 +40,6 @@ class QuestionController extends Controller
             $questionChoicesObj->$letter = $question->answer->$column;
         }
         $currentQuestionObj->question_choices = $questionChoicesObj;
-        //$sentQuestionsObj->question_choices = $answerResponses->map(function($letter){return })
         $sentQuestions[] =$currentQuestionObj;
     }
        return json_encode($sentQuestions, JSON_PRETTY_PRINT);
@@ -53,7 +52,7 @@ class QuestionController extends Controller
     public function create()
     {
         $subjects = Subject::all();
-        $answer_choices = AnswerResponse::all();
+        $answer_choices = AnswerResponse::all()->except(0);
         $subjects = $subjects->pluck('name', 'id');
         $answers = $answer_choices->pluck('letter', 'id');
         return view('question.create', compact('subjects', 'answers'));

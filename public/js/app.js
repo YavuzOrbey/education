@@ -66702,9 +66702,10 @@ function (_React$Component2) {
 
       var buttonsObj = {
         "`x`": "x",
-        "`sqrt(x)`": react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(MathInput, {
-          changeHistory: this.props.changeHistory
-        })
+        "`sqrt(x)`": "sqrt(x)",
+        "`=`": "=",
+        "`x^2`": "x^2" //<MathInput changeHistory={this.props.changeHistory} />
+
       }; //"`sqrt(" + <MathInput /> + ")`"
 
       var buttonsAsArray = Object.keys(buttonsObj).map(function (key, index) {
@@ -66775,9 +66776,7 @@ function (_React$Component4) {
   _createClass(MathInput, [{
     key: "handleClick",
     value: function handleClick(event) {
-      event.stopPropagation();
-      console.log(document.activeElement);
-      console.log(this.textInput.current); //this.textInput.current.focus();
+      event.stopPropagation(); //this.textInput.current.focus();
     }
   }, {
     key: "handleKeyPress",

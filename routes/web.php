@@ -14,7 +14,7 @@
 Route::get('/math', function () {
     return view('math');
 });
-//Route::view('/{path?}', 'app');
+Route::view('/questions1', 'app'); //{path?}
 
 Route::group(['prefix'=>'admin', 'middleware'=>['role:administrator']], function(){
     Route::get("/", 'AdminController@index');
