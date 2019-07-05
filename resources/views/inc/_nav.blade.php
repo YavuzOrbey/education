@@ -16,10 +16,6 @@
       @endguest
     </ul>
     <div class="nav-profile">
-{{--         <div class="pic">Picture</div>
-        <ul class="dropdown">
-            <li>My Profile</li>
-        </ul> --}}
         <ul class="navbar-nav ">
                 
                 @auth
