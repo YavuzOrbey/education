@@ -34,7 +34,7 @@
 @section('scripts')
 <script>
 var leftBtn = document.getElementById('left-button'), rightBtn = document.getElementById('right-button');
-let buttons = [leftBtn, rightBtn];
+//let buttons = [leftBtn, rightBtn];
 var leftSelect = document.getElementById('left-select'), rightSelect = document.getElementById('right-select');
 let leftAssignment = document.getElementById('left-assignment'), leftForm = document.getElementById('left-form');
 
