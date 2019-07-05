@@ -5,8 +5,8 @@
     {!! Form::open(['route' => 'book_questions.store', 'data-parsley-validate'=>'']) !!}
 
 
-    {{Form::label('test_number', 'Assignment:') }}
-    {{Form::select('test_number', $assignments, null, ['class'=>'form-control', 'placeholder'=>'Assignment', 'required'=>''])}}
+    {{Form::label('test_number', 'Test:') }}
+    {{Form::select('test_number', $assignments, null, ['class'=>'form-control', 'placeholder'=>'Test', 'required'=>''])}}
 
     {{Form::label('subject', 'Section:') }}
     {{Form::select('subject', $sections, null, ['class'=>'form-control', 'placeholder'=>'Section', 'required'=>''])}}

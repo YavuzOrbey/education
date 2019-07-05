@@ -8,13 +8,21 @@
     <ul class="list-group">
         @foreach($currentAssignments as $assignment)
         <li class="list-group-item">
-            <a href="{{route('assignments.show', $assignment)}}">{{$loop->index + 1 . ". " . $assignment->name}}</a>
-            <span class='due-date'>DUE: {{date("n/j  H:i", strtotime($assignment->due_date)-4*60*60)}}</span>
-            @if(Auth::user() && Auth::user()->assignments()->where('assignments.id', $assignment->id)->exists())
-            <div class="result">
-                <i class='far fa-check-square'></i><a href="{{ route('assignments.results', $assignment->id) }}">Results</a>
+            <a href="{{asset("/pdfs/" . str_replace(' ', '_', strtolower($assignment->name)) . '.pdf')}}">{{$loop->index + 1 . ". " . $assignment->name}}</a>
+            
+            <div class="right-hand-side">
+            <a href="{{asset("/pdfs/" . str_replace(' ', '_', strtolower($assignment->name)) . '.pdf')}}" class="pdf-link"><i class="fas fa-file-pdf"></i></a>
+                <span class='due-date'>DUE: {{date("n/j  H:i", strtotime($assignment->due_date)-4*60*60)}}</span>
+                <span class="result">
+                @if(Auth::user() && Auth::user()->assignments()->where('assignments.id', $assignment->id)->exists())
+                    <i class='far fa-check-square'></i><a href="{{ route('assignments.results', $assignment->id) }}">Results</a>
+
+                @elseif (Auth::user())
+                <a href="{{route('assignments.show', $assignment)}}">Submit</a>
+                @endif
+                </span>
+
             </div>
-            @endif
         </li>
         @endforeach
     </ul>
@@ -25,12 +33,14 @@
     <ul class="list-group">
         @foreach($pastAssignments as $assignment)
         <li class="list-group-item">
-        <span>{{$loop->index + 1 . ". " . $assignment->name}}</span>
+            <a href="{{asset("/pdfs/" . str_replace(' ', '_', strtolower($assignment->name)) . '.pdf')}}">{{$loop->index + 1 . ". " . $assignment->name}}</a>
+            <div class="right-hand-side">
             @if(Auth::user() && Auth::user()->assignments()->where('assignments.id', $assignment->id)->exists())
                 <div class="result">
                     90% <a href="{{ route('assignments.results', $assignment->id) }}">Results</a>
                 </div>
             @endif
+            </div>
         </li>
         @endforeach
     </ul>

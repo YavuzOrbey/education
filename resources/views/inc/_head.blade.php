@@ -13,6 +13,7 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Aleo:400,700&display=swap" rel="stylesheet">
     {{Html::style('css/style.css')}}
     @yield('stylesheets')
 </head>

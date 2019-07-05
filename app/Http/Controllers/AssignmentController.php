@@ -41,8 +41,10 @@ class AssignmentController extends Controller
 
         $currentAssignments = []; 
         $pastAssignments=[];
+        //get only assignments that aren't practice tests
+        $assignments = Assignment::where('name', 'NOT LIKE', '%Practice%')->get();
         //find only assignments that have at least one question in each of their sections
-        foreach(Assignment::all() as $assignment){
+        foreach($assignments as $assignment){
                     foreach($assignment->sections as $section){
                         if(count($section->questions)){
                             if(strtotime($assignment->due_date) > time()){

@@ -33,7 +33,7 @@ class BookQuestionController extends Controller
         $answers = AnswerResponse::all()->filter(function ($value, $key){
             return $key > 0;
         })->pluck('letter', 'id');
-        $assignments = Assignment::all()->pluck('name', 'id');
+        $assignments = Assignment::where('name', 'LIKE', '%Practice%')->pluck('name', 'id');
         !isset($request->questionNum) ? $questionNum= 1: $questionNum = $request->questionNum;
         return view('admin.book_question.create', compact('sections', 'answers', 'request', 'assignments', 'questionNum'));
     }
