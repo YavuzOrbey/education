@@ -159,9 +159,6 @@ rightBtn.addEventListener("click", function() {
             section.getElementsByTagName("ul")[0].innerHTML = questionListHTML;
 
             thingToSend = { id: currentAssignment };
-            //let leftResultsOutput = leftResults.innerHTML;
-            //leftResultsOutput += `<li class='left-number-box'><span>${++insertedQuestionNum}.</span><div class="dual-number-box"><div class="top-triangle"><p>1</p></div><div class="bot-triangle"><p>${attribute}</p></div></div></li>`;
-            //leftResults.innerHTML = leftResultsOutput;
         };
 
         for (var i = 0; i < numberBoxes.length; i++) {
