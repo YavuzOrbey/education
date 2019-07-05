@@ -165,6 +165,6 @@ rightBtn.addEventListener("click", function() {
             numberBoxes[i].addEventListener("click", myFunction, false);
         }
     };
-
+    // fix
     xhr.send();
 });
