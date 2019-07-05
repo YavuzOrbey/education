@@ -1,6 +1,5 @@
 var leftBtn = document.getElementById("left-button"),
     rightBtn = document.getElementById("right-button");
-let buttons = [leftBtn, rightBtn];
 var leftSelect = document.getElementById("left-select"),
     rightSelect = document.getElementById("right-select");
 let leftResults = document.getElementById("left-results"),
