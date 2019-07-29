@@ -14,7 +14,7 @@
 Route::get('/math', function () {
     return view('math');
 });
-Route::view('/questions1', 'app'); //{path?}
+Route::view('/exercises', 'app'); //{path?}
 
 Route::group(['prefix'=>'admin', 'middleware'=>['role:administrator']], function(){
     Route::get("/", 'AdminController@index');
@@ -28,6 +28,7 @@ Route::resources([
     'questions' =>'QuestionController',
     'book_questions'=>'BookQuestionController'
 ], ['middleware'=>'auth']);
+Route::view('/questions/create', 'app')->name('questions.create');
 Route::resource('assignments','AssignmentController');
 Route::prefix('assignments')->group(function(){
 Route::post('/confirm', 'AssignmentController@confirm')->name('assignments.confirm');
@@ -38,7 +39,7 @@ Route::get('/results/{assignment}', 'AssignmentController@results')->name('assig
 
 Auth::routes();
 Route::get('/', function(){
-    return view('layouts.main');
+    return view('home');
 });
 Route::get('logout', 'Auth\LoginController@logout', function () {
     return abort(404);

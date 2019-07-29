@@ -13,8 +13,8 @@
 
         <p class="menu-label">Questions</p>
         <ul class="menu-list">
-            <li><a href="{{route('book_questions.create')}}">Create</a></li>
-            <li><a href=""></a></li>
+            <li><a href="{{route('book_questions.create')}}">Create New Book Question</a></li>
+            <li><a href="{{route('questions.create')}}">Create New Question</a></li>
         </ul>
     </aside>
     

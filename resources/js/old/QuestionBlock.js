@@ -4,7 +4,6 @@ import AnswerChoices from "./AnswerChoices";
 import Question from "./Question";
 import PropTypes from "prop-types";
 import MathJax from "react-mathjax2";
-import "../../css/exercises.css";
 const QuestionBlock = ({
     handleClick,
     handleAnswerClick,
@@ -12,7 +11,7 @@ const QuestionBlock = ({
     answers
 }) => {
     return (
-        <div className="question-block read">
+        <div className="question-block">
             <MathJax.Context input="tex">
                 <Question
                     data={{

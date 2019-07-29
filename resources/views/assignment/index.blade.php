@@ -3,8 +3,9 @@
 @section('content')
 <div class="assignments-index">
 <div class="test-list">
+        @isset($completed) <p>You've completed  {{count($completed)}} out of {{count($currentAssignments) + count($pastAssignments)}} assignments</p> @endisset
     <h2>Current Assignments</h2>
-    @isset($completed) <p>You've completed  {{count($completed)}} out of {{count($currentAssignments) + count($pastAssignments)}} assignments</p> @endisset
+    
     <ul class="list-group">
         @foreach($currentAssignments as $assignment)
         <li class="list-group-item">
@@ -35,6 +36,8 @@
         <li class="list-group-item">
             <a href="{{asset("/pdfs/" . str_replace(' ', '_', strtolower($assignment->name)) . '.pdf')}}">{{$loop->index + 1 . ". " . $assignment->name}}</a>
             <div class="right-hand-side">
+                <a href="{{asset("/pdfs/" . str_replace(' ', '_', strtolower($assignment->name)) . '.pdf')}}" class="pdf-link"><i class="fas fa-file-pdf"></i></a>
+                <span class='due-date'>DUE: {{date("n/j  H:i", strtotime($assignment->due_date)-4*60*60)}}</span>
             @if(Auth::user() && Auth::user()->assignments()->where('assignments.id', $assignment->id)->exists())
                 <div class="result">
                     90% <a href="{{ route('assignments.results', $assignment->id) }}">Results</a>

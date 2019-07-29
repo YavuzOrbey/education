@@ -2,6 +2,7 @@
     <ul>
       <li><a href="/">Home</a></li>
       <li><a href="{{route('assignments.index')}}">Assignments</a></li>
+      <li><a href="/exercises">Exercises</a></li>
       @guest
       <li class="nav-item">
         <a href="{{ route('login') }}" id="show-login">Login</a>

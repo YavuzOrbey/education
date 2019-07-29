@@ -44,7 +44,18 @@
                 @endif
             </div>
         </div>
-    
+        <div class="input-group">
+                <label for="group_id" >{{ __('Group ID') }}</label>
+                <div class="col-md-6">
+                    <input id="group_id" type="text" class="input-control{{ $errors->has('group_id') ? ' is-invalid' : '' }}" name="group_id" value="{{ old('group_id') }}" required autofocus>
+                    
+                    @if ($errors->has('group_id'))
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $errors->first('group_id') }}</strong>
+                    </span>
+                    @endif
+                </div>
+            </div>
         <div class="input-group">
             <label for="password" >{{ __('Password') }}</label>
     

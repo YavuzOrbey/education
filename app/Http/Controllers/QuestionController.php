@@ -26,20 +26,22 @@ class QuestionController extends Controller
     $sentQuestions = [];
     $questions = Question::all();
     
-    $answerResponses = AnswerResponse::all();
+    $answerResponses = AnswerResponse::all()->except(0);
     foreach ($questions as $index=>$question) {
         $currentQuestionObj = new \stdClass();
         $questionTextObj = new \stdClass();
         $questionChoicesObj = new \stdClass();
-        $questionTextObj->$index = $question->question_text;
-        $currentQuestionObj->question = $questionTextObj;
+        $currentQuestionObj->number = $index+1;
+        $currentQuestionObj->question_text = $question->question_text;
+        /* $questionTextObj->$index = $question->question_text;
+        $currentQuestionObj->question = $questionTextObj; */
 
         $letters = $answerResponses->pluck('letter');
         foreach ($letters as $letter) {
             $column = strtolower('choice_' . $letter);
             $questionChoicesObj->$letter = $question->answer->$column;
         }
-        $currentQuestionObj->question_choices = $questionChoicesObj;
+        $currentQuestionObj->answer_choices = $questionChoicesObj;
         $sentQuestions[] =$currentQuestionObj;
     }
        return json_encode($sentQuestions, JSON_PRETTY_PRINT);
@@ -109,7 +111,9 @@ class QuestionController extends Controller
             'C' => $question->answer->choice_c,
             'D' => $question->answer->choice_d,
         ];
+        
         return view('question.show', compact('question', 'answers'));
+        
     }
 
     /**
