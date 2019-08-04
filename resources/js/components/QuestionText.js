@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import MathJax from "react-mathjax2";
 import "../../css/create-question.css";
-const QuestionText = ({ onChange, questionText }) => (
+const QuestionText = ({ onChange, questionText, subjects, changeSubject }) => (
     <div className="question-proper create">
         <div className="question-text">
             <div className="math-input">
@@ -18,8 +18,12 @@ const QuestionText = ({ onChange, questionText }) => (
         <div className="question-info">
             <div className="question-subject">
                 <label className="label">Subject</label>
-                <select>
-                    <option value="Math">Math</option>
+                <select onChange={changeSubject}>
+                    {subjects.map((subject, index) => (
+                        <option key={index} value={index + 1}>
+                            {subject.name}
+                        </option>
+                    ))}
                 </select>
             </div>
             <div className="question-tags">

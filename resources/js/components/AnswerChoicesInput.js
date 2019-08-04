@@ -3,10 +3,12 @@ import AnswerChoiceInput from "./AnswerChoiceInput";
 import "../../css/create-question.css";
 const AnswerChoicesInput = ({
     onChange,
-    answerChoices,
+    answerChoicesMath,
     numberOfChoices,
     handleTypeChange,
-    answerType
+    answerType,
+    answerChoices,
+    check
 }) => {
     let answerChoiceInputs = [];
     if (answerType == 0) {
@@ -16,7 +18,10 @@ const AnswerChoicesInput = ({
                     key={i}
                     onChange={onChange}
                     letter={String.fromCharCode(65 + i)}
-                    answer={answerChoices[String.fromCharCode(65 + i)]}
+                    value={i + 1}
+                    answer={answerChoicesMath[String.fromCharCode(65 + i)]}
+                    answerText={answerChoices[String.fromCharCode(65 + i)]}
+                    check={check}
                 />
             );
         }
@@ -34,7 +39,7 @@ const AnswerChoicesInput = ({
                         name="answerType"
                         value={0}
                         defaultChecked
-                        onChange={handleTypeChange}
+                        onChange={e => handleTypeChange(e, 4)}
                     />
                     <label htmlFor="multiple-choice">Multiple Choice</label>
                 </div>
@@ -44,7 +49,7 @@ const AnswerChoicesInput = ({
                         id="non-multiple-choice"
                         name="answerType"
                         value={1}
-                        onChange={handleTypeChange}
+                        onChange={e => handleTypeChange(e, 1)}
                     />
                     <label htmlFor="non-multiple-choice">Grid In</label>
                 </div>

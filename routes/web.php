@@ -28,7 +28,6 @@ Route::resources([
     'questions' =>'QuestionController',
     'book_questions'=>'BookQuestionController'
 ], ['middleware'=>'auth']);
-Route::view('/questions/create', 'app')->name('questions.create');
 Route::resource('assignments','AssignmentController');
 Route::prefix('assignments')->group(function(){
 Route::post('/confirm', 'AssignmentController@confirm')->name('assignments.confirm');

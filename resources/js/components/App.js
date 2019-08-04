@@ -13,7 +13,6 @@ class App extends Component {
             <div className="container">
                 <BrowserRouter>
                     <Switch>
-                        {console.log(this.props.location)}
                         <Route
                             exact
                             path="/exercises"

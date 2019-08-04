@@ -9,6 +9,8 @@ use App\AnswerResponse;
 use App\Section;
 use Illuminate\Http\Request;
 use Session;
+
+use Illuminate\Support\Facades\Validator;
 class QuestionController extends Controller
 {
     /**
@@ -53,11 +55,11 @@ class QuestionController extends Controller
      */
     public function create()
     {
-        $subjects = Subject::all();
+        /* $subjects = Subject::all();
         $answer_choices = AnswerResponse::all()->except(0);
-        $subjects = $subjects->pluck('name', 'id');
-        $answers = $answer_choices->pluck('letter', 'id');
-        return view('question.create', compact('subjects', 'answers'));
+        //$subjects = $subjects->pluck('name', 'id');
+        $answers = $answer_choices->pluck('letter', 'id'); */
+        return view('app');
     }
 
     /**
@@ -68,7 +70,54 @@ class QuestionController extends Controller
      */
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
+        $rules = [
+            'questionText' => 'required', //Must be a number and length of value is 8
+            'subjectId' => 'required|numeric',
+            'answerChoices' => 'required'
+        ];
+
+        $validator = Validator::make($request->all(), $rules);
+        /* $validator = Validator::make($request->all(), [
+            'questionText' => 'required|max:10',
+            'subjectId' => 'required|email',
+        ]); */
+        if ($validator->passes()) {
+            $question = new Question;
+            $question->subject_id = $request->subjectId;
+            $question->question_text = $request->questionText;
+            $question->correct_answer = $request->correctAnswer;
+            $question->save();
+
+            $answer = new Answer;
+            $answer->choice_a = $request->answerChoices['A'];
+            $answer->choice_b = $request->answerChoices['B'];
+            $answer->choice_c = $request->answerChoices['C'];
+            $answer->choice_d = $request->answerChoices['D'];
+            $answer->question_id = $question->id;
+            $answer->save();
+            return "Question saved!";
+        } else {
+            //TODO Handle your error
+            return "Something went wrong";
+        }
+        return $data;
+        /* $validatedData = $request->validate([
+            'questionText' => 'required',
+            'subjectId' => 'required',
+          ]); */
+        $response = array(
+            'status' => 'success',
+            'msg' => $request['questionText'],
+        );
+        return response()->json($response); 
+        
+       
+
+        /* $data = json_decode($request->question, true);
+        return $data;
+        return gettype($request->data);
+  /*       $data = json_decode($request->payload, true); */
+        /* $validatedData = $request->validate([
             'subject' => 'bail|required|integer',
             'question'=> 'required',
             'choice_a' => 'required',
@@ -76,21 +125,11 @@ class QuestionController extends Controller
             'choice_c' => 'required',
             'choice_d' => 'required',
             'correct_answer' => 'required|integer'
-        ]);
+        ]);  */
 
-        $question = new Question;
-        $question->subject_id = $request->input('subject');
-        $question->question_text = $request->input('question');
-        $question->correct_answer = $request->input('correct_answer');
-        $question->save();
+        
 
-        $answer = new Answer;
-        $answer->choice_a = $request->input('choice_a');
-        $answer->choice_b = $request->input('choice_b');
-        $answer->choice_c = $request->input('choice_c');
-        $answer->choice_d = $request->input('choice_d');
-        $answer->question_id = $question->id;
-        $answer->save();
+       
         
 
         Session::flash('success', 'Question successfully saved');

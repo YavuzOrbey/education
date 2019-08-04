@@ -7,12 +7,11 @@ const AnswerChoice = ({
     selected = false,
     input = false
 }) => (
-    <div className="question-choice">
+    <div className="question-choice" onClick={handleAnswerClick}>
         <label
             className={
                 "answer-letter-choice read " + (selected ? "selected" : "")
             }
-            onClick={handleAnswerClick}
         >
             {letter}
         </label>
