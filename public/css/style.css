@@ -93,16 +93,20 @@ code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
         monospace;
 }
-.container {
-    width: 100vw;
-    display: grid;
-    grid-template-columns: 10% auto 10%;
-    grid-template-rows: 100px auto 100px;
-    grid-template-areas:
-        ". . ."
-        ". content ."
-        ". . .";
+
+@media only screen and (min-width: 500px) {
+    .container {
+        width: 100vw;
+        display: grid;
+        grid-template-columns: 10% auto 10%;
+        grid-template-rows: 100px auto 100px;
+        grid-template-areas:
+            ". . ."
+            ". content ."
+            ". . .";
+    }
 }
+
 #content {
     grid-area: content;
 }

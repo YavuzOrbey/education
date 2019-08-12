@@ -73,9 +73,9 @@ class QuestionController extends Controller
         $rules = [
             'questionText' => 'required', //Must be a number and length of value is 8
             'subjectId' => 'required|numeric',
-            'answerChoices' => 'required'
+            'correctAnswer' => 'required|numeric',
+            'answerChoices' => 'required|array'
         ];
-
         $validator = Validator::make($request->all(), $rules);
         /* $validator = Validator::make($request->all(), [
             'questionText' => 'required|max:10',
@@ -95,10 +95,10 @@ class QuestionController extends Controller
             $answer->choice_d = $request->answerChoices['D'];
             $answer->question_id = $question->id;
             $answer->save();
-            return "Question saved!";
+            return 1;
         } else {
             //TODO Handle your error
-            return "Something went wrong";
+            return 0;
         }
         return $data;
         /* $validatedData = $request->validate([

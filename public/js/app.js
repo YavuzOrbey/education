@@ -6308,7 +6308,7 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 
 
 // module
-exports.push([module.i, "body > .container {\r\n    overflow: visible;\r\n}\r\n.question-block.create {\r\n    display: grid;\r\n    grid-area: content;\r\n    grid-template-columns: auto;\r\n    grid-template-rows: 25% 65% 10%;\r\n    align-content: center;\r\n}\r\n.label {\r\n    font-size: 14px;\r\n    font-weight: 700;\r\n}\r\n.question-proper.create {\r\n    display: grid;\r\n    grid-template-columns: 10fr 2fr;\r\n}\r\n.question-info {\r\n    margin-left: 10px;\r\n}\r\n.question-subject {\r\n    /*  display: grid;\r\n    grid-template-rows: 1fr 2fr; */\r\n}\r\n\r\n.question-text {\r\n    font-size: 24px;\r\n}\r\n.math-input {\r\n    font-size: 16px;\r\n}\r\n.math-input > textarea {\r\n    display: block;\r\n    width: 100%;\r\n}\r\ntextarea {\r\n    resize: none;\r\n}\r\n.math-output {\r\n    margin-top: 30px;\r\n    height: 100px;\r\n    font-size: 24px;\r\n    overflow: auto;\r\n}\r\n.math-output > span {\r\n    max-width: 665px;\r\n    word-wrap: break-word;\r\n}\r\n#answer-type {\r\n    display: inline-block;\r\n    margin-left: 30px;\r\n}\r\n#answer-type > div {\r\n    display: inline-block;\r\n    margin-left: 10px;\r\n}\r\n.answer-choices {\r\n    /* display: grid;\r\n    grid-template-rows: repeat(4, 1fr); */\r\n    margin-top: 30px;\r\n}\r\n\r\n.answer-choice {\r\n    display: grid;\r\n    padding: 10px;\r\n    height: 76px;\r\n    grid-template-columns: 1fr 7fr 7fr;\r\n}\r\n\r\n.answer-choice-text {\r\n    margin-left: 20px;\r\n    height: 56px;\r\n    overflow: auto;\r\n}\r\n\r\n.question-nav {\r\n    display: grid;\r\n    grid-template-columns: repeat(3, 1fr);\r\n}\r\n/* Customize the label (the container) */\r\n.checkmark-container {\r\n    position: relative;\r\n    padding-left: 35px;\r\n    margin-bottom: 12px;\r\n    margin-left: 10px;\r\n    cursor: pointer;\r\n    font-size: 22px;\r\n    -webkit-user-select: none;\r\n    -moz-user-select: none;\r\n    -ms-user-select: none;\r\n    user-select: none;\r\n}\r\n\r\n/* Hide the browser's default checkbox */\r\n.checkmark-container input {\r\n    position: absolute;\r\n    opacity: 0;\r\n    cursor: pointer;\r\n    height: 0;\r\n    width: 0;\r\n}\r\n\r\n/* Create a custom checkbox */\r\n.checkmark {\r\n    position: absolute;\r\n    top: 0;\r\n    left: 0;\r\n    height: 22px;\r\n    width: 22px;\r\n    background-color: #eee;\r\n}\r\n\r\n/* On mouse-over, add a grey background color */\r\n.checkmark-container:hover input ~ .checkmark {\r\n    background-color: #ccc;\r\n}\r\n\r\n/* When the checkbox is checked, add a blue background */\r\n.checkmark-container input:checked ~ .checkmark {\r\n    background-color: #45af34;\r\n}\r\n\r\n/* Create the checkmark/indicator (hidden when not checked) */\r\n.checkmark:after {\r\n    content: \"\";\r\n    position: absolute;\r\n    display: none;\r\n}\r\n\r\n/* Show the checkmark when checked */\r\n.checkmark-container input:checked ~ .checkmark:after {\r\n    display: block;\r\n}\r\n\r\n/* Style the checkmark/indicator */\r\n.checkmark-container .checkmark:after {\r\n    left: 9px;\r\n    top: 5px;\r\n    width: 5px;\r\n    height: 10px;\r\n    border: solid white;\r\n    border-width: 0 3px 3px 0;\r\n    -webkit-transform: rotate(45deg);\r\n    transform: rotate(45deg);\r\n}\r\n", ""]);
+exports.push([module.i, "body > .container {\r\n    overflow: visible;\r\n}\r\n.question-block.create {\r\n    display: grid;\r\n    grid-area: content;\r\n    grid-template-columns: auto;\r\n    grid-template-rows: 25% 65% 10%;\r\n    align-content: center;\r\n}\r\n.msg {\r\n    text-align: center;\r\n    color: white;\r\n}\r\n.error {\r\n    background: red;\r\n}\r\n.success {\r\n    background: greenyellow;\r\n}\r\n.label {\r\n    font-size: 14px;\r\n    font-weight: 700;\r\n}\r\n.question-proper.create {\r\n    display: grid;\r\n    grid-template-columns: 10fr 2fr;\r\n}\r\n.question-info {\r\n    margin-left: 10px;\r\n}\r\n.question-subject {\r\n    /*  display: grid;\r\n    grid-template-rows: 1fr 2fr; */\r\n}\r\n\r\n.question-text {\r\n    font-size: 24px;\r\n}\r\n.math-input {\r\n    font-size: 16px;\r\n}\r\n.math-input > textarea {\r\n    display: block;\r\n    width: 100%;\r\n}\r\ntextarea {\r\n    resize: none;\r\n}\r\n.math-output {\r\n    margin-top: 30px;\r\n    height: 100px;\r\n    font-size: 24px;\r\n    overflow: auto;\r\n}\r\n.math-output > span {\r\n    max-width: 665px;\r\n    word-wrap: break-word;\r\n}\r\n#answer-type {\r\n    display: inline-block;\r\n    margin-left: 30px;\r\n}\r\n#answer-type > div {\r\n    display: inline-block;\r\n    margin-left: 10px;\r\n}\r\n.answer-choices {\r\n    /* display: grid;\r\n    grid-template-rows: repeat(4, 1fr); */\r\n    margin-top: 30px;\r\n}\r\n\r\n.answer-choice {\r\n    display: grid;\r\n    padding: 10px;\r\n    height: 76px;\r\n    grid-template-columns: 1fr 7fr 7fr;\r\n}\r\n\r\n.answer-choice-text {\r\n    margin-left: 20px;\r\n    height: 56px;\r\n    overflow: auto;\r\n}\r\n\r\n.question-nav {\r\n    display: grid;\r\n    grid-template-columns: repeat(3, 1fr);\r\n}\r\n/* Customize the label (the container) */\r\n.checkmark-container {\r\n    position: relative;\r\n    padding-left: 35px;\r\n    margin-bottom: 12px;\r\n    margin-left: 10px;\r\n    cursor: pointer;\r\n    font-size: 22px;\r\n    -webkit-user-select: none;\r\n    -moz-user-select: none;\r\n    -ms-user-select: none;\r\n    user-select: none;\r\n}\r\n\r\n/* Hide the browser's default checkbox */\r\n.checkmark-container input {\r\n    position: absolute;\r\n    opacity: 0;\r\n    cursor: pointer;\r\n    height: 0;\r\n    width: 0;\r\n}\r\n\r\n/* Create a custom checkbox */\r\n.checkmark {\r\n    position: absolute;\r\n    top: 0;\r\n    left: 0;\r\n    height: 22px;\r\n    width: 22px;\r\n    background-color: #eee;\r\n}\r\n\r\n/* On mouse-over, add a grey background color */\r\n.checkmark-container:hover input ~ .checkmark {\r\n    background-color: #ccc;\r\n}\r\n\r\n/* When the checkbox is checked, add a blue background */\r\n.checkmark-container input:checked ~ .checkmark {\r\n    background-color: #45af34;\r\n}\r\n\r\n/* Create the checkmark/indicator (hidden when not checked) */\r\n.checkmark:after {\r\n    content: \"\";\r\n    position: absolute;\r\n    display: none;\r\n}\r\n\r\n/* Show the checkmark when checked */\r\n.checkmark-container input:checked ~ .checkmark:after {\r\n    display: block;\r\n}\r\n\r\n/* Style the checkmark/indicator */\r\n.checkmark-container .checkmark:after {\r\n    left: 9px;\r\n    top: 5px;\r\n    width: 5px;\r\n    height: 10px;\r\n    border: solid white;\r\n    border-width: 0 3px 3px 0;\r\n    -webkit-transform: rotate(45deg);\r\n    transform: rotate(45deg);\r\n}\r\n", ""]);
 
 // exports
 
@@ -6327,7 +6327,7 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 
 
 // module
-exports.push([module.i, "body {\r\n    margin: 0;\r\n    padding: 0;\r\n    font-family: -apple-system, BlinkMacSystemFont, \"Segoe UI\", \"Roboto\",\r\n        \"Oxygen\", \"Ubuntu\", \"Cantarell\", \"Fira Sans\", \"Droid Sans\",\r\n        \"Helvetica Neue\", sans-serif;\r\n    -webkit-font-smoothing: antialiased;\r\n    -moz-osx-font-smoothing: grayscale;\r\n    background: ;\r\n}\r\n\r\ncode {\r\n    font-family: source-code-pro, Menlo, Monaco, Consolas, \"Courier New\",\r\n        monospace;\r\n}\r\nbody > .container {\r\n    display: block;\r\n    overflow: hidden;\r\n}\r\n#app > .container {\r\n    width: 100vw;\r\n    display: grid;\r\n    grid-template-columns: 10% auto 10%;\r\n    /*     grid-template-rows: 10% auto 10%; */\r\n    grid-template-areas:\r\n        \". . .\"\r\n        \". content .\"\r\n        \". . .\";\r\n}\r\n.question-block.read {\r\n    display: grid;\r\n    grid-area: content;\r\n    grid-template-columns: auto;\r\n    grid-template-rows: 2fr 4fr 1fr;\r\n    height: 600px;\r\n    padding: 20px;\r\n    align-content: center;\r\n    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);\r\n}\r\n.question-proper {\r\n    display: grid;\r\n    grid-template-columns: 1fr 11fr;\r\n}\r\n\r\n.question-number {\r\n    background: #983532;\r\n    width: 50px;\r\n    height: 50px;\r\n    color: white;\r\n    font-size: 20px;\r\n    text-align: center;\r\n    vertical-align: center;\r\n    line-height: 50px;\r\n    padding: 5px;\r\n}\r\n@media (max-width: 430px) {\r\n    .question-number {\r\n        width: 100%;\r\n    }\r\n    .question-proper {\r\n        display: block;\r\n    }\r\n}\r\n.question-text.read {\r\n    font-size: 24px;\r\n}\r\n\r\n.question-choices {\r\n    display: grid;\r\n    grid-template-columns: 1fr;\r\n    grid-template-rows: repeat(4, 1fr);\r\n}\r\n\r\n.question-choice {\r\n    display: grid;\r\n    grid-template-columns: 1fr 12fr 1fr;\r\n    cursor: pointer;\r\n}\r\n.question-choice:hover {\r\n    background: rgba(240, 240, 240, 0.7);\r\n}\r\n.answer-letter-choice.read {\r\n    height: 34px;\r\n    width: 34px;\r\n    border: 2px solid #325399;\r\n    line-height: 30px;\r\n    text-align: center;\r\n    vertical-align: center;\r\n    cursor: pointer;\r\n    align-self: center;\r\n    justify-self: center;\r\n    font-size: 16px;\r\n    font-weight: 400;\r\n    margin: 0;\r\n}\r\n\r\n.question-choice-text {\r\n    align-self: center;\r\n    margin-left: 20px;\r\n    font-size: 16px;\r\n    font-weight: 600;\r\n}\r\n\r\n.question-nav {\r\n    display: grid;\r\n    grid-template-columns: repeat(3, 1fr);\r\n}\r\n.nav-button {\r\n}\r\n.selected {\r\n    background: rgba(0, 0, 0, 0.8);\r\n    transition: background 0.3s;\r\n    -webkit-transition: background 0.3s; /* Safari prior 6.1 */\r\n    color: white;\r\n}\r\n", ""]);
+exports.push([module.i, "body {\r\n    margin: 0;\r\n    padding: 0;\r\n    font-family: -apple-system, BlinkMacSystemFont, \"Segoe UI\", \"Roboto\",\r\n        \"Oxygen\", \"Ubuntu\", \"Cantarell\", \"Fira Sans\", \"Droid Sans\",\r\n        \"Helvetica Neue\", sans-serif;\r\n    -webkit-font-smoothing: antialiased;\r\n    -moz-osx-font-smoothing: grayscale;\r\n    background: rgba(240, 240, 240, 1);\r\n}\r\n\r\ncode {\r\n    font-family: source-code-pro, Menlo, Monaco, Consolas, \"Courier New\",\r\n        monospace;\r\n}\r\nbody > .container {\r\n    display: block;\r\n    overflow: hidden;\r\n}\r\n#app > .container {\r\n    width: 100vw;\r\n    display: grid;\r\n    grid-template-columns: 10% auto 10%;\r\n    /*     grid-template-rows: 10% auto 10%; */\r\n    grid-template-areas:\r\n        \". . .\"\r\n        \". content .\"\r\n        \". . .\";\r\n}\r\n.question-block.read {\r\n    display: grid;\r\n    grid-area: content;\r\n    grid-template-columns: auto;\r\n    grid-template-rows: 2fr 4fr 1fr;\r\n    height: 600px;\r\n    padding: 20px;\r\n    align-content: center;\r\n    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);\r\n    background: white;\r\n}\r\n.question-proper {\r\n    display: grid;\r\n    grid-template-columns: 1fr 11fr;\r\n}\r\n\r\n.question-number {\r\n    background: #983532;\r\n    width: 50px;\r\n    height: 50px;\r\n    color: white;\r\n    font-size: 20px;\r\n    text-align: center;\r\n    vertical-align: center;\r\n    line-height: 50px;\r\n    padding: 5px;\r\n}\r\n@media (max-width: 430px) {\r\n    .question-number {\r\n        width: 100%;\r\n    }\r\n    .question-proper {\r\n        display: block;\r\n    }\r\n}\r\n.question-text.read {\r\n    font-size: 24px;\r\n}\r\n\r\n.question-choices {\r\n    display: grid;\r\n    grid-template-columns: 1fr;\r\n    grid-template-rows: repeat(4, 1fr);\r\n}\r\n\r\n.question-choice {\r\n    display: grid;\r\n    grid-template-columns: 1fr 12fr 1fr;\r\n    cursor: pointer;\r\n}\r\n.question-choice:hover {\r\n    background: rgba(240, 240, 240, 0.7);\r\n}\r\n.answer-letter-choice.read {\r\n    height: 34px;\r\n    width: 34px;\r\n    border: 2px solid #325399;\r\n    line-height: 30px;\r\n    text-align: center;\r\n    vertical-align: center;\r\n    cursor: pointer;\r\n    align-self: center;\r\n    justify-self: center;\r\n    font-size: 16px;\r\n    font-weight: 400;\r\n    margin: 0;\r\n}\r\n\r\n.question-choice-text {\r\n    align-self: center;\r\n    margin-left: 20px;\r\n    font-size: 16px;\r\n    font-weight: 600;\r\n}\r\n\r\n.question-nav {\r\n    display: grid;\r\n    grid-template-columns: repeat(3, 1fr);\r\n}\r\n.nav-button {\r\n}\r\n.selected {\r\n    background: rgba(0, 0, 0, 0.8);\r\n    transition: background 0.3s;\r\n    -webkit-transition: background 0.3s; /* Safari prior 6.1 */\r\n    color: white;\r\n}\r\n", ""]);
 
 // exports
 
@@ -68316,11 +68316,11 @@ function (_Component) {
           convertStringtoMath = _assertThisInitialize.convertStringtoMath,
           question = _this.state.question;
 
-      question;
+      question.realText = event.target.value;
+      question.questionTextMath = convertStringtoMath(event.target.value);
 
       _this.setState({
-        realText: event.target.value,
-        questionTextMath: convertStringtoMath(event.target.value)
+        question: question
       });
     });
 
@@ -68328,47 +68328,49 @@ function (_Component) {
       var _assertThisInitialize2 = _assertThisInitialized(_this),
           convertStringtoMath = _assertThisInitialize2.convertStringtoMath;
 
-      var _this$state$question = _this.state.question,
-          answerChoices = _this$state$question.answerChoices,
-          answerChoicesMath = _this$state$question.answerChoicesMath;
-      answerChoices = _objectSpread({}, answerChoices);
-      answerChoicesMath = _objectSpread({}, answerChoicesMath);
-      answerChoicesMath[letter] = convertStringtoMath(event.target.value);
-      answerChoices[letter] = event.target.value;
+      var question = _this.state.question;
+      question.answerChoicesMath[letter] = convertStringtoMath(event.target.value);
+      question.answerChoices[letter] = event.target.value;
 
       _this.setState({
-        answerChoices: answerChoices,
-        answerChoicesMath: answerChoicesMath
+        question: question
       });
     });
 
     _defineProperty(_assertThisInitialized(_this), "handleTypeChange", function (event, numberOfChoices) {
+      var question = _this.state.question;
+      question.answerType = parseInt(event.target.value, 10);
+      question.numberOfChoices = numberOfChoices;
+
       _this.setState({
-        answerType: parseInt(event.target.value, 10),
-        numberOfChoices: numberOfChoices
+        question: question
       });
     });
 
     _defineProperty(_assertThisInitialized(_this), "addAnswerChoice", function () {
-      var numberOfChoices = _this.state.question.numberOfChoices;
-      numberOfChoices++;
+      var question = _this.state.question;
+      question.numberOfChoices++;
 
       _this.setState({
-        numberOfChoices: numberOfChoices
+        question: question
       });
     });
 
     _defineProperty(_assertThisInitialized(_this), "check", function (e) {
+      var question = _this.state.question;
+      question.correctAnswer = parseInt(e.target.value, 10);
+
       _this.setState({
-        correctAnswer: parseInt(e.target.value, 10)
+        question: question
       });
     });
 
     _defineProperty(_assertThisInitialized(_this), "changeSubject", function (e) {
-      var subjectId = _this.state.question.subjectId;
+      var question = _this.state.question;
+      question.subjectId = parseInt(e.target.value, 10);
 
       _this.setState({
-        subjectId: parseInt(e.target.value, 10)
+        question: question
       });
     });
 
@@ -68380,30 +68382,46 @@ function (_Component) {
         correctAnswer: _this.state.question.correctAnswer,
         answerChoices: _this.state.question.answerChoices
       };
-      var formData = JSON.stringify(question);
-      $.ajax({
-        type: "POST",
-        url: "/questions",
-        data: formData,
-        success: function success(response) {
-          console.log(response);
-        },
-        error: function error(errMsg) {
-          console.log(errMsg);
-        },
-        contentType: "application/json",
-        headers: {
-          "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
-        }
-      });
-      /*  axios
-          .post("/questions", question)
-          .then(function(response) {
+      var app = _this.state.app;
+      /* $.ajax({
+          type: "POST",
+          url: "/questions",
+          data: formData,
+          success: response => {
               console.log(response);
-          })
-          .catch(function(error) {
-              console.log(error);
-          }); */
+              app.response = parseInt(response, 10);
+              this.setState({ app });
+              setTimeout(() => {
+                  app.response = null;
+                  this.setState({ app });
+              }, 5000);
+          },
+          error: function(errMsg) {
+              console.log(errMsg);
+          },
+          contentType: "application/json",
+          headers: {
+              "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
+          }
+      }); */
+
+      axios__WEBPACK_IMPORTED_MODULE_4___default.a.post("/questions", question).then(function (response) {
+        app.response = parseInt(response.data, 10);
+
+        _this.setState({
+          app: app
+        });
+
+        setTimeout(function () {
+          app.response = null;
+
+          _this.setState({
+            app: app
+          });
+        }, 5000);
+      }).catch(function (error) {
+        console.log(error);
+      });
     });
 
     _this.state = {
@@ -68413,7 +68431,7 @@ function (_Component) {
         questionTextMath: "",
         answerChoices: {},
         answerChoicesMath: {},
-        correctAnswer: 1,
+        correctAnswer: null,
         numberOfChoices: NUMBER_OF_CHOICES,
         answerType: 0
       }
@@ -68424,19 +68442,16 @@ function (_Component) {
   _createClass(CreateQuestionApp, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      var _this2 = this;
-
       var app = _objectSpread({}, this.state.app);
 
+      var questionApp = this;
       Object(_functions_getSubjects__WEBPACK_IMPORTED_MODULE_5__["default"])().then(function (subjects) {
         app.subjects = subjects;
-        console.log(app);
-
-        _this2.setState({
+        questionApp.setState({
           app: app
         });
       }, function (error) {
-        _this2.setState({
+        questionApp.setState({
           error: error
         });
       });
@@ -68444,7 +68459,6 @@ function (_Component) {
   }, {
     key: "render",
     value: function render() {
-      console.log(this.state);
       var handleQuestionInput = this.handleQuestionInput,
           handleAnswerInput = this.handleAnswerInput,
           addAnswerChoice = this.addAnswerChoice,
@@ -68452,24 +68466,28 @@ function (_Component) {
           submit = this.submit,
           check = this.check,
           changeSubject = this.changeSubject;
-      var _this$state$question2 = this.state.question,
-          questionTextMath = _this$state$question2.questionTextMath,
-          answerChoices = _this$state$question2.answerChoices,
-          numberOfChoices = _this$state$question2.numberOfChoices,
-          answerType = _this$state$question2.answerType,
-          answerChoicesMath = _this$state$question2.answerChoicesMath;
+      var _this$state$question = this.state.question,
+          questionTextMath = _this$state$question.questionTextMath,
+          answerChoices = _this$state$question.answerChoices,
+          numberOfChoices = _this$state$question.numberOfChoices,
+          answerType = _this$state$question.answerType,
+          answerChoicesMath = _this$state$question.answerChoicesMath;
+      var subjects = this.state.app.subjects;
+      var msg = this.state.app.response !== null && this.state.app.response !== undefined ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: this.state.app.response === 1 ? "success msg" : "error msg"
+      }, this.state.app.response === 1 ? "Question successfully submitted!" : "Something went wrong") : "";
       var csrfVar = $('meta[name="csrf-token"]').attr("content");
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         style: {
           gridArea: "content"
         }
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_mathjax2__WEBPACK_IMPORTED_MODULE_3___default.a.Context, {
+      }, msg, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_mathjax2__WEBPACK_IMPORTED_MODULE_3___default.a.Context, {
         input: "tex"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_QuestionText__WEBPACK_IMPORTED_MODULE_2__["default"], {
         onChange: handleQuestionInput,
         questionText: questionTextMath,
         changeSubject: changeSubject,
-        subjects: this.state.subjects
+        subjects: subjects
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_mathjax2__WEBPACK_IMPORTED_MODULE_3___default.a.Context, {
         input: "tex"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_AnswerChoicesInput__WEBPACK_IMPORTED_MODULE_1__["default"], {

@@ -38,11 +38,11 @@
             <div class="right-hand-side">
                 <a href="{{asset("/pdfs/" . str_replace(' ', '_', strtolower($assignment->name)) . '.pdf')}}" class="pdf-link"><i class="fas fa-file-pdf"></i></a>
                 <span class='due-date'>DUE: {{date("n/j  H:i", strtotime($assignment->due_date)-4*60*60)}}</span>
-            @if(Auth::user() && Auth::user()->assignments()->where('assignments.id', $assignment->id)->exists())
-                <div class="result">
-                    90% <a href="{{ route('assignments.results', $assignment->id) }}">Results</a>
-                </div>
-            @endif
+                <span class="result">
+                @if(Auth::user() && Auth::user()->assignments()->where('assignments.id', $assignment->id)->exists())
+                        <a href="{{ route('assignments.results', $assignment->id) }}">Results</a>
+                @endif
+                </span>
             </div>
         </li>
         @endforeach

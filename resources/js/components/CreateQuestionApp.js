@@ -16,7 +16,7 @@ class CreateQuestionApp extends Component {
                 questionTextMath: "",
                 answerChoices: {},
                 answerChoicesMath: {},
-                correctAnswer: 1,
+                correctAnswer: null,
                 numberOfChoices: NUMBER_OF_CHOICES,
                 answerType: 0
             }
@@ -24,14 +24,14 @@ class CreateQuestionApp extends Component {
     }
     componentDidMount() {
         const app = { ...this.state.app };
+        const questionApp = this;
         getSubjects().then(
             subjects => {
                 app.subjects = subjects;
-                console.log(app);
-                this.setState({ app });
+                questionApp.setState({ app });
             },
             error => {
-                this.setState({ error });
+                questionApp.setState({ error });
             }
         );
     }
@@ -50,46 +50,41 @@ class CreateQuestionApp extends Component {
     handleQuestionInput = event => {
         let { convertStringtoMath } = this,
             { question } = this.state;
-        question;
-        this.setState({
-            realText: event.target.value,
-            questionTextMath: convertStringtoMath(event.target.value)
-        });
+        question.realText = event.target.value;
+        question.questionTextMath = convertStringtoMath(event.target.value);
+        this.setState({ question });
     };
     handleAnswerInput = (event, letter) => {
         let { convertStringtoMath } = this;
-        let { answerChoices, answerChoicesMath } = this.state.question;
-        answerChoices = {
-            ...answerChoices
-        };
-        answerChoicesMath = {
-            ...answerChoicesMath
-        };
-        answerChoicesMath[letter] = convertStringtoMath(event.target.value);
-        answerChoices[letter] = event.target.value;
-        this.setState({
-            answerChoices: answerChoices,
-            answerChoicesMath: answerChoicesMath
-        });
+        let { question } = this.state;
+
+        question.answerChoicesMath[letter] = convertStringtoMath(
+            event.target.value
+        );
+        question.answerChoices[letter] = event.target.value;
+        this.setState({ question });
     };
     handleTypeChange = (event, numberOfChoices) => {
-        this.setState({
-            answerType: parseInt(event.target.value, 10),
-            numberOfChoices
-        });
+        let { question } = this.state;
+        question.answerType = parseInt(event.target.value, 10);
+        question.numberOfChoices = numberOfChoices;
+        this.setState({ question });
     };
     addAnswerChoice = () => {
-        let { numberOfChoices } = this.state.question;
-        numberOfChoices++;
-        this.setState({ numberOfChoices });
+        let { question } = this.state;
+        question.numberOfChoices++;
+        this.setState({ question });
     };
     check = e => {
-        this.setState({ correctAnswer: parseInt(e.target.value, 10) });
+        let { question } = this.state;
+        question.correctAnswer = parseInt(e.target.value, 10);
+        this.setState({ question });
     };
     changeSubject = e => {
-        let { subjectId } = this.state.question;
+        let { question } = this.state;
+        question.subjectId = parseInt(e.target.value, 10);
 
-        this.setState({ subjectId: parseInt(e.target.value, 10) });
+        this.setState({ question });
     };
     submit = e => {
         e.preventDefault();
@@ -99,13 +94,19 @@ class CreateQuestionApp extends Component {
             correctAnswer: this.state.question.correctAnswer,
             answerChoices: this.state.question.answerChoices
         };
-        var formData = JSON.stringify(question);
-        $.ajax({
+        let { app } = this.state;
+        /* $.ajax({
             type: "POST",
             url: "/questions",
             data: formData,
-            success: function(response) {
+            success: response => {
                 console.log(response);
+                app.response = parseInt(response, 10);
+                this.setState({ app });
+                setTimeout(() => {
+                    app.response = null;
+                    this.setState({ app });
+                }, 5000);
             },
             error: function(errMsg) {
                 console.log(errMsg);
@@ -114,18 +115,22 @@ class CreateQuestionApp extends Component {
             headers: {
                 "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
             }
-        });
-        /*  axios
+        }); */
+        axios
             .post("/questions", question)
-            .then(function(response) {
-                console.log(response);
+            .then(response => {
+                app.response = parseInt(response.data, 10);
+                this.setState({ app });
+                setTimeout(() => {
+                    app.response = null;
+                    this.setState({ app });
+                }, 5000);
             })
             .catch(function(error) {
                 console.log(error);
-            }); */
+            });
     };
     render() {
-        console.log(this.state);
         const {
             handleQuestionInput,
             handleAnswerInput,
@@ -142,15 +147,35 @@ class CreateQuestionApp extends Component {
             answerType,
             answerChoicesMath
         } = this.state.question;
+        const { subjects } = this.state.app;
+        const msg =
+            this.state.app.response !== null &&
+            this.state.app.response !== undefined ? (
+                <div
+                    className={
+                        this.state.app.response === 1
+                            ? "success msg"
+                            : "error msg"
+                    }
+                >
+                    {this.state.app.response === 1
+                        ? "Question successfully submitted!"
+                        : "Something went wrong"}
+                </div>
+            ) : (
+                ""
+            );
+
         var csrfVar = $('meta[name="csrf-token"]').attr("content");
         return (
             <div style={{ gridArea: "content" }}>
+                {msg}
                 <MathJax.Context input="tex">
                     <QuestionText
                         onChange={handleQuestionInput}
                         questionText={questionTextMath}
                         changeSubject={changeSubject}
-                        subjects={this.state.subjects}
+                        subjects={subjects}
                     />
                 </MathJax.Context>
                 <MathJax.Context input="tex">

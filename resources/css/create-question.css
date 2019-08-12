@@ -8,6 +8,16 @@ body > .container {
     grid-template-rows: 25% 65% 10%;
     align-content: center;
 }
+.msg {
+    text-align: center;
+    color: white;
+}
+.error {
+    background: red;
+}
+.success {
+    background: greenyellow;
+}
 .label {
     font-size: 14px;
     font-weight: 700;
