@@ -69062,7 +69062,7 @@ MathInput
 __webpack_require__.r(__webpack_exports__);
 var getSubjects = function getSubjects() {
   return new Promise(function (resolves, rejects) {
-    var api = "http://tutoring.test/api/subjects";
+    var api = "/api/subjects";
     var request = new XMLHttpRequest();
     request.open("GET", api);
 
