@@ -3,7 +3,7 @@
 @section('content')
 <div class="assignments-index">
 <div class="test-list">
-        @isset($completed) <p>You've completed  {{count($completed)}} out of {{count($currentAssignments) + count($pastAssignments)}} assignments</p> @endisset
+        @if(count($completed)) <p>You've completed  {{count($completed)}} out of {{count($currentAssignments) + count($pastAssignments)}} assignments</p> @endif
     <h2>Current Assignments</h2>
     
     <ul class="list-group">

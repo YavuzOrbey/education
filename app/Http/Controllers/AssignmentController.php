@@ -70,6 +70,8 @@ class AssignmentController extends Controller
 
         if(Auth::user()){
             $completed= Auth::user()->assignments;
+        }else{
+            $completed = [];
         }
         return view('assignment.index', compact('currentAssignments', 'pastAssignments', 'completed'));
     }
