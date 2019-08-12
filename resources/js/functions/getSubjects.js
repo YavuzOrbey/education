@@ -1,6 +1,6 @@
 const getSubjects = () =>
     new Promise((resolves, rejects) => {
-        const api = `http://tutoring.test/api/subjects`;
+        const api = `/api/subjects`;
         const request = new XMLHttpRequest();
         request.open("GET", api);
         request.onload = () =>
