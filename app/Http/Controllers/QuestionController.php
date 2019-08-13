@@ -24,9 +24,15 @@ class QuestionController extends Controller
        return view('question.index', compact('questions'));
 
     }
-    public function apiIndex(){
+    public function apiIndex($subjectId){
+        $subject = Subject::find($subjectId);
     $sentQuestions = [];
-    $questions = Question::all();
+    if($subject){
+        $questions = Question::where('subject_id', $subject->id)->get();
+    }else{
+        $questions = Question::all();
+    }
+
     
     $answerResponses = AnswerResponse::all()->except(0);
     foreach ($questions as $index=>$question) {

@@ -77,7 +77,7 @@
                     </div>
                 
                     <div class="input-group auth-group">
-                        <button type="submit" class="btn auth-btn">
+                        <button type="submit" class="btn btn-block auth-btn">
                         {{ __('Register') }}
                         </button>
                     </div>

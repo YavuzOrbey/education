@@ -14,8 +14,7 @@ class App extends Component {
                 <BrowserRouter>
                     <Switch>
                         <Route
-                            exact
-                            path="/exercises"
+                            path="/exercises/:subject"
                             component={QuestionApp}
                         />
                         <Route

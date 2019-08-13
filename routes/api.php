@@ -17,5 +17,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 Route::get('questions', 'QuestionController@apiIndex');
+Route::get('questions/{subject}', 'QuestionController@apiIndex');
 Route::get('subjects', 'SubjectController@index');
 Route::get('assignments/{assignment}', 'AssignmentController@all')->name('assignments.all');

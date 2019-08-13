@@ -101,12 +101,23 @@ code {
         grid-template-columns: 10% auto 10%;
         grid-template-rows: 100px auto 100px;
         grid-template-areas:
-            ". . ."
+            ". messages ."
             ". content ."
             ". . .";
     }
+    .modal > .modal-content-auth {
+        margin: 15vw auto;
+        width: 40vw;
+        box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2),
+            0 7px 20px 0 rgba(0, 0, 0, 1);
+    }
+    .input-control {
+        width: 28vw;
+    }
 }
-
+.message {
+    grid-area: messages;
+}
 #content {
     grid-area: content;
 }
@@ -154,7 +165,6 @@ nav a:hover {
     display: block;
     border-bottom: 2px solid #d2d2d2;
     margin-left: 10px;
-    width: 28vw;
 }
 .input-control:focus {
     outline: none;
@@ -163,7 +173,7 @@ nav a:hover {
     font-size: 12px;
 }
 .auth-btn {
-    width: 28vw;
+    /*width: 28vw; */
     background: #d04747;
     color: white;
     font-size: 20px;
@@ -188,6 +198,7 @@ nav a:hover {
 }
 .modal {
     background: rgba(0, 0, 0, 0.7);
+    overflow: auto;
 }
 
 .modal-content-auth {
@@ -200,11 +211,7 @@ nav a:hover {
     font-family: "Aleo";
     grid-area: content;
 }
-.modal > .modal-content-auth {
-    margin: 15vw auto;
-    width: 40vw;
-    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 1);
-}
+
 @media only screen and (max-width: 600px) {
     .modal-content-auth {
         width: 100%;
@@ -280,7 +287,7 @@ nav a:hover {
     display: block;
 }
 .auth-group {
-    margin-left: 110px;
+    /*margin-left: 110px; */
     width: initial;
 }
 .list-group {

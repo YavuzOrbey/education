@@ -14,8 +14,8 @@
 Route::get('/math', function () {
     return view('math');
 });
-Route::view('/exercises', 'app'); //{path?}
-
+Route::view('/exercises/{subject}', 'app'); //{path?}
+Route::get('/exercises', 'QuizController@index');
 Route::group(['prefix'=>'admin', 'middleware'=>['role:administrator']], function(){
     Route::get("/", 'AdminController@index');
     Route::get("/dashboard", 'AdminController@dashboard')->name('admin.dashboard');

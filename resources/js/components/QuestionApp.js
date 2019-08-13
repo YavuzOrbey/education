@@ -55,7 +55,9 @@ class QuestionApp extends React.Component {
     };
     componentWillMount() {
         /* let regex = new RegExp("\\$\\$(.*?)\\$\\$", "g"); */
-        axios.get("/api/questions").then(
+        const { subject } = this.props.match.params;
+        console.log(subject);
+        axios.get(`/api/questions/${subject}`).then(
             response => {
                 let questions = response.data;
                 questions.forEach(question => {
