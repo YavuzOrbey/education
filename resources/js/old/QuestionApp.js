@@ -62,6 +62,7 @@ class QuestionApp extends React.Component {
                     question.question_text = this.convertStringtoMath(
                         question.question_text
                     );
+
                     /*  question.question_text
                         .split(regex)
                         .map((item, i) => {
@@ -98,6 +99,8 @@ class QuestionApp extends React.Component {
                     }
                     question.answer_choices = answerChoices;
                 });
+
+                console.log(questions);
                 /* questions = parts.map(part =>
                     part.map((item, i) => {
                         return i % 2 === 1 ? (
@@ -123,7 +126,8 @@ class QuestionApp extends React.Component {
             let questionText = <div>{arr}</div>; */
                 this.setState({
                     questions: questions,
-                    currentQuestion: questions[0]
+                    currentQuestion: questions[0],
+                    relatedContent: relatedContent[questions[0].relatedContent]
                 });
             },
             error => {

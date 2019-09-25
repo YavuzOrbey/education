@@ -18,8 +18,8 @@ class AssignmentController extends Controller
         $theData['id'] = $assignment->id;
         $theData['name'] = $assignment->name;
         $theData['sections'] = array();
+        $theData['due_date'] = $assignment->due_date;
         foreach ($sections as $i => $section) {
-            //$questions[str_replace(" ", "_", $section->subject->name)] = $section->questions;
 
             $questions = array();
             foreach ($section->questions as $index => $question) {
@@ -42,38 +42,40 @@ class AssignmentController extends Controller
         $currentAssignments = []; 
         $pastAssignments=[];
         //get only assignments that aren't practice tests
-        $assignments = Assignment::where('name', 'NOT LIKE', '%Practice%')->get();
-        //find only assignments that have at least one question in each of their sections
-        foreach($assignments as $assignment){
-                    foreach($assignment->sections as $section){
-                        if(count($section->questions)){
-                            if(strtotime($assignment->due_date) > time()){
-                                array_push($currentAssignments, $assignment->id);
-                                break;
-                            }
-                            else{
-                                array_push($pastAssignments, $assignment->id);
-                                break;
+        if(Auth::user()){
+            $assignments = Auth::user()->group->assignments()->where('name', 'NOT LIKE', '%Practice%')->get();
+            // get only assignments that have been assigned to the current user's group
+            //Auth::user()
+            //find only assignments that have at least one question in each of their sections
+            foreach($assignments as $assignment){
+                        foreach($assignment->sections as $section){
+                            if(count($section->questions)){
+                                if(strtotime($assignment->due_date) > time()){
+                                    array_push($currentAssignments, $assignment->id);
+                                    break;
+                                }
+                                else{
+                                    array_push($pastAssignments, $assignment->id);
+                                    break;
+                                }
                             }
                         }
                     }
-                }
 
-        $currentAssignments = Assignment::find($currentAssignments);
-        $currentAssignments = $currentAssignments->sortBy(function ($assignment, $key) {
-            return $assignment['due_date'];
-        });
-        $pastAssignments = Assignment::find($pastAssignments);
-        $pastAssignments = $pastAssignments->sortBy(function ($assignment, $key) {
-            return $assignment['due_date'];
-        });
-
-        if(Auth::user()){
+            $currentAssignments = Assignment::find($currentAssignments);
+            $currentAssignments = $currentAssignments->sortBy(function ($assignment, $key) {
+                return $assignment['due_date'];
+            });
+            $pastAssignments = Assignment::find($pastAssignments);
+            $pastAssignments = $pastAssignments->sortBy(function ($assignment, $key) {
+                return $assignment['due_date'];
+            });
             $completed= Auth::user()->assignments;
-        }else{
-            $completed = [];
+            return view('assignment.index', compact('currentAssignments', 'pastAssignments', 'completed'));
         }
-        return view('assignment.index', compact('currentAssignments', 'pastAssignments', 'completed'));
+        else{
+            return view('assignment.index');
+        }
     }
 
     /**
@@ -116,10 +118,17 @@ class AssignmentController extends Controller
      */
     public function show(Assignment $assignment)
     {
+        $sections = $assignment->sections;
         if(Auth::user() && Auth::user()->assignments()->where('assignments.id', $assignment->id)->exists())
             return view('assignment.completed',  compact('assignment'));
-        $sections = $assignment->sections;
-        return view('assignment.show', compact('sections', 'assignment'));
+        else if(Auth::user()  && !empty($sections->all())){
+            return view('assignment.show', compact('sections', 'assignment'));
+        }
+        else{
+            return redirect()->route('assignments.index');
+        }
+
+
     }
 
     /**
@@ -128,6 +137,13 @@ class AssignmentController extends Controller
      * @param  \App\Assignment  $assignment
      * @return \Illuminate\Http\Response
      */
+
+    public function edit(){
+        $assignments = Assignment::all()->filter(function ($value, $key){
+            return !strpos($value->name, "Practice");
+        })->pluck('name', 'id');
+        return view('admin.assignments.edit', compact('assignments'));
+    }
     public function insert()
     {
         $assignments = Assignment::all()->filter(function ($value, $key){
@@ -145,6 +161,7 @@ class AssignmentController extends Controller
      */
     public function update(Request $request, Assignment $assignment)
     {
+
         $theData =  json_decode($request->obj);
 
         foreach ($theData->sections as $key => $currentSection) {
@@ -155,7 +172,8 @@ class AssignmentController extends Controller
             $section = Section::where('assignment_id', $assignment->id)->where('subject_id', $subject_id)->first();
             $section->questions()->sync($questionIDs);
         }
-        
+        $assignment->name = $theData->name;
+        $assignment->save();
         return redirect()->route('assignments.show', ['assignment'=>$assignment]);
     }
     public function confirm(Request $request){
@@ -191,7 +209,7 @@ class AssignmentController extends Controller
         foreach ($sections as $key=>$section) {
             $questions = $section->questions;
             foreach($questions as $qKey =>$question){
-                DB::table('question_user')->insert(
+                DB::table('assignment_user_question')->insert(
                 ['assignment_user_id' =>  $assignmentUserId, 'question_id'=>$question->id, 'user_answer'=>$studentAnswers[$key][$qKey+1]]
                 );
             }
@@ -215,7 +233,7 @@ class AssignmentController extends Controller
             $questions = $section->questions;
             foreach($questions as $qKey =>$question){
                 if(Auth::user())
-                $completedQuestion = DB::table('question_user')->where('question_id', $question->id)->where('assignment_user_id',$completedAssignment->id)->first();
+                $completedQuestion = DB::table('assignment_user_question')->where('question_id', $question->id)->where('assignment_user_id',$completedAssignment->id)->first();
                 if($completedQuestion){
                 array_push($studentAnswers[$key], $completedQuestion->user_answer);
                 }

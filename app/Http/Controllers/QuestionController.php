@@ -9,7 +9,7 @@ use App\AnswerResponse;
 use App\Section;
 use Illuminate\Http\Request;
 use Session;
-
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 class QuestionController extends Controller
 {
@@ -24,11 +24,21 @@ class QuestionController extends Controller
        return view('question.index', compact('questions'));
 
     }
-    public function apiIndex($subjectId){
-        $subject = Subject::find($subjectId);
-    $sentQuestions = [];
-    if($subject){
+    public function apiContent($contentId=0){
+        $content = DB::table('related_content')->where('id', '=', $contentId)->get();
+        return json_encode($content, JSON_PRETTY_PRINT);
+    }
+    public function apiIndex($subjectId=0){
+        $subject = Subject::find($subjectId);   
+        $sentQuestions = [];
+        if($subject){
         $questions = Question::where('subject_id', $subject->id)->get();
+        if($subject->id==1){
+            //find the respective critical reading passages that coorespond to the questions
+        }
+        elseif($subject->id==2){
+            //find the respective writing passages that coorespond to the questions
+        }
     }else{
         $questions = Question::all();
     }
@@ -50,6 +60,8 @@ class QuestionController extends Controller
             $questionChoicesObj->$letter = $question->answer->$column;
         }
         $currentQuestionObj->answer_choices = $questionChoicesObj;
+        $currentQuestionObj->related_content = $question->related_content_id;
+
         $sentQuestions[] =$currentQuestionObj;
     }
        return json_encode($sentQuestions, JSON_PRETTY_PRINT);

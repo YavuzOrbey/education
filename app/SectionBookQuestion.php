@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class SectionQuestion extends Model
+class SectionBookQuestion extends Model
 {
     public function section()
     {

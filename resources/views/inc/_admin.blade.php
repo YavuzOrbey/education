@@ -8,6 +8,7 @@
         <p class="menu-label">Assignments</p>
         <ul class="menu-list">
             <li><a href="{{route('assignments.create')}}">Create</a></li>
+            <li><a href="{{route('assignments.edit')}}">Edit</a></li>
             <li><a href="{{route('assignments.insert')}}">Insert Questions</a></li>
         </ul>
 

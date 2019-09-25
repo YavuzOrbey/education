@@ -1,35 +1,10 @@
 import MathJax from "react-mathjax2";
 import QuestionBlock from "./QuestionBlock";
+import QuestionSidebar from "./QuestionSidebar";
 import React from "react";
 import axios from "axios";
 
 import AnswerChoices from "./AnswerChoices";
-let sample =
-    "When a variable $$ x = \\frac{1}{5} $$. What is $$y$$ if $$ y= \\frac{1}{x} $$. Damn look at this: $$x^2 = \\log_{10}x$$";
-
-/* {
-        number: 1,
-        question_text: questionText,
-        answer_choices: { ...answerChoices }
-    },
-    { */
-/* {
-        number: 2,
-        question_text: (
-            <div>
-                When the expression <MathJax.Node>{"\\sqrt{a}"}</MathJax.Node>{" "}
-                is multipled by
-                <MathJax.Node inline>{"\\sqrt{a}"}</MathJax.Node> the resulting
-                expression is
-            </div>
-        ),
-        answer_choices: {
-            A: <MathJax.Node inline>{"\\sqrt{ab}"}</MathJax.Node>,
-            B: <MathJax.Node inline>{"\\sqrt{a+b}"}</MathJax.Node>,
-            C: <MathJax.Node inline>{"ab"}</MathJax.Node>,
-            D: <MathJax.Node inline>{4}</MathJax.Node>
-        }
-    } */
 
 class QuestionApp extends React.Component {
     constructor(props) {
@@ -37,7 +12,11 @@ class QuestionApp extends React.Component {
         this.state = {
             currentQuestion: {},
             answers: Array(),
-            counter: 0
+            counter: 0,
+            markedQuestions: Array(),
+            questions: [],
+            buttons: ["", "NEXT"],
+            realContent: {}
         };
     }
 
@@ -53,10 +32,10 @@ class QuestionApp extends React.Component {
             );
         });
     };
-    componentWillMount() {
-        /* let regex = new RegExp("\\$\\$(.*?)\\$\\$", "g"); */
+    componentDidMount() {
         const { subject } = this.props.match.params;
-        console.log(subject);
+        let relatedContent = [],
+            realContent = {};
         axios.get(`/api/questions/${subject}`).then(
             response => {
                 let questions = response.data;
@@ -64,17 +43,13 @@ class QuestionApp extends React.Component {
                     question.question_text = this.convertStringtoMath(
                         question.question_text
                     );
-                    /*  question.question_text
-                        .split(regex)
-                        .map((item, i) => {
-                            return i % 2 === 1 ? (
-                                <MathJax.Node key={i} inline>
-                                    {item}
-                                </MathJax.Node>
-                            ) : (
-                                <span key={i}>{item}</span>
-                            );
-                        }); */
+                    if (
+                        !relatedContent.includes(question.related_content) &&
+                        question.related_content
+                    ) {
+                        relatedContent.push(question.related_content);
+                        relatedContent.sort();
+                    }
                     let answerChoices = {};
                     for (
                         let index = 0;
@@ -88,44 +63,23 @@ class QuestionApp extends React.Component {
                                 String.fromCharCode(65 + index)
                             ]
                         );
-                        /* (
-                            <MathJax.Node inline>
-                                {
-                                    question.answer_choices[
-                                        String.fromCharCode(65 + index)
-                                    ]
-                                }
-                            </MathJax.Node>
-                        ); */
                     }
                     question.answer_choices = answerChoices;
                 });
-                /* questions = parts.map(part =>
-                    part.map((item, i) => {
-                        return i % 2 === 1 ? (
-                            <MathJax.Node key={i} inline>
-                                {item}
-                            </MathJax.Node>
-                        ) : (
-                            <span key={i}>{item}</span>
+
+                relatedContent.forEach(contentId => {
+                    axios
+                        .get(`/api/content/${contentId}`)
+                        .then(
+                            response =>
+                                (realContent[contentId] =
+                                    response.data[0].content)
                         );
-                    })
-                );
-                console.log(questions); */
-                /* let sampleSplit = sample.split(regex);
-            let arr = sampleSplit.map((item, i) => {
-                return i % 2 === 1 ? (
-                    <MathJax.Node key={i} inline>
-                        {item}
-                    </MathJax.Node>
-                ) : (
-                    <span key={i}>{item}</span>
-                );
-            });
-            let questionText = <div>{arr}</div>; */
+                });
                 this.setState({
                     questions: questions,
-                    currentQuestion: questions[0]
+                    currentQuestion: questions[0],
+                    realContent: realContent
                 });
             },
             error => {
@@ -133,14 +87,35 @@ class QuestionApp extends React.Component {
             }
         );
     }
+    submitAnswers = () => {
+        let submit = window.confirm("Submit Answers?");
+        let obj = {};
+        obj.answers = this.state.answers;
+        submit
+            ? axios.post("/submission", obj).then(response => {
+                  response.data ? (window.location.href = "/") : "";
+              })
+            : "";
+    };
     handleClick = j => {
-        let { counter, questions } = this.state;
+        let { counter, questions, buttons } = this.state;
+        let { submitAnswers } = this;
         j ? counter++ : counter--;
+        j === 2 ? submitAnswers() : "";
         if (counter > questions.length - 1 || counter < 0) return;
+
+        if (counter === 0) {
+            buttons[0] = "";
+        } else if (counter === questions.length - 1) {
+            buttons = ["BACK", "FINISH", buttons[2]];
+        } else {
+            buttons = ["BACK", "NEXT", buttons[2]];
+        }
         let currentQuestion = questions[counter];
         this.setState({
-            currentQuestion: currentQuestion,
-            counter: counter
+            currentQuestion,
+            counter,
+            buttons
         });
     };
 
@@ -149,16 +124,64 @@ class QuestionApp extends React.Component {
         answers[number - 1] = answer;
         this.setState({ answers });
     };
+
+    markQuestion = number => {
+        let markedQuestions;
+        let { buttons } = this.state;
+        if (this.state.markedQuestions.includes(number)) {
+            markedQuestions = this.state.markedQuestions.filter(
+                e => e != number
+            );
+        } else {
+            markedQuestions = [...this.state.markedQuestions, number].sort();
+        }
+
+        this.setState({ markedQuestions, buttons });
+    };
+    sideBarClick = counter => {
+        let { questions, buttons } = this.state;
+        let currentQuestion = questions[counter];
+
+        if (counter === 0) {
+            buttons = ["", "NEXT"];
+        } else if (counter === questions.length - 1) {
+            buttons = ["BACK", "FINISH"];
+        } else {
+            buttons = ["BACK", "NEXT"];
+        }
+        this.setState({ currentQuestion, counter, buttons });
+    };
     render() {
-        const { handleClick, handleAnswerClick } = this;
-        const { currentQuestion, answers } = this.state;
+        const {
+            handleClick,
+            handleAnswerClick,
+            markQuestion,
+            sideBarClick
+        } = this;
+        const {
+            currentQuestion,
+            answers,
+            questions,
+            markedQuestions,
+            buttons,
+            realContent
+        } = this.state;
+        let marked = markedQuestions.includes(currentQuestion.number);
         return (
-            <QuestionBlock
-                handleClick={handleClick}
-                handleAnswerClick={handleAnswerClick}
-                currentQuestion={currentQuestion}
-                answers={answers}
-            />
+            <div className="container">
+                <QuestionBlock
+                    handleClick={handleClick}
+                    handleAnswerClick={handleAnswerClick}
+                    markQuestion={markQuestion}
+                    currentQuestion={currentQuestion}
+                    realContent={realContent}
+                    marked={marked}
+                    answers={answers}
+                    buttons={buttons}
+                ></QuestionBlock>
+
+                <QuestionSidebar onClick={sideBarClick} questions={questions} />
+            </div>
         );
     }
 }

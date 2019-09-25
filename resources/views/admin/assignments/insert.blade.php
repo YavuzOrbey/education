@@ -42,10 +42,11 @@ let rightResults = document.getElementById('right-results');
 let thingToSend={}, thingReceived; 
 let leftQuestions=[], rightQuestions;
 function drawResultList(thingToSend){
-    let resultList = `<div class='test-title'>${thingToSend['name']}</div>`;
+    let resultList = `<input class='test-title' id='test-title' value='${thingToSend['name']}' placeholder='${thingToSend['name']}'>`;
     
     thingToSend.sections.forEach((section, i) => {
-        resultList+=`<div class="section" data-section="${section.id}"><div class="section-title">${section.name}</div><ul class='left-question-list'>`;
+        resultList+=`<div class="section" data-section="${section.id}"><div class="section-title">${section.name}</div><i class="fas fa-trash"></i>
+        <ul class='left-question-list'>`;
         section.questions.forEach((question, index) => {
             resultList += `<li class='left-number-box' data-key='${index}'><span>${index+1}.</span><div class="dual-number-box">
             <div class="top-triangle"><p>${question.assignment_id}</p></div>
@@ -100,7 +101,7 @@ leftBtn.addEventListener('click', function(){
         
         leftAssignment.innerHTML = "";
         thingToSend = JSON.parse(this.responseText);
-        
+        console.log(thingToSend)
         leftAssignment.innerHTML = drawResultList(thingToSend);
         leftForm.innerHTML = drawLeftForm(thingToSend);
 
@@ -108,11 +109,13 @@ leftBtn.addEventListener('click', function(){
 
         submitBtn.addEventListener('click', function(e){
             if(!this.clicked){
+                console.log(thingToSend)
                 e.preventDefault();
                 this.textContent = "CONFIRM";
                 this.clicked = true;
                 return;
             }
+            thingToSend.name= document.getElementById('test-title').value;
             document.getElementById('obj').value = JSON.stringify(thingToSend);
         })
 	}
@@ -217,4 +220,5 @@ xhr.send();
 @section('stylesheets')
 {{Html::style('css/admin/insert.css') }}
 {{Html::style('css/admin.css') }}
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
 @stop

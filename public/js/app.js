@@ -6327,7 +6327,7 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 
 
 // module
-exports.push([module.i, "body {\r\n    margin: 0;\r\n    padding: 0;\r\n    font-family: -apple-system, BlinkMacSystemFont, \"Segoe UI\", \"Roboto\",\r\n        \"Oxygen\", \"Ubuntu\", \"Cantarell\", \"Fira Sans\", \"Droid Sans\",\r\n        \"Helvetica Neue\", sans-serif;\r\n    -webkit-font-smoothing: antialiased;\r\n    -moz-osx-font-smoothing: grayscale;\r\n    background: rgba(240, 240, 240, 1);\r\n}\r\n\r\ncode {\r\n    font-family: source-code-pro, Menlo, Monaco, Consolas, \"Courier New\",\r\n        monospace;\r\n}\r\nbody > .container {\r\n    display: block;\r\n    overflow: hidden;\r\n}\r\n\r\n.question-block.read {\r\n    display: grid;\r\n    grid-area: content;\r\n    grid-template-columns: auto;\r\n    grid-template-rows: 2fr 4fr 1fr;\r\n    height: 600px;\r\n    padding: 20px;\r\n    align-content: center;\r\n    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);\r\n    background: white;\r\n}\r\n.question-proper {\r\n    display: grid;\r\n    grid-template-columns: 1fr 11fr;\r\n}\r\n\r\n.question-number {\r\n    background: #983532;\r\n    width: 50px;\r\n    height: 50px;\r\n    color: white;\r\n    font-size: 20px;\r\n    text-align: center;\r\n    vertical-align: center;\r\n    line-height: 50px;\r\n    padding: 5px;\r\n}\r\n@media (max-width: 430px) {\r\n    .question-number {\r\n        width: 100%;\r\n    }\r\n    .question-proper {\r\n        display: block;\r\n    }\r\n}\r\n.question-text.read {\r\n    font-size: 24px;\r\n}\r\n\r\n.question-choices {\r\n    display: grid;\r\n    grid-template-columns: 1fr;\r\n    grid-template-rows: repeat(4, 1fr);\r\n}\r\n\r\n.question-choice {\r\n    display: grid;\r\n    grid-template-columns: 1fr 12fr 1fr;\r\n    cursor: pointer;\r\n}\r\n.question-choice:hover {\r\n    background: rgba(240, 240, 240, 0.7);\r\n}\r\n.answer-letter-choice.read {\r\n    height: 34px;\r\n    width: 34px;\r\n    border: 2px solid #325399;\r\n    line-height: 30px;\r\n    text-align: center;\r\n    vertical-align: center;\r\n    cursor: pointer;\r\n    align-self: center;\r\n    justify-self: center;\r\n    font-size: 16px;\r\n    font-weight: 400;\r\n    margin: 0;\r\n}\r\n\r\n.question-choice-text {\r\n    align-self: center;\r\n    margin-left: 20px;\r\n    font-size: 16px;\r\n    font-weight: 600;\r\n}\r\n\r\n.question-nav {\r\n    display: grid;\r\n    grid-template-columns: repeat(3, 1fr);\r\n}\r\n.nav-button {\r\n}\r\n.selected {\r\n    background: rgba(0, 0, 0, 0.8);\r\n    transition: background 0.3s;\r\n    -webkit-transition: background 0.3s; /* Safari prior 6.1 */\r\n    color: white;\r\n}\r\n@media only screen and (max-width: 499px) {\r\n    .container {\r\n        padding: 0;\r\n        margin: 0;\r\n    }\r\n}\r\n@media only screen and (max-width: 500px) {\r\n    #app > .container {\r\n        width: 100vw;\r\n        display: block;\r\n        /* grid-template-columns: 10% auto 10%;\r\n        /*     grid-template-rows: 10% auto 10%; */\r\n        /* grid-template-areas:\r\n            \". . .\"\r\n            \". content .\"\r\n            \". . .\"; */\r\n    }\r\n}\r\n", ""]);
+exports.push([module.i, "body {\r\n    margin: 0;\r\n    padding: 0;\r\n    font-family: -apple-system, BlinkMacSystemFont, \"Segoe UI\", \"Roboto\",\r\n        \"Oxygen\", \"Ubuntu\", \"Cantarell\", \"Fira Sans\", \"Droid Sans\",\r\n        \"Helvetica Neue\", sans-serif;\r\n    -webkit-font-smoothing: antialiased;\r\n    -moz-osx-font-smoothing: grayscale;\r\n    background: rgba(240, 240, 240, 1);\r\n}\r\n\r\ncode {\r\n    font-family: source-code-pro, Menlo, Monaco, Consolas, \"Courier New\",\r\n        monospace;\r\n}\r\nbody > .container {\r\n    display: block;\r\n    overflow: hidden;\r\n}\r\n\r\n.question-block.read {\r\n    display: grid;\r\n    grid-area: content;\r\n    grid-template-columns: auto;\r\n    grid-template-rows: 2fr 4fr 1fr;\r\n    height: 600px;\r\n    padding: 20px;\r\n    align-content: center;\r\n    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);\r\n    background: white;\r\n    position: relative;\r\n}\r\n.question-proper {\r\n    display: grid;\r\n    grid-template-columns: 1fr 11fr;\r\n}\r\n\r\n.question-number {\r\n    background: #983532;\r\n    width: 50px;\r\n    height: 50px;\r\n    color: white;\r\n    font-size: 20px;\r\n    text-align: center;\r\n    vertical-align: center;\r\n    line-height: 50px;\r\n    padding: 5px;\r\n}\r\n@media (max-width: 430px) {\r\n    .question-number {\r\n        width: 100%;\r\n    }\r\n    .question-proper {\r\n        display: block;\r\n    }\r\n}\r\n.question-text.read {\r\n    font-size: 24px;\r\n}\r\n\r\n.question-choices {\r\n    display: grid;\r\n    grid-template-columns: 1fr;\r\n    grid-template-rows: repeat(4, 1fr);\r\n}\r\n\r\n.question-choice {\r\n    display: grid;\r\n    grid-template-columns: 1fr 12fr 1fr;\r\n    cursor: pointer;\r\n}\r\n.question-choice:hover {\r\n    background: rgba(240, 240, 240, 0.7);\r\n}\r\n.answer-letter-choice.read {\r\n    height: 34px;\r\n    width: 34px;\r\n    border: 2px solid #325399;\r\n    line-height: 30px;\r\n    text-align: center;\r\n    vertical-align: center;\r\n    cursor: pointer;\r\n    align-self: center;\r\n    justify-self: center;\r\n    font-size: 16px;\r\n    font-weight: 400;\r\n    margin: 0;\r\n}\r\n\r\n.question-choice-text {\r\n    align-self: center;\r\n    margin-left: 20px;\r\n    font-size: 16px;\r\n    font-weight: 600;\r\n}\r\n\r\n.question-nav {\r\n    display: grid;\r\n    grid-template-columns: repeat(3, 1fr);\r\n    border-top: 2px solid black;\r\n    border-bottom: 2px solid black;\r\n}\r\n.nav-button {\r\n    border: none;\r\n    border-right: 1px solid gray;\r\n    cursor: pointer;\r\n}\r\n.nav-button:focus {\r\n    outline: none;\r\n}\r\n.nav-button:hover {\r\n    background: rgba(0, 0, 0, 0.4);\r\n    cursor: pointer;\r\n}\r\n.selected {\r\n    background: rgba(0, 0, 0, 0.8);\r\n    transition: background 0.3s;\r\n    -webkit-transition: background 0.3s; /* Safari prior 6.1 */\r\n    color: white;\r\n}\r\n.marked {\r\n    position: absolute;\r\n    right: 10px;\r\n    top: 0;\r\n    color: red;\r\n    font-size: 20px;\r\n}\r\n.question-sidebar {\r\n    position: absolute;\r\n    width: 200px;\r\n    top: 106px;\r\n    right: 0;\r\n    bottom: 0;\r\n    overflow: auto;\r\n    background: #fff;\r\n    border-left: 2px solid #ddd;\r\n    cursor: pointer;\r\n}\r\n.question-list > .question {\r\n    padding: 10px;\r\n    text-align: center;\r\n    border-bottom: 1px solid grey;\r\n}\r\n.question-list > .question:hover {\r\n    background: #eee;\r\n}\r\n.related-content {\r\n    position: absolute;\r\n    width: 500px;\r\n    height: 600px;\r\n    overflow: auto;\r\n    left: -500px;\r\n    padding: 10px;\r\n    border-right: 1px solid #afafaf;\r\n    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.05);\r\n}\r\n@media only screen and (max-width: 499px) {\r\n    .container {\r\n        padding: 0;\r\n        margin: 0;\r\n    }\r\n}\r\n@media only screen and (max-width: 500px) {\r\n    #app > .container {\r\n        width: 100vw;\r\n        display: block;\r\n        /* grid-template-columns: 10% auto 10%;\r\n        /*     grid-template-rows: 10% auto 10%; */\r\n        /* grid-template-areas:\r\n            \". . .\"\r\n            \". content .\"\r\n            \". . .\"; */\r\n    }\r\n}\r\n", ""]);
 
 // exports
 
@@ -67953,7 +67953,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var AnswerChoice = function AnswerChoice(_ref) {
-  var _ref$letter = _ref.letter,
+  var num = _ref.num,
+      _ref$letter = _ref.letter,
       letter = _ref$letter === void 0 ? "" : _ref$letter,
       _ref$text = _ref.text,
       text = _ref$text === void 0 ? "" : _ref$text,
@@ -67967,7 +67968,9 @@ var AnswerChoice = function AnswerChoice(_ref) {
       input = _ref$input === void 0 ? false : _ref$input;
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "question-choice",
-    onClick: handleAnswerClick
+    onClick: function onClick() {
+      return handleAnswerClick(num + 1);
+    }
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
     className: "answer-letter-choice read " + (selected ? "selected" : "")
   }, letter), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -67979,7 +67982,7 @@ var AnswerChoice = function AnswerChoice(_ref) {
 
 AnswerChoice.propTypes = {
   letter: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string,
-  text: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.object
+  text: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.array
 };
 /* harmony default export */ __webpack_exports__["default"] = (AnswerChoice);
 
@@ -68063,10 +68066,11 @@ var AnswerChoices = function AnswerChoices(_ref) {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_AnswerChoice__WEBPACK_IMPORTED_MODULE_1__["default"], {
       key: i,
       letter: choice[0],
+      num: i,
       text: choice[1],
-      selected: choice[0] === selected ? true : false,
-      handleAnswerClick: function handleAnswerClick() {
-        return _handleAnswerClick(choice[0]);
+      selected: i + 1 === selected ? true : false,
+      handleAnswerClick: function handleAnswerClick(num) {
+        return _handleAnswerClick(num);
       }
     });
   });
@@ -68218,9 +68222,7 @@ function (_Component) {
   _createClass(App, [{
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "container"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["BrowserRouter"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["BrowserRouter"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
         path: "/exercises/:subject",
         component: _QuestionApp__WEBPACK_IMPORTED_MODULE_4__["default"]
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
@@ -68382,28 +68384,6 @@ function (_Component) {
         answerChoices: _this.state.question.answerChoices
       };
       var app = _this.state.app;
-      /* $.ajax({
-          type: "POST",
-          url: "/questions",
-          data: formData,
-          success: response => {
-              console.log(response);
-              app.response = parseInt(response, 10);
-              this.setState({ app });
-              setTimeout(() => {
-                  app.response = null;
-                  this.setState({ app });
-              }, 5000);
-          },
-          error: function(errMsg) {
-              console.log(errMsg);
-          },
-          contentType: "application/json",
-          headers: {
-              "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
-          }
-      }); */
-
       axios__WEBPACK_IMPORTED_MODULE_4___default.a.post("/questions", question).then(function (response) {
         app.response = parseInt(response.data, 10);
 
@@ -68592,11 +68572,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_mathjax2__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-mathjax2 */ "./node_modules/react-mathjax2/lib/index.js");
 /* harmony import */ var react_mathjax2__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react_mathjax2__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _QuestionBlock__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./QuestionBlock */ "./resources/js/components/QuestionBlock.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _AnswerChoices__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./AnswerChoices */ "./resources/js/components/AnswerChoices.js");
+/* harmony import */ var _QuestionSidebar__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./QuestionSidebar */ "./resources/js/components/QuestionSidebar.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _AnswerChoices__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./AnswerChoices */ "./resources/js/components/AnswerChoices.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
@@ -68630,31 +68611,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
-var sample = "When a variable $$ x = \\frac{1}{5} $$. What is $$y$$ if $$ y= \\frac{1}{x} $$. Damn look at this: $$x^2 = \\log_{10}x$$";
-/* {
-        number: 1,
-        question_text: questionText,
-        answer_choices: { ...answerChoices }
-    },
-    { */
 
-/* {
-        number: 2,
-        question_text: (
-            <div>
-                When the expression <MathJax.Node>{"\\sqrt{a}"}</MathJax.Node>{" "}
-                is multipled by
-                <MathJax.Node inline>{"\\sqrt{a}"}</MathJax.Node> the resulting
-                expression is
-            </div>
-        ),
-        answer_choices: {
-            A: <MathJax.Node inline>{"\\sqrt{ab}"}</MathJax.Node>,
-            B: <MathJax.Node inline>{"\\sqrt{a+b}"}</MathJax.Node>,
-            C: <MathJax.Node inline>{"ab"}</MathJax.Node>,
-            D: <MathJax.Node inline>{4}</MathJax.Node>
-        }
-    } */
 
 var QuestionApp =
 /*#__PURE__*/
@@ -68671,26 +68628,51 @@ function (_React$Component) {
     _defineProperty(_assertThisInitialized(_this), "convertStringtoMath", function (s) {
       var regex = new RegExp("\\$\\$(.*?)\\$\\$", "g");
       return s.split(regex).map(function (item, i) {
-        return i % 2 === 1 ? react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_mathjax2__WEBPACK_IMPORTED_MODULE_0___default.a.Node, {
+        return i % 2 === 1 ? react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(react_mathjax2__WEBPACK_IMPORTED_MODULE_0___default.a.Node, {
           key: i,
           inline: true
-        }, item) : react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("span", {
+        }, item) : react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("span", {
           key: i
         }, item);
       });
     });
 
+    _defineProperty(_assertThisInitialized(_this), "submitAnswers", function () {
+      var submit = window.confirm("Submit Answers?");
+      var obj = {};
+      obj.answers = _this.state.answers;
+      submit ? axios__WEBPACK_IMPORTED_MODULE_4___default.a.post("/submission", obj).then(function (response) {
+        response.data ? window.location.href = "/" : "";
+      }) : "";
+    });
+
     _defineProperty(_assertThisInitialized(_this), "handleClick", function (j) {
       var _this$state = _this.state,
           counter = _this$state.counter,
-          questions = _this$state.questions;
+          questions = _this$state.questions,
+          buttons = _this$state.buttons;
+
+      var _assertThisInitialize = _assertThisInitialized(_this),
+          submitAnswers = _assertThisInitialize.submitAnswers;
+
       j ? counter++ : counter--;
+      j === 2 ? submitAnswers() : "";
       if (counter > questions.length - 1 || counter < 0) return;
+
+      if (counter === 0) {
+        buttons[0] = "";
+      } else if (counter === questions.length - 1) {
+        buttons = ["BACK", "FINISH", buttons[2]];
+      } else {
+        buttons = ["BACK", "NEXT", buttons[2]];
+      }
+
       var currentQuestion = questions[counter];
 
       _this.setState({
         currentQuestion: currentQuestion,
-        counter: counter
+        counter: counter,
+        buttons: buttons
       });
     });
 
@@ -68704,83 +68686,93 @@ function (_React$Component) {
       });
     });
 
+    _defineProperty(_assertThisInitialized(_this), "markQuestion", function (number) {
+      var markedQuestions;
+      var buttons = _this.state.buttons;
+
+      if (_this.state.markedQuestions.includes(number)) {
+        markedQuestions = _this.state.markedQuestions.filter(function (e) {
+          return e != number;
+        });
+      } else {
+        markedQuestions = [].concat(_toConsumableArray(_this.state.markedQuestions), [number]).sort();
+      }
+
+      _this.setState({
+        markedQuestions: markedQuestions,
+        buttons: buttons
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "sideBarClick", function (counter) {
+      var _this$state2 = _this.state,
+          questions = _this$state2.questions,
+          buttons = _this$state2.buttons;
+      var currentQuestion = questions[counter];
+
+      if (counter === 0) {
+        buttons = ["", "NEXT"];
+      } else if (counter === questions.length - 1) {
+        buttons = ["BACK", "FINISH"];
+      } else {
+        buttons = ["BACK", "NEXT"];
+      }
+
+      _this.setState({
+        currentQuestion: currentQuestion,
+        counter: counter,
+        buttons: buttons
+      });
+    });
+
     _this.state = {
       currentQuestion: {},
       answers: Array(),
-      counter: 0
+      counter: 0,
+      markedQuestions: Array(),
+      questions: [],
+      buttons: ["", "NEXT"],
+      realContent: {}
     };
     return _this;
   }
 
   _createClass(QuestionApp, [{
-    key: "componentWillMount",
-    value: function componentWillMount() {
+    key: "componentDidMount",
+    value: function componentDidMount() {
       var _this2 = this;
 
-      /* let regex = new RegExp("\\$\\$(.*?)\\$\\$", "g"); */
       var subject = this.props.match.params.subject;
-      console.log(subject);
-      axios__WEBPACK_IMPORTED_MODULE_3___default.a.get("/api/questions/".concat(subject)).then(function (response) {
+      var relatedContent = [],
+          realContent = {};
+      axios__WEBPACK_IMPORTED_MODULE_4___default.a.get("/api/questions/".concat(subject)).then(function (response) {
         var questions = response.data;
         questions.forEach(function (question) {
           question.question_text = _this2.convertStringtoMath(question.question_text);
-          /*  question.question_text
-              .split(regex)
-              .map((item, i) => {
-                  return i % 2 === 1 ? (
-                      <MathJax.Node key={i} inline>
-                          {item}
-                      </MathJax.Node>
-                  ) : (
-                      <span key={i}>{item}</span>
-                  );
-              }); */
+
+          if (!relatedContent.includes(question.related_content) && question.related_content) {
+            relatedContent.push(question.related_content);
+            relatedContent.sort();
+          }
 
           var answerChoices = {};
 
           for (var index = 0; index < Object.keys(question.answer_choices).length; index++) {
             answerChoices[String.fromCharCode(65 + index)] = _this2.convertStringtoMath(question.answer_choices[String.fromCharCode(65 + index)]);
-            /* (
-                <MathJax.Node inline>
-                    {
-                        question.answer_choices[
-                            String.fromCharCode(65 + index)
-                        ]
-                    }
-                </MathJax.Node>
-            ); */
           }
 
           question.answer_choices = answerChoices;
         });
-        /* questions = parts.map(part =>
-            part.map((item, i) => {
-                return i % 2 === 1 ? (
-                    <MathJax.Node key={i} inline>
-                        {item}
-                    </MathJax.Node>
-                ) : (
-                    <span key={i}>{item}</span>
-                );
-            })
-        );
-        console.log(questions); */
-
-        /* let sampleSplit = sample.split(regex);
-        let arr = sampleSplit.map((item, i) => {
-        return i % 2 === 1 ? (
-            <MathJax.Node key={i} inline>
-                {item}
-            </MathJax.Node>
-        ) : (
-            <span key={i}>{item}</span>
-        );
+        relatedContent.forEach(function (contentId) {
+          axios__WEBPACK_IMPORTED_MODULE_4___default.a.get("/api/content/".concat(contentId)).then(function (response) {
+            return realContent[contentId] = response.data[0].content;
+          });
         });
-        let questionText = <div>{arr}</div>; */
 
         _this2.setState({
           questions: questions,
-          currentQuestion: questions[0]
+          currentQuestion: questions[0],
+          realContent: realContent
         });
       }, function (error) {
         _this2.setState({
@@ -68793,21 +68785,37 @@ function (_React$Component) {
     key: "render",
     value: function render() {
       var handleClick = this.handleClick,
-          handleAnswerClick = this.handleAnswerClick;
-      var _this$state2 = this.state,
-          currentQuestion = _this$state2.currentQuestion,
-          answers = _this$state2.answers;
-      return react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_QuestionBlock__WEBPACK_IMPORTED_MODULE_1__["default"], {
+          handleAnswerClick = this.handleAnswerClick,
+          markQuestion = this.markQuestion,
+          sideBarClick = this.sideBarClick;
+      var _this$state3 = this.state,
+          currentQuestion = _this$state3.currentQuestion,
+          answers = _this$state3.answers,
+          questions = _this$state3.questions,
+          markedQuestions = _this$state3.markedQuestions,
+          buttons = _this$state3.buttons,
+          realContent = _this$state3.realContent;
+      var marked = markedQuestions.includes(currentQuestion.number);
+      return react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("div", {
+        className: "container"
+      }, react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_QuestionBlock__WEBPACK_IMPORTED_MODULE_1__["default"], {
         handleClick: handleClick,
         handleAnswerClick: handleAnswerClick,
+        markQuestion: markQuestion,
         currentQuestion: currentQuestion,
-        answers: answers
-      });
+        realContent: realContent,
+        marked: marked,
+        answers: answers,
+        buttons: buttons
+      }), react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_QuestionSidebar__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        onClick: sideBarClick,
+        questions: questions
+      }));
     }
   }]);
 
   return QuestionApp;
-}(react__WEBPACK_IMPORTED_MODULE_2___default.a.Component);
+}(react__WEBPACK_IMPORTED_MODULE_3___default.a.Component);
 
 QuestionApp.propTypes = {};
 QuestionApp.defaultProps = {};
@@ -68828,13 +68836,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _QuestionNav__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./QuestionNav */ "./resources/js/components/QuestionNav.js");
 /* harmony import */ var _AnswerChoices__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./AnswerChoices */ "./resources/js/components/AnswerChoices.js");
-/* harmony import */ var _Question__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Question */ "./resources/js/components/Question.js");
-/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
-/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var react_mathjax2__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-mathjax2 */ "./node_modules/react-mathjax2/lib/index.js");
-/* harmony import */ var react_mathjax2__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react_mathjax2__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _css_exercises_css__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../css/exercises.css */ "./resources/css/exercises.css");
-/* harmony import */ var _css_exercises_css__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_css_exercises_css__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _RelatedContent__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./RelatedContent */ "./resources/js/components/RelatedContent.js");
+/* harmony import */ var _Question__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Question */ "./resources/js/components/Question.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var react_mathjax2__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-mathjax2 */ "./node_modules/react-mathjax2/lib/index.js");
+/* harmony import */ var react_mathjax2__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(react_mathjax2__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _css_exercises_css__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../css/exercises.css */ "./resources/css/exercises.css");
+/* harmony import */ var _css_exercises_css__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_css_exercises_css__WEBPACK_IMPORTED_MODULE_7__);
+
 
 
 
@@ -68846,18 +68856,27 @@ __webpack_require__.r(__webpack_exports__);
 var QuestionBlock = function QuestionBlock(_ref) {
   var handleClick = _ref.handleClick,
       _handleAnswerClick = _ref.handleAnswerClick,
+      _markQuestion = _ref.markQuestion,
+      marked = _ref.marked,
+      questions = _ref.questions,
       currentQuestion = _ref.currentQuestion,
-      answers = _ref.answers;
+      realContent = _ref.realContent,
+      answers = _ref.answers,
+      buttons = _ref.buttons;
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "question-block read"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_mathjax2__WEBPACK_IMPORTED_MODULE_5___default.a.Context, {
+  }, currentQuestion.related_content ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_RelatedContent__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    relatedContent: realContent[currentQuestion.related_content]
+  }) : "", marked ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "marked"
+  }, "Marked") : "", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_mathjax2__WEBPACK_IMPORTED_MODULE_6___default.a.Context, {
     input: "tex"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Question__WEBPACK_IMPORTED_MODULE_3__["default"], {
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Question__WEBPACK_IMPORTED_MODULE_4__["default"], {
     data: {
       number: currentQuestion.number,
       text: currentQuestion.question_text
     }
-  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_mathjax2__WEBPACK_IMPORTED_MODULE_5___default.a.Context, {
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_mathjax2__WEBPACK_IMPORTED_MODULE_6___default.a.Context, {
     input: "tex"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "question-choices"
@@ -68870,7 +68889,12 @@ var QuestionBlock = function QuestionBlock(_ref) {
   }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_QuestionNav__WEBPACK_IMPORTED_MODULE_1__["default"], {
     onClick: function onClick(j) {
       handleClick(j);
-    }
+    },
+    markQuestion: function markQuestion() {
+      return _markQuestion(currentQuestion.number);
+    },
+    buttons: buttons,
+    marked: marked
   }));
 };
 
@@ -68891,8 +68915,8 @@ QuestionBlock.defaultProps = {
   }
 };
 QuestionBlock.propTypes = {
-  currentQuestion: prop_types__WEBPACK_IMPORTED_MODULE_4___default.a.object,
-  handleClick: prop_types__WEBPACK_IMPORTED_MODULE_4___default.a.func
+  currentQuestion: prop_types__WEBPACK_IMPORTED_MODULE_5___default.a.object,
+  handleClick: prop_types__WEBPACK_IMPORTED_MODULE_5___default.a.func
 };
 /* harmony default export */ __webpack_exports__["default"] = (QuestionBlock);
 
@@ -68912,7 +68936,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var QuestionNav = function QuestionNav(_ref) {
-  var _onClick = _ref.onClick;
+  var _onClick = _ref.onClick,
+      markQuestion = _ref.markQuestion,
+      buttons = _ref.buttons,
+      marked = _ref.marked;
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "question-nav"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
@@ -68920,20 +68947,62 @@ var QuestionNav = function QuestionNav(_ref) {
     onClick: function onClick() {
       return _onClick(0);
     }
-  }, "BACK"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+  }, buttons[0]), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
     className: "nav-button mark",
     onClick: function onClick() {
-      return _onClick(1);
+      return markQuestion();
     }
-  }, "MARK"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+  }, marked ? "UNMARK" : "MARK"), buttons[1] === "FINISH" ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    className: "nav-button finish",
+    onClick: function onClick() {
+      return _onClick(2);
+    }
+  }, buttons[1]) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
     className: "nav-button next",
     onClick: function onClick() {
       return _onClick(1);
     }
-  }, "NEXT"));
+  }, buttons[1]));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (QuestionNav);
+
+/***/ }),
+
+/***/ "./resources/js/components/QuestionSidebar.js":
+/*!****************************************************!*\
+  !*** ./resources/js/components/QuestionSidebar.js ***!
+  \****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+
+var QuestionSidebar = function QuestionSidebar(_ref) {
+  var questions = _ref.questions,
+      _onClick = _ref.onClick;
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "question-sidebar"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+    className: "question-list"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+    className: "question-list-title"
+  }, "Questions"), questions.map(function (question, i) {
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+      onClick: function onClick() {
+        return _onClick(question.number - 1);
+      },
+      key: i,
+      className: "question"
+    }, question.number);
+  })));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (QuestionSidebar);
 
 /***/ }),
 
@@ -69000,6 +69069,30 @@ var QuestionText = function QuestionText(_ref) {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (QuestionText);
+
+/***/ }),
+
+/***/ "./resources/js/components/RelatedContent.js":
+/*!***************************************************!*\
+  !*** ./resources/js/components/RelatedContent.js ***!
+  \***************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+
+var RelatedContent = function RelatedContent(_ref) {
+  var relatedContent = _ref.relatedContent;
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "related-content"
+  }, relatedContent);
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (RelatedContent);
 
 /***/ }),
 

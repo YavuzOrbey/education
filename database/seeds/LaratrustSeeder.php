@@ -58,6 +58,7 @@ class LaratrustSeeder extends Seeder
                 'first_name' => ucwords(str_replace('_', ' ', $key)),
                 'last_name' => 'Blank',
                 'email' => $key.'@app.com',
+                'group_id'=> 1,
                 'password' => bcrypt('password')
             ]);
 
@@ -77,6 +78,7 @@ class LaratrustSeeder extends Seeder
                         'last_name' => 'Blank',
                         'email' => $key.'@app.com',
                         'password' => bcrypt('password'),
+                        'group_id'=> 1,
                         'remember_token' => str_random(10),
                     ]);
                     $permissions = [];

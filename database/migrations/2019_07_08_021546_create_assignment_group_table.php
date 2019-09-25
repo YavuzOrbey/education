@@ -15,7 +15,12 @@ class CreateAssignmentGroupTable extends Migration
     {
         Schema::create('assignment_group', function (Blueprint $table) {
             $table->increments('id');
+            $table->unsignedInteger('group_id');
+            $table->unsignedInteger('assignment_id');
             $table->timestamps();
+
+            $table->foreign('group_id')->references('id')->on('groups')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('assignment_id')->references('id')->on('assignments')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

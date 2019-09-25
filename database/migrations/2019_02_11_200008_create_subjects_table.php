@@ -17,23 +17,28 @@ class CreateSubjectsTable extends Migration
         Schema::create('subjects', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
+            $table->string('icon')->nullable();
             $table->timestamps();
         });
 
         DB::table('subjects')->insert([
             ['name'=>'SAT Critical Reading', 
+            'icon' => 'fas fa-book',
             'created_at'        => Carbon::now(),
             'updated_at'        => Carbon::now()
             ],
             ['name' => 'SAT Writing and Language',
+            'icon' => 'fas fa-highlighter',
             'created_at'        => Carbon::now(),
             'updated_at'        => Carbon::now()
             ],
             ['name' => 'SAT Math No Calculator',
+            'icon' => 'fas fa-square-root-alt',
             'created_at'        => Carbon::now(),
             'updated_at'        => Carbon::now()
             ],
             ['name' => 'SAT Math Calculator',
+            'icon' => 'fas fa-calculator',
             'created_at'        => Carbon::now(),
             'updated_at'        => Carbon::now()
             ]

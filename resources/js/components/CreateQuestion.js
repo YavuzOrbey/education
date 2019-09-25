@@ -76,16 +76,12 @@ class Toolbar extends React.Component {
             "`sqrt(x)`": `sqrt(x)`,
             "`=`": `=`,
             "`x^2`": `x^2`
-            //<MathInput changeHistory={this.props.changeHistory} />
         };
-        //"`sqrt(" + <MathInput /> + ")`"
+
         const buttonsAsArray = Object.keys(buttonsObj).map((key, index) => {
             return this.renderButton(key, index, buttonsObj[key]);
         });
-        /* const buttons = ["`x`", "`sqrt(x)`", "`z`", "`frac{x}{y}`"];
-        const buttonsAsArray = buttons.map((button, index) => {
-            return this.renderButton(button, index);
-        }); */
+
         return <div className="toolbar">{buttonsAsArray}</div>;
     }
 }
@@ -117,7 +113,6 @@ class MathInput extends React.Component {
 
     handleClick(event) {
         event.stopPropagation();
-        //this.textInput.current.focus();
     }
     handleKeyPress(event) {}
     componentDidUpdate() {

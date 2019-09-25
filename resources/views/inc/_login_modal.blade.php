@@ -17,7 +17,7 @@
                 
                     <div class="input-group">
                         <label for="password">Password</label>
-                        <input type="password" name="password" class="input-control{{ $errors->has('password') ? ' is-invalid' : '' }}" id="password" required>
+                        <input type="password" name="password" class="input-control{{ $errors->has('password') ? ' is-invalid' : '' }}" autocomplete="off" id="password" required>
                         @if ($errors->has('password'))
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $errors->first('password') }}</strong>
@@ -30,7 +30,7 @@
                             <input type="checkbox" id="remember" name="remember" {{ old('remember') ? 'checked' : '' }}>
                             <label class="form-check-label" for="remember">{{ __('Remember Me') }}</label>
                         </div>
-                        <button type="submit" class="btn auth-btn">{{ __('LOGIN') }}</button>
+                        <button type="submit" class="btn auth-btn btn-block">{{ __('LOGIN') }}</button>
                         <div class='login-additional'>
                                 <a href="{{ route('register') }}">{{ __('Sign Up') }}</a>
                                 

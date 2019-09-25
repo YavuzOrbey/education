@@ -1,6 +1,7 @@
 import React from "react";
 import QuestionNav from "./QuestionNav";
 import AnswerChoices from "./AnswerChoices";
+import RelatedContent from "./RelatedContent";
 import Question from "./Question";
 import PropTypes from "prop-types";
 import MathJax from "react-mathjax2";
@@ -8,11 +9,26 @@ import "../../css/exercises.css";
 const QuestionBlock = ({
     handleClick,
     handleAnswerClick,
+    markQuestion,
+    marked,
+    questions,
     currentQuestion,
-    answers
+    realContent,
+    answers,
+    buttons
 }) => {
     return (
         <div className="question-block read">
+            {currentQuestion.related_content ? (
+                <RelatedContent
+                    relatedContent={
+                        realContent[currentQuestion.related_content]
+                    }
+                />
+            ) : (
+                ""
+            )}
+            {marked ? <span className="marked">Marked</span> : ""}
             <MathJax.Context input="tex">
                 <Question
                     data={{
@@ -36,6 +52,9 @@ const QuestionBlock = ({
                 onClick={j => {
                     handleClick(j);
                 }}
+                markQuestion={() => markQuestion(currentQuestion.number)}
+                buttons={buttons}
+                marked={marked}
             />
         </div>
     );

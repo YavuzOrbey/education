@@ -7,7 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
-
+use Illuminate\Support\Facades\DB;
 class RegisterController extends Controller
 {
     /*
@@ -65,10 +65,12 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $group = DB::table('groups')->where('name', '=', $data['group_id'])->first();
         return User::create([
             'first_name' => $data['first_name'],
             'last_name'=>$data['last_name'],
             'email' => $data['email'],
+            'group_id'=>$group->id,
             'password' => Hash::make($data['password']),
         ]);
     }

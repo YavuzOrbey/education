@@ -4,7 +4,7 @@
     @include('inc._admin')
     @include('inc._messages')
     <div class="main-display">
-      <div class="container">
+      <div style="margin-left: 10px;">
       @yield('content')
       <hr>
       </div>

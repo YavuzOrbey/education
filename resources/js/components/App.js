@@ -10,7 +10,7 @@ import Test from "./Test";
 class App extends Component {
     render() {
         return (
-            <div className="container">
+            <div>
                 <BrowserRouter>
                     <Switch>
                         <Route

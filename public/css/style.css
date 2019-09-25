@@ -93,7 +93,10 @@ code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
         monospace;
 }
-
+.banner {
+    height: 46px;
+    background: rgb(62, 74, 126);
+}
 @media only screen and (min-width: 500px) {
     .container {
         width: 100vw;
@@ -138,6 +141,7 @@ nav {
     text-align: right;
     font-family: "Poppins", sans-serif;
     padding: 10px;
+    background: #fff;
 }
 nav ul {
     list-style: none;

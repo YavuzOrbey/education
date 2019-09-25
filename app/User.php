@@ -18,7 +18,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'first_name', 'last_name', 'type','email', 'password',
+        'first_name', 'last_name', 'group_id','type','email', 'password',
     ];
 
     /**
@@ -49,5 +49,10 @@ class User extends Authenticatable
     }
     public function assignments(){
         return $this->belongsToMany('App\Assignment');
+    }
+
+    public function group()
+    {
+        return $this->belongsTo('App\Group');
     }
 }

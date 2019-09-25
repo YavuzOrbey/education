@@ -95,27 +95,6 @@ class CreateQuestionApp extends Component {
             answerChoices: this.state.question.answerChoices
         };
         let { app } = this.state;
-        /* $.ajax({
-            type: "POST",
-            url: "/questions",
-            data: formData,
-            success: response => {
-                console.log(response);
-                app.response = parseInt(response, 10);
-                this.setState({ app });
-                setTimeout(() => {
-                    app.response = null;
-                    this.setState({ app });
-                }, 5000);
-            },
-            error: function(errMsg) {
-                console.log(errMsg);
-            },
-            contentType: "application/json",
-            headers: {
-                "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
-            }
-        }); */
         axios
             .post("/questions", question)
             .then(response => {

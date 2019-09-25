@@ -13,7 +13,7 @@ class CreateSectionQuestionTable extends Migration
      */
     public function up()
     {
-        Schema::create('section_questions', function (Blueprint $table) {
+        Schema::create('section_book_questions', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('section_id');
             $table->unsignedInteger('book_question_id');

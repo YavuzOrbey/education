@@ -8,7 +8,7 @@ use App\Subject;
 use App\AnswerResponse;
 use App\Assignment;
 use App\Section;
-use App\SectionQuestion;
+use App\SectionBookQuestion;
 use Validator;
 class BookQuestionController extends Controller
 {
@@ -31,7 +31,7 @@ class BookQuestionController extends Controller
     {
         $sections = Subject::all()->pluck('name', 'id');
         $answers = AnswerResponse::all()->filter(function ($value, $key){
-            return $key > 0;
+            return $key >= 0;
         })->pluck('letter', 'id');
         $assignments = Assignment::where('name', 'LIKE', '%Practice%')->pluck('name', 'id');
         !isset($request->questionNum) ? $questionNum= 1: $questionNum = $request->questionNum;
@@ -66,7 +66,7 @@ class BookQuestionController extends Controller
         $question->save();
         $questionNum = $question->question_number + 1;
         
-        $sectionQuestion = new SectionQuestion;
+        $sectionQuestion = new SectionBookQuestion;
 
         $sectionQuestion->section_id = $section->id;
         $sectionQuestion->book_question_id = $question->id;

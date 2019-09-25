@@ -1,5 +1,5 @@
 @extends('layouts.main')
-
+@if(Auth::user())
 @section('content')
 <div class="assignments-index">
 <div class="test-list">
@@ -50,6 +50,17 @@
 </div>
 </div>
 @stop
+
+@else
+@section('content')
+<div class="assignments-index">
+    <div class="test-list">
+    <h2>Log in to view your classes' assignments.</h2>
+    </div>
+</div>
+@stop
+@endif
+
 
 @section('stylesheets')
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">

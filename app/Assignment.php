@@ -20,4 +20,8 @@ class Assignment extends Model
         return $this->belongsToMany('App\User');
         //test 
     }
+
+    public function groups(){
+        return $this->belongsToMany('App\Group');
+    }
 }
