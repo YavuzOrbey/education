@@ -209,7 +209,7 @@ class AssignmentController extends Controller
         foreach ($sections as $key=>$section) {
             $questions = $section->questions;
             foreach($questions as $qKey =>$question){
-                DB::table('assignment_user_question')->insert(
+                DB::table('user_answers')->insert(
                 ['assignment_user_id' =>  $assignmentUserId, 'question_id'=>$question->id, 'user_answer'=>$studentAnswers[$key][$qKey+1]]
                 );
             }
