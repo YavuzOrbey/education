@@ -233,7 +233,7 @@ class AssignmentController extends Controller
             $questions = $section->questions;
             foreach($questions as $qKey =>$question){
                 if(Auth::user())
-                $completedQuestion = DB::table('assignment_user_question')->where('question_id', $question->id)->where('assignment_user_id',$completedAssignment->id)->first();
+                $completedQuestion = DB::table('user_answers')->where('book_question_id', $question->id)->where('assignment_user_id',$completedAssignment->id)->first();
                 if($completedQuestion){
                 array_push($studentAnswers[$key], $completedQuestion->user_answer);
                 }
