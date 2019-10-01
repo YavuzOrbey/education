@@ -68125,6 +68125,7 @@ var AnswerChoicesInput = function AnswerChoicesInput(_ref) {
     }
   } else {
     answerChoiceInputs = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      onChange: check,
       type: "number"
     });
   }
@@ -68222,14 +68223,14 @@ function (_Component) {
   _createClass(App, [{
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["BrowserRouter"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["BrowserRouter"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
         path: "/exercises/:subject",
         component: _QuestionApp__WEBPACK_IMPORTED_MODULE_4__["default"]
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
         exact: true,
         path: "/questions/create",
         component: _CreateQuestionApp__WEBPACK_IMPORTED_MODULE_5__["default"]
-      }))));
+      })));
     }
   }]);
 
@@ -68381,10 +68382,13 @@ function (_Component) {
         questionText: _this.state.question.realText,
         subjectId: _this.state.question.subjectId,
         correctAnswer: _this.state.question.correctAnswer,
-        answerChoices: _this.state.question.answerChoices
+        answerChoices: _this.state.question.answerChoices,
+        answerType: _this.state.question.answerType
       };
       var app = _this.state.app;
+      console.log(question);
       axios__WEBPACK_IMPORTED_MODULE_4___default.a.post("/questions", question).then(function (response) {
+        console.log(response);
         app.response = parseInt(response.data, 10);
 
         _this.setState({
@@ -68640,9 +68644,13 @@ function (_React$Component) {
     _defineProperty(_assertThisInitialized(_this), "submitAnswers", function () {
       var submit = window.confirm("Submit Answers?");
       var obj = {};
+      obj.subject = _this.state.subject;
       obj.answers = _this.state.answers;
       submit ? axios__WEBPACK_IMPORTED_MODULE_4___default.a.post("/submission", obj).then(function (response) {
-        response.data ? window.location.href = "/" : "";
+        response.data ? console.log(response) //(window.location.href = "/")
+        : console.log("false");
+      }).catch(function (error) {
+        console.log(error.message);
       }) : "";
     });
 
@@ -68660,7 +68668,7 @@ function (_React$Component) {
       if (counter > questions.length - 1 || counter < 0) return;
 
       if (counter === 0) {
-        buttons[0] = "";
+        buttons = ["", "NEXT", buttons[2]];
       } else if (counter === questions.length - 1) {
         buttons = ["BACK", "FINISH", buttons[2]];
       } else {
@@ -68743,6 +68751,9 @@ function (_React$Component) {
       var _this2 = this;
 
       var subject = this.props.match.params.subject;
+      this.setState({
+        subject: subject
+      });
       var relatedContent = [],
           realContent = {};
       axios__WEBPACK_IMPORTED_MODULE_4___default.a.get("/api/questions/".concat(subject)).then(function (response) {
@@ -68755,13 +68766,15 @@ function (_React$Component) {
             relatedContent.sort();
           }
 
-          var answerChoices = {};
+          if (question.answer_choices) {
+            var answerChoices = {};
 
-          for (var index = 0; index < Object.keys(question.answer_choices).length; index++) {
-            answerChoices[String.fromCharCode(65 + index)] = _this2.convertStringtoMath(question.answer_choices[String.fromCharCode(65 + index)]);
+            for (var index = 0; index < Object.keys(question.answer_choices).length; index++) {
+              answerChoices[String.fromCharCode(65 + index)] = _this2.convertStringtoMath(question.answer_choices[String.fromCharCode(65 + index)]);
+            }
+
+            question.answer_choices = answerChoices;
           }
-
-          question.answer_choices = answerChoices;
         });
         relatedContent.forEach(function (contentId) {
           axios__WEBPACK_IMPORTED_MODULE_4___default.a.get("/api/content/".concat(contentId)).then(function (response) {
@@ -68796,9 +68809,7 @@ function (_React$Component) {
           buttons = _this$state3.buttons,
           realContent = _this$state3.realContent;
       var marked = markedQuestions.includes(currentQuestion.number);
-      return react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("div", {
-        className: "container"
-      }, react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_QuestionBlock__WEBPACK_IMPORTED_MODULE_1__["default"], {
+      return react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_QuestionBlock__WEBPACK_IMPORTED_MODULE_1__["default"], {
         handleClick: handleClick,
         handleAnswerClick: handleAnswerClick,
         markQuestion: markQuestion,
@@ -68878,7 +68889,7 @@ var QuestionBlock = function QuestionBlock(_ref) {
     }
   })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_mathjax2__WEBPACK_IMPORTED_MODULE_6___default.a.Context, {
     input: "tex"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, currentQuestion.answer_choices ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "question-choices"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_AnswerChoices__WEBPACK_IMPORTED_MODULE_2__["default"], {
     choices: currentQuestion.answer_choices,
@@ -68886,6 +68897,13 @@ var QuestionBlock = function QuestionBlock(_ref) {
       return _handleAnswerClick(currentQuestion.number, letter);
     },
     selected: answers[currentQuestion.number - 1]
+  })) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "grid-input"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    onChange: function onChange(e) {
+      return _handleAnswerClick(currentQuestion.number, e.target.value);
+    },
+    type: "number"
   }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_QuestionNav__WEBPACK_IMPORTED_MODULE_1__["default"], {
     onClick: function onClick(j) {
       handleClick(j);

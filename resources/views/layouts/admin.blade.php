@@ -5,8 +5,7 @@
     @include('inc._messages')
     <div class="main-display">
       <div style="margin-left: 10px;">
-      @yield('content')
-      <hr>
+      @yield('content') 
       </div>
       @include('inc._foot')
     </div>

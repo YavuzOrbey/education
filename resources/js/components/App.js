@@ -10,21 +10,16 @@ import Test from "./Test";
 class App extends Component {
     render() {
         return (
-            <div>
-                <BrowserRouter>
-                    <Switch>
-                        <Route
-                            path="/exercises/:subject"
-                            component={QuestionApp}
-                        />
-                        <Route
-                            exact
-                            path="/questions/create"
-                            component={CreateQuestionApp}
-                        />
-                    </Switch>
-                </BrowserRouter>
-            </div>
+            <BrowserRouter>
+                <Switch>
+                    <Route path="/exercises/:subject" component={QuestionApp} />
+                    <Route
+                        exact
+                        path="/questions/create"
+                        component={CreateQuestionApp}
+                    />
+                </Switch>
+            </BrowserRouter>
         );
     }
 }

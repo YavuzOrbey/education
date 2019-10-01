@@ -92,12 +92,15 @@ class CreateQuestionApp extends Component {
             questionText: this.state.question.realText,
             subjectId: this.state.question.subjectId,
             correctAnswer: this.state.question.correctAnswer,
-            answerChoices: this.state.question.answerChoices
+            answerChoices: this.state.question.answerChoices,
+            answerType: this.state.question.answerType
         };
         let { app } = this.state;
+        console.log(question);
         axios
             .post("/questions", question)
             .then(response => {
+                console.log(response);
                 app.response = parseInt(response.data, 10);
                 this.setState({ app });
                 setTimeout(() => {

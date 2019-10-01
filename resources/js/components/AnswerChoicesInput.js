@@ -26,7 +26,7 @@ const AnswerChoicesInput = ({
             );
         }
     } else {
-        answerChoiceInputs = <input type="number" />;
+        answerChoiceInputs = <input onChange={check} type="number" />;
     }
     return (
         <div className="answer-choices">

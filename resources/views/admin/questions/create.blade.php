@@ -1,9 +1,11 @@
-@extends('layouts.main')
+@extends('layouts.admin')
 @section('stylesheets')
-{{Html::style('css/admin/create-question.css')}}
+{{Html::style('css/admin.css') }}
 @stop
-@section('content')
 
+
+@section('content')
+<noscript>
 <div class="question-block">
     {!! Form::open(['route' => 'questions.store', 'data-parsley-validate'=>'']) !!}
   <div class="question-proper">
@@ -66,11 +68,12 @@
 
             {!! Form::close() !!}
 </div>
+</noscript>
+<div id="app" ></div>
 @stop
 
 @section('scripts')
-
-
+<script src="{{ asset('js/app.js') }}"></script>
 {{Html::script('js/parsley.min.js') }}
 <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async></script>
 @stop

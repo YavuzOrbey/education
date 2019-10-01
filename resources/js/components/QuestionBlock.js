@@ -38,15 +38,32 @@ const QuestionBlock = ({
                 />
             </MathJax.Context>
             <MathJax.Context input="tex">
-                <div className="question-choices">
-                    <AnswerChoices
-                        choices={currentQuestion.answer_choices}
-                        handleAnswerClick={letter =>
-                            handleAnswerClick(currentQuestion.number, letter)
-                        }
-                        selected={answers[currentQuestion.number - 1]}
-                    />
-                </div>
+                {currentQuestion.answer_choices ? (
+                    <div className="question-choices">
+                        <AnswerChoices
+                            choices={currentQuestion.answer_choices}
+                            handleAnswerClick={letter =>
+                                handleAnswerClick(
+                                    currentQuestion.number,
+                                    letter
+                                )
+                            }
+                            selected={answers[currentQuestion.number - 1]}
+                        />
+                    </div>
+                ) : (
+                    <div className="grid-input">
+                        <input
+                            onChange={e =>
+                                handleAnswerClick(
+                                    currentQuestion.number,
+                                    e.target.value
+                                )
+                            }
+                            type="number"
+                        ></input>
+                    </div>
+                )}
             </MathJax.Context>
             <QuestionNav
                 onClick={j => {

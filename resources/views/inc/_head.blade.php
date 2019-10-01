@@ -17,4 +17,3 @@
     {{Html::style('css/style.css')}}
     @yield('stylesheets')
 </head>
-<body>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Question;
+use App\GridQuestion;
 use App\Subject;
 use App\Answer;
 use App\AnswerResponse;
@@ -32,7 +33,10 @@ class QuestionController extends Controller
         $subject = Subject::find($subjectId);   
         $sentQuestions = [];
         if($subject){
-        $questions = Question::where('subject_id', $subject->id)->get();
+        $multipleChoice = Question::where('subject_id', $subject->id)->get();
+        $gridQuestions = GridQuestion::where('subject_id', $subject->id)->get();
+        $questions = collect($multipleChoice)->merge($gridQuestions);
+
         if($subject->id==1){
             //find the respective critical reading passages that coorespond to the questions
         }
@@ -53,13 +57,14 @@ class QuestionController extends Controller
         $currentQuestionObj->question_text = $question->question_text;
         /* $questionTextObj->$index = $question->question_text;
         $currentQuestionObj->question = $questionTextObj; */
-
+        if($question->answer){
         $letters = $answerResponses->pluck('letter');
         foreach ($letters as $letter) {
             $column = strtolower('choice_' . $letter);
             $questionChoicesObj->$letter = $question->answer->$column;
         }
         $currentQuestionObj->answer_choices = $questionChoicesObj;
+        }
         $currentQuestionObj->related_content = $question->related_content_id;
 
         $sentQuestions[] =$currentQuestionObj;
@@ -73,11 +78,11 @@ class QuestionController extends Controller
      */
     public function create()
     {
-        /* $subjects = Subject::all();
+        $subjects = Subject::all();
         $answer_choices = AnswerResponse::all()->except(0);
-        //$subjects = $subjects->pluck('name', 'id');
-        $answers = $answer_choices->pluck('letter', 'id'); */
-        return view('app');
+        $subjects = $subjects->pluck('name', 'id');
+        $answers = $answer_choices->pluck('letter', 'id');
+        return view('admin.questions.create', compact('subjects', 'answers'));
     }
 
     /**
@@ -92,7 +97,8 @@ class QuestionController extends Controller
             'questionText' => 'required', //Must be a number and length of value is 8
             'subjectId' => 'required|numeric',
             'correctAnswer' => 'required|numeric',
-            'answerChoices' => 'required|array'
+            'answerChoices' => 'required_if:answerType,0',
+            'answerType' => 'required|numeric'
         ];
         $validator = Validator::make($request->all(), $rules);
         /* $validator = Validator::make($request->all(), [
@@ -100,23 +106,33 @@ class QuestionController extends Controller
             'subjectId' => 'required|email',
         ]); */
         if ($validator->passes()) {
-            $question = new Question;
-            $question->subject_id = $request->subjectId;
-            $question->question_text = $request->questionText;
-            $question->correct_answer = $request->correctAnswer;
-            $question->save();
-
-            $answer = new Answer;
-            $answer->choice_a = $request->answerChoices['A'];
-            $answer->choice_b = $request->answerChoices['B'];
-            $answer->choice_c = $request->answerChoices['C'];
-            $answer->choice_d = $request->answerChoices['D'];
-            $answer->question_id = $question->id;
-            $answer->save();
+            if($request->answerType ===0){
+                $question = new Question;
+                $question->subject_id = $request->subjectId;
+                $question->question_text = $request->questionText;
+                $question->correct_answer = $request->correctAnswer;
+                $question->save();
+    
+                $answer = new Answer;
+                $answer->choice_a = $request->answerChoices['A'];
+                $answer->choice_b = $request->answerChoices['B'];
+                $answer->choice_c = $request->answerChoices['C'];
+                $answer->choice_d = $request->answerChoices['D'];
+                $answer->question_id = $question->id;
+                $answer->save();
+            }
+            else{
+                $question = new GridQuestion;
+                $question->subject_id = $request->subjectId;
+                $question->question_text = $request->questionText;
+                $question->correct_answer = $request->correctAnswer;
+                $question->save();
+            }
             return 1;
+           
         } else {
             //TODO Handle your error
-            return 0;
+            return $validator->failed();
         }
         return $data;
         /* $validatedData = $request->validate([
