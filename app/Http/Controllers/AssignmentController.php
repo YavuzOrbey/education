@@ -210,7 +210,7 @@ class AssignmentController extends Controller
             $questions = $section->questions;
             foreach($questions as $qKey =>$question){
                 DB::table('user_answers')->insert(
-                ['assignment_user_id' =>  $assignmentUserId, 'question_id'=>$question->id, 'user_answer'=>$studentAnswers[$key][$qKey+1]]
+                ['assignment_user_id' =>  $assignmentUserId, 'book_question_id'=>$question->id, 'user_answer'=>$studentAnswers[$key][$qKey+1]]
                 );
             }
         }
