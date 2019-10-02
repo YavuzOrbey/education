@@ -231,6 +231,7 @@ class AssignmentController extends Controller
         foreach ($sections as $key=>$section) {
             $studentAnswers[$key] = array();
             $questions = $section->questions;
+            dd($questions);
             foreach($questions as $qKey =>$question){
                 if(Auth::user())
                 $completedQuestion = DB::table('user_answers')->where('book_question_id', $question->id)->where('assignment_user_id',$completedAssignment->id)->first();
