@@ -22,8 +22,7 @@ class AssignmentController extends Controller
         foreach ($sections as $i => $section) {
 
             $questions = array();
-            foreach ($section->questions as $index => $question) {
-                
+            foreach ($section->questions()->orderBy('pivot_sequence', 'asc')->get() as $index => $question) {
                 array_push($questions, ['id'=>$question->id, 'question_number'=>$question->question_number, 'assignment_id'=>$question->sections()->first()->assignment_id]);
             }
 
@@ -163,14 +162,19 @@ class AssignmentController extends Controller
     {
 
         $theData =  json_decode($request->obj);
-
         foreach ($theData->sections as $key => $currentSection) {
             $subject_id = $currentSection->id;
-            $questionIDs = array_map(function($el){
+
+             $questionIDs = array_map(function($el){
                 return $el->id;
             }, $currentSection->questions);
+            $keys = array_keys($currentSection->questions);
+            $keys = array_map(function($el){
+                return Array('sequence'=>$el+1);
+            }, $keys );
+            $syncData = array_combine($questionIDs, $keys);
             $section = Section::where('assignment_id', $assignment->id)->where('subject_id', $subject_id)->first();
-            $section->questions()->sync($questionIDs);
+            $section->questions()->sync($syncData);
         }
         $assignment->name = $theData->name;
         $assignment->save();
@@ -231,7 +235,6 @@ class AssignmentController extends Controller
         foreach ($sections as $key=>$section) {
             $studentAnswers[$key] = array();
             $questions = $section->questions;
-            dd($questions);
             foreach($questions as $qKey =>$question){
                 if(Auth::user())
                 $completedQuestion = DB::table('user_answers')->where('book_question_id', $question->id)->where('assignment_user_id',$completedAssignment->id)->first();

@@ -84,7 +84,7 @@ let getQuestionIds = function(obj){
 
 questionList.addEventListener('click', removeQuestion, false);
 function drawLeftForm(thingToSend){
-
+    console.log(thingToSend);
     let form =`<form action="/assignments/${thingToSend.id}" method="POST">
         <input id="obj" type="hidden" name="obj" value=${thingToSend}>@csrf @method('PUT')
         <button id="submission">SUBMIT</button></form>`;
@@ -207,6 +207,7 @@ rightBtn.addEventListener('click', function(){
                 });
                 leftAssignment.innerHTML = drawResultList(thingToSend);
         }
+        console.log(thingToSend);
     }
     rightResults.addEventListener('click', addQuestion, false);
 }

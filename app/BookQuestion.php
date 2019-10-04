@@ -8,7 +8,7 @@ class BookQuestion extends Model
 { 
     public function sections()
     {
-        return $this->belongsToMany('App\Section', 'section_book_questions');
+        return $this->belongsToMany('App\Section', 'section_book_questions')->withPivot('sequence');
     }
 /*     public function assignments()
     {

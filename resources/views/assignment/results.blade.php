@@ -18,7 +18,7 @@
               </tr>
             </thead>
             <tbody>
-              @foreach($section->questions as $question)
+              @foreach($section->questions()->orderBy('pivot_sequence', 'asc')->get() as $question)
               <tr>
                 <td>{{ $loop->index + 1 }}</td>
                 <td>{!! empty($studentAnswers[$loop->parent->index]) ? " ": $guide[$studentAnswers[$loop->parent->index][$loop->index]]!!} </td>
