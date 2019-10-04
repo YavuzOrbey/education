@@ -84,7 +84,6 @@ let getQuestionIds = function(obj){
 
 questionList.addEventListener('click', removeQuestion, false);
 function drawLeftForm(thingToSend){
-    console.log(thingToSend);
     let form =`<form action="/assignments/${thingToSend.id}" method="POST">
         <input id="obj" type="hidden" name="obj" value=${thingToSend}>@csrf @method('PUT')
         <button id="submission">SUBMIT</button></form>`;
@@ -101,7 +100,6 @@ leftBtn.addEventListener('click', function(){
         
         leftAssignment.innerHTML = "";
         thingToSend = JSON.parse(this.responseText);
-        console.log(thingToSend)
         leftAssignment.innerHTML = drawResultList(thingToSend);
         leftForm.innerHTML = drawLeftForm(thingToSend);
 
@@ -109,7 +107,6 @@ leftBtn.addEventListener('click', function(){
 
         submitBtn.addEventListener('click', function(e){
             if(!this.clicked){
-                console.log(thingToSend)
                 e.preventDefault();
                 this.textContent = "CONFIRM";
                 this.clicked = true;
@@ -205,9 +202,9 @@ rightBtn.addEventListener('click', function(){
                         section.questions.push(thingReceived.sections[sectionIndex].questions[numberBox.dataset.key]);
                     }
                 });
+                console.log(thingReceived);
                 leftAssignment.innerHTML = drawResultList(thingToSend);
         }
-        console.log(thingToSend);
     }
     rightResults.addEventListener('click', addQuestion, false);
 }
