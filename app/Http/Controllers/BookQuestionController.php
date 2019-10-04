@@ -31,7 +31,7 @@ class BookQuestionController extends Controller
     {
         $sections = Subject::all()->pluck('name', 'id');
         $answers = AnswerResponse::all()->filter(function ($value, $key){
-            return $key >= 0;
+            return $key > 0;
         })->pluck('letter', 'id');
         $assignments = Assignment::where('name', 'LIKE', '%Practice%')->pluck('name', 'id');
         !isset($request->questionNum) ? $questionNum= 1: $questionNum = $request->questionNum;
@@ -67,7 +67,7 @@ class BookQuestionController extends Controller
         $questionNum = $question->question_number + 1;
         
         $sectionQuestion = new SectionBookQuestion;
-
+        $sectionQuestion->sequence = $request->question;
         $sectionQuestion->section_id = $section->id;
         $sectionQuestion->book_question_id = $question->id;
 

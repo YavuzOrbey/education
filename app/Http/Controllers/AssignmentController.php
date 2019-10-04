@@ -22,7 +22,7 @@ class AssignmentController extends Controller
         foreach ($sections as $i => $section) {
 
             $questions = array();
-            foreach ($section->questions as $index => $question) {
+            foreach ($section->questions()->orderBy('pivot_sequence', 'asc')->get() as $index => $question) {
                 array_push($questions, ['id'=>$question->id, 'question_number'=>$question->question_number, 'assignment_id'=>$question->sections()->first()->assignment_id]);
             }
 
@@ -185,15 +185,6 @@ class AssignmentController extends Controller
         $correctString = "";
         $sections = $assignment->sections;
         $studentAnswers = $request->answers;
-        foreach ($sections as $key=>$section) {
-            $questions = $section->questions;
-            foreach($questions as $qKey =>$question){
-                if($question->correctAnswer->id ==$studentAnswers[$key][$qKey+1]){
-                    $correctString .= "You got Number " . ($qKey+1) . " right in section: " . $section->subject->name . "\r\n";
-                }
-                //array_push($correctAnswers[$key], $question->correctAnswer->letter);
-            }
-        }
         $guide = [0=>'',1=>'A', 2=>'B', 3=>'C', 4=>'D'];
         return view('assignment.confirm', compact('assignment', 'studentAnswers', 'guide'));
     }

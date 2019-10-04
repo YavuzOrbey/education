@@ -43,7 +43,7 @@
           </ul>
           </div>
         @endforeach
-        <button>Submit</button>
+        <button class="btn btn-primary btn-block">SUBMIT</button>
     </form>
     </ul>
 </div>

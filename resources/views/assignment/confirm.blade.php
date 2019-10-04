@@ -16,7 +16,7 @@
                     @endforeach
                 @endforeach
                 
-                <button>Confirm Submission</button>
+                <button class='btn btn-block btn-danger'>Confirm Submission</button>
             </form>
             </ul>
         </div>

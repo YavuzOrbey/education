@@ -14,15 +14,16 @@ class CreateAnswerResponsesTable extends Migration
     public function up()
     {
         Schema::create('answer_responses', function (Blueprint $table) {
-            $table->increments('id');
+            $table->unsignedInteger('id')->unique();
             $table->char('letter', 1);
         });
 
         DB::table('answer_responses')->insert([
-            ['letter'=>'A'],
-            ['letter' => 'B'],
-            ['letter' => 'C'],
-            ['letter' => 'D']
+            ['id'=>0, 'letter'=>''],
+            ['id'=>1, 'letter'=>'A'],
+            ['id'=>2, 'letter' => 'B'],
+            ['id'=>3, 'letter' => 'C'],
+            ['id'=>4, 'letter' => 'D']
         ]);
     }
 

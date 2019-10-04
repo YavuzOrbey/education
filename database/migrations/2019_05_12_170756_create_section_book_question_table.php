@@ -17,6 +17,7 @@ class CreateSectionBookQuestionTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('section_id');
             $table->unsignedInteger('book_question_id');
+            $table->unsignedInteger('sequence');
             $table->timestamps();
 
             $table->foreign('section_id')->references('id')->on('sections')->onDelete('cascade')->onUpdate('cascade');
