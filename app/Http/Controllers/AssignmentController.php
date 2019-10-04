@@ -22,7 +22,7 @@ class AssignmentController extends Controller
         foreach ($sections as $i => $section) {
 
             $questions = array();
-            foreach ($section->questions()->orderBy('pivot_sequence', 'asc')->get() as $index => $question) {
+            foreach ($section->questions as $index => $question) {
                 array_push($questions, ['id'=>$question->id, 'question_number'=>$question->question_number, 'assignment_id'=>$question->sections()->first()->assignment_id]);
             }
 
