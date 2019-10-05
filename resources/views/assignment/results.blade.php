@@ -11,7 +11,6 @@
           <table>
             <thead>
               <tr>
-                <th>ID</th>
                 <th>Number</th>
                 <th>Response</th>
                 <th>Result</th>
@@ -21,7 +20,6 @@
             <tbody>
               @foreach($section->questions()->orderBy('pivot_sequence', 'asc')->get() as $question)
               <tr>
-                <td>{{$question->id}}</td>
                 <td>{{ $loop->index + 1 }}</td>
                 <td>{!! empty($studentAnswers[$loop->parent->index]) ? " ": $guide[$studentAnswers[$loop->parent->index][$loop->index]]!!} </td>
                 <td>{!!$studentAnswers[$loop->parent->index][$loop->index]==$question->correct_answer ? 
