@@ -9,10 +9,10 @@
     <ul class="list-group">
         @foreach($currentAssignments as $assignment)
         <li class="list-group-item">
-            <a href="{{asset("/pdfs/" . str_replace(' ', '_', strtolower($assignment->name)) . '.pdf')}}">{{$loop->index + 1 . ". " . $assignment->name}}</a>
+            <a href="{{asset("/pdfs/" . str_replace(' ', '_', strtolower($assignment->name)) . '.pdf')}}" download>{{$loop->index + 1 . ". " . $assignment->name}}</a>
             
             <div class="right-hand-side">
-            <a href="{{asset("/pdfs/" . str_replace(' ', '_', strtolower($assignment->name)) . '.pdf')}}" class="pdf-link"><i class="fas fa-file-pdf"></i></a>
+            <a href="{{asset("/pdfs/" . str_replace(' ', '_', strtolower($assignment->name)) . '.pdf')}}" class="pdf-link" download><i class="fas fa-file-pdf"></i></a>
                 <span class='due-date'>DUE: {{date("n/j  H:i", strtotime($assignment->due_date)-4*60*60)}}</span>
                 <span class="result">
                 @if(Auth::user() && Auth::user()->assignments()->where('assignments.id', $assignment->id)->exists())
