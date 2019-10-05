@@ -2,7 +2,8 @@
 
 @section('content')
 <div class="assignments-index">
-    <h1>Confirm Answers</h1>
+    <h1>Confirm answers</h1>
+    <p>Check your answers then scroll below and click the red Confirm button!</p>
     <h2>{{$assignment->name}}</h2>
     <ul class="list-group">
         <form action="{{route('assignments.process', ['assignment'=>$assignment, 'studentAnswers'=>$studentAnswers])}}" method="POST">
