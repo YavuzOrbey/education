@@ -197,19 +197,26 @@ class AssignmentController extends Controller
         }
         
         $assignmentUserId = DB::table('assignment_user')->insertGetId(
-            ['assignment_id' => $assignment->id, 'user_id'=>Auth::user()->id, 'score'=>90, 'created_at'=>Carbon::now(), 'updated_at'=>Carbon::now()]
+            ['assignment_id' => $assignment->id, 'user_id'=>Auth::user()->id, 'score'=>0, 'created_at'=>Carbon::now(), 'updated_at'=>Carbon::now()]
         );
         $assignment = Assignment::find($request->assignment);
         $sections = $assignment->sections;
         $studentAnswers = $request->studentAnswers;
+        $numRight = 0; $total = 0;
         foreach ($sections as $key=>$section) {
             $questions = $section->questions;
+            $total +=count($questions);
             foreach($questions as $qKey =>$question){
+                if($question->correct_answer ==$studentAnswers[$key][$qKey+1]){
+                    $numRight++;
+                }
                 DB::table('user_answers')->insert(
                 ['assignment_user_id' =>  $assignmentUserId, 'book_question_id'=>$question->id, 'user_answer'=>$studentAnswers[$key][$qKey+1], 'created_at'=>Carbon::now(), 'updated_at'=>Carbon::now()]
                 );
             }
         }
+        $score = ($numRight/(float) $total) * 100;
+        DB::table('assignment_user')->where('id', $assignmentUserId)->update(['score' =>$score]);
         return redirect()->route('assignments.results', ['assignment'=>$assignment]);
     }
 
