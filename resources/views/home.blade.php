@@ -1,5 +1,9 @@
 @extends('layouts.main')
 
+
+@section('welcome')
+@auth <div style="color:white; font-size: 1.3em; margin-left: 10px; font-weight: 600">Welcome {{Auth::user()->first_name}} </div>@endauth
+@stop
 @section('content')
 
                     @if (session('status'))
@@ -7,8 +11,6 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    <div>
-                        @auth Welcome {{Auth::user()->first_name}} @endauth </div>
                     <div style="grid-area: content; margin-top: 20px">
                     Hey guys here’s how this works:
                     <p>Register for an account with the group ID number that I assigned at the start of class. You need this number to register for the site! </p>

@@ -7,6 +7,7 @@ use App\Question;
 use App\BookQuestion;
 use App\Section;
 use Validator;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -196,7 +197,7 @@ class AssignmentController extends Controller
         }
         
         $assignmentUserId = DB::table('assignment_user')->insertGetId(
-            ['assignment_id' => $assignment->id, 'user_id'=>Auth::user()->id, 'score'=>90]
+            ['assignment_id' => $assignment->id, 'user_id'=>Auth::user()->id, 'score'=>90, 'created_at'=>Carbon::now(), 'updated_at'=>Carbon::now()]
         );
         $assignment = Assignment::find($request->assignment);
         $sections = $assignment->sections;
@@ -205,7 +206,7 @@ class AssignmentController extends Controller
             $questions = $section->questions;
             foreach($questions as $qKey =>$question){
                 DB::table('user_answers')->insert(
-                ['assignment_user_id' =>  $assignmentUserId, 'book_question_id'=>$question->id, 'user_answer'=>$studentAnswers[$key][$qKey+1]]
+                ['assignment_user_id' =>  $assignmentUserId, 'book_question_id'=>$question->id, 'user_answer'=>$studentAnswers[$key][$qKey+1], 'created_at'=>Carbon::now(), 'updated_at'=>Carbon::now()]
                 );
             }
         }

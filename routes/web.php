@@ -27,7 +27,7 @@ Route::group(['prefix'=>'admin', 'middleware'=>['role:administrator']], function
     Route::get("/dashboard", 'AdminController@dashboard')->name('admin.dashboard');
     Route::get('assignments/insert', 'AssignmentController@insert')->name('assignments.insert');
     Route::get('assignments/edit', 'AssignmentController@edit')->name('assignments.edit');
-    Route::resource("/users", 'UserController');
+    Route::name('admin')->resource("/users", 'UserController');
     Route::resource("/permissions", 'PermissionController');
     Route::resource("/roles", 'RoleController')->except('destroy');
 });

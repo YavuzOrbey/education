@@ -17,6 +17,11 @@
             <li><a href="{{route('book_questions.create')}}">Create New Book Question</a></li>
             <li><a href="{{route('questions.create')}}">Create New Question</a></li>
         </ul>
+
+        <p class="menu-label">Users</p>
+        <ul class="menu-list">
+            <li><a href="{{route('admin.users.index')}}">List</a></li>
+        </ul>
     </aside>
     
 </div>

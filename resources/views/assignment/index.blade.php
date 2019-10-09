@@ -18,7 +18,7 @@
                 @if(Auth::user() && Auth::user()->assignments()->where('assignments.id', $assignment->id)->exists())
                     <i class='far fa-check-square'></i><a href="{{ route('assignments.results', $assignment->id) }}">Results</a>
 
-                 @elseif (Auth::user())
+                @elseif (Auth::user())
                 <a href="{{route('assignments.show', $assignment)}}">Submit</a> 
                 @endif
                 </span>

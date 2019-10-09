@@ -2,7 +2,7 @@
   <body>
 
     @include('inc._nav')
-    <div class="banner"></div>
+    <div class="banner">@yield('welcome')</div>
     <div class="container">
 
       @include('inc._messages')
