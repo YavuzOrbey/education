@@ -216,6 +216,7 @@ class AssignmentController extends Controller
             }
         }
         $score = ($numRight/(float) $total) * 100;
+       // dd($numRight . " out of " . $total);
         DB::table('assignment_user')->where('id', $assignmentUserId)->update(['score' =>$score]);
         return redirect()->route('assignments.results', ['assignment'=>$assignment]);
     }
