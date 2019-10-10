@@ -202,11 +202,12 @@ class AssignmentController extends Controller
         $assignment = Assignment::find($request->assignment);
         $sections = $assignment->sections;
         $studentAnswers = $request->studentAnswers;
-        $numRight = 0; $total = 0;
+        $numRight = 0; $total = 0; $arr = array();
         foreach ($sections as $key=>$section) {
-            $questions = $section->questions;
+            $questions = $section->questions()->orderBy('pivot_sequence', 'asc')->get();
             $total +=count($questions);
             foreach($questions as $qKey =>$question){
+                
                 if($question->correct_answer ==$studentAnswers[$key][$qKey+1]){
                     $numRight++;
                 }
@@ -234,7 +235,7 @@ class AssignmentController extends Controller
         $studentAnswers = array();
         foreach ($sections as $key=>$section) {
             $studentAnswers[$key] = array();
-            $questions = $section->questions;
+            $questions = $section->questions()->orderBy('pivot_sequence', 'asc')->get();
             foreach($questions as $qKey =>$question){
                 if(Auth::user())
                 $completedQuestion = DB::table('user_answers')->where('book_question_id', $question->id)->where('assignment_user_id',$completedAssignment->id)->first();
