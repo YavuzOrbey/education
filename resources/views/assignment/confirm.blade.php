@@ -6,8 +6,9 @@
     <p>Check your answers then scroll below and click the red Confirm button!</p>
     <h2>{{$assignment->name}}</h2>
     <ul class="list-group">
-        <form action="{{route('assignments.process', ['assignment'=>$assignment, 'studentAnswers'=>$studentAnswers])}}" method="POST">
+        <form action="{{route('assignments.process', ['assignment'=>$assignment])}}" method="POST">
             @csrf
+            <input type="hidden" style="display:none" name="studentAnswers" value="{{json_encode($studentAnswers)}}">
                 @foreach($assignment->sections as $section)
                 <h5>{{$section->subject->name}}</h5>
                     @foreach($section->questions as $question)

@@ -68738,7 +68738,7 @@ function (_React$Component) {
       answers: Array(),
       counter: 0,
       markedQuestions: Array(),
-      questions: [],
+      questions: {},
       buttons: ["", "NEXT"],
       realContent: {}
     };
@@ -68750,15 +68750,15 @@ function (_React$Component) {
     value: function componentDidMount() {
       var _this2 = this;
 
-      var subject = this.props.match.params.subject;
+      var quiz = this.props.match.params.quiz;
       this.setState({
-        subject: subject
+        quiz: quiz
       });
       var relatedContent = [],
           realContent = {};
-      axios__WEBPACK_IMPORTED_MODULE_4___default.a.get("/api/questions/".concat(subject)).then(function (response) {
+      axios__WEBPACK_IMPORTED_MODULE_4___default.a.get("/api/quizzes/".concat(quiz)).then(function (response) {
         var questions = response.data;
-        questions.forEach(function (question) {
+        Array.isArray(questions) ? questions.forEach(function (question) {
           question.question_text = _this2.convertStringtoMath(question.question_text);
 
           if (!relatedContent.includes(question.related_content) && question.related_content) {
@@ -68775,7 +68775,7 @@ function (_React$Component) {
 
             question.answer_choices = answerChoices;
           }
-        });
+        }) : "";
         relatedContent.forEach(function (contentId) {
           axios__WEBPACK_IMPORTED_MODULE_4___default.a.get("/api/content/".concat(contentId)).then(function (response) {
             return realContent[contentId] = response.data[0].content;
@@ -68784,7 +68784,7 @@ function (_React$Component) {
 
         _this2.setState({
           questions: questions,
-          currentQuestion: questions[0],
+          currentQuestion: Array.isArray(questions) ? questions[0] : null,
           realContent: realContent
         });
       }, function (error) {
@@ -68808,8 +68808,8 @@ function (_React$Component) {
           markedQuestions = _this$state3.markedQuestions,
           buttons = _this$state3.buttons,
           realContent = _this$state3.realContent;
-      var marked = markedQuestions.includes(currentQuestion.number);
-      return react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_QuestionBlock__WEBPACK_IMPORTED_MODULE_1__["default"], {
+      var marked = currentQuestion ? markedQuestions.includes(currentQuestion.number) : false;
+      return Array.isArray(questions) || questions.length ? react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_QuestionBlock__WEBPACK_IMPORTED_MODULE_1__["default"], {
         handleClick: handleClick,
         handleAnswerClick: handleAnswerClick,
         markQuestion: markQuestion,
@@ -68821,7 +68821,7 @@ function (_React$Component) {
       }), react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_QuestionSidebar__WEBPACK_IMPORTED_MODULE_2__["default"], {
         onClick: sideBarClick,
         questions: questions
-      }));
+      })) : null;
     }
   }]);
 

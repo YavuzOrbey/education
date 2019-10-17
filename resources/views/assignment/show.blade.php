@@ -15,12 +15,6 @@
             @foreach($section->questions as $question)
             <li class="list-group-item">
               <span class="q-num">{{$loop->index + 1 . ". "}}</span>
-                {{-- <ul>
-                    <li>A</li>
-                    <li>B</li>
-                    <li>C</li>
-                    <li>D</li>
-                </ul> --}}
               <label class="bubble-container">A
                 <input type="radio" name="answers[{{$loop->parent->index}}][{{$loop->index+1}}]" value="1">
                 <span class="checkmark"></span>

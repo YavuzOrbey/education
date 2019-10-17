@@ -50,7 +50,7 @@ class User extends Authenticatable
         return $this->belongsToMany('App\Question');
     }
     public function assignments(){
-        return $this->belongsToMany('App\Assignment');
+        return $this->belongsToMany('App\Assignment')->withPivot('score');
     }
 
     public function group()

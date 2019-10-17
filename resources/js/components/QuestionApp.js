@@ -14,7 +14,7 @@ class QuestionApp extends React.Component {
             answers: Array(),
             counter: 0,
             markedQuestions: Array(),
-            questions: [],
+            questions: {},
             buttons: ["", "NEXT"],
             realContent: {}
         };
@@ -40,35 +40,40 @@ class QuestionApp extends React.Component {
         axios.get(`/api/quizzes/${quiz}`).then(
             response => {
                 let questions = response.data;
-                questions.forEach(question => {
-                    question.question_text = this.convertStringtoMath(
-                        question.question_text
-                    );
-                    if (
-                        !relatedContent.includes(question.related_content) &&
-                        question.related_content
-                    ) {
-                        relatedContent.push(question.related_content);
-                        relatedContent.sort();
-                    }
-                    if (question.answer_choices) {
-                        let answerChoices = {};
-                        for (
-                            let index = 0;
-                            index < Object.keys(question.answer_choices).length;
-                            index++
-                        ) {
-                            answerChoices[
-                                String.fromCharCode(65 + index)
-                            ] = this.convertStringtoMath(
-                                question.answer_choices[
-                                    String.fromCharCode(65 + index)
-                                ]
-                            );
-                        }
-                        question.answer_choices = answerChoices;
-                    }
-                });
+                Array.isArray(questions)
+                    ? questions.forEach(question => {
+                          question.question_text = this.convertStringtoMath(
+                              question.question_text
+                          );
+                          if (
+                              !relatedContent.includes(
+                                  question.related_content
+                              ) &&
+                              question.related_content
+                          ) {
+                              relatedContent.push(question.related_content);
+                              relatedContent.sort();
+                          }
+                          if (question.answer_choices) {
+                              let answerChoices = {};
+                              for (
+                                  let index = 0;
+                                  index <
+                                  Object.keys(question.answer_choices).length;
+                                  index++
+                              ) {
+                                  answerChoices[
+                                      String.fromCharCode(65 + index)
+                                  ] = this.convertStringtoMath(
+                                      question.answer_choices[
+                                          String.fromCharCode(65 + index)
+                                      ]
+                                  );
+                              }
+                              question.answer_choices = answerChoices;
+                          }
+                      })
+                    : "";
 
                 relatedContent.forEach(contentId => {
                     axios
@@ -81,7 +86,9 @@ class QuestionApp extends React.Component {
                 });
                 this.setState({
                     questions: questions,
-                    currentQuestion: questions[0],
+                    currentQuestion: Array.isArray(questions)
+                        ? questions[0]
+                        : null,
                     realContent: realContent
                 });
             },
@@ -177,8 +184,10 @@ class QuestionApp extends React.Component {
             buttons,
             realContent
         } = this.state;
-        let marked = markedQuestions.includes(currentQuestion.number);
-        return (
+        let marked = currentQuestion
+            ? markedQuestions.includes(currentQuestion.number)
+            : false;
+        return Array.isArray(questions) || questions.length ? (
             <div>
                 <QuestionBlock
                     handleClick={handleClick}
@@ -193,7 +202,7 @@ class QuestionApp extends React.Component {
 
                 <QuestionSidebar onClick={sideBarClick} questions={questions} />
             </div>
-        );
+        ) : null;
     }
 }
 QuestionApp.propTypes = {};

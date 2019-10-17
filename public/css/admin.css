@@ -26,4 +26,12 @@
     height: calc(100% - 60px);
     position: relative;
     left: 200px;
+    overflow: auto;
+}
+table.admin-table td {
+    width: 150px;
+}
+table.admin-table td,
+table.admin-table th {
+    text-align: left;
 }

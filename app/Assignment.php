@@ -17,8 +17,7 @@ class Assignment extends Model
         return $this->belongsToMany('App\Subject', 'sections');
     }
     public function users(){
-        return $this->belongsToMany('App\User');
-        //test 
+        return $this->belongsToMany('App\User')->withPivot('score');
     }
 
     public function groups(){

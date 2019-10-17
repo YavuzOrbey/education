@@ -46,7 +46,7 @@ class GroupController extends Controller
      */
     public function show(Group $group)
     {
-        //
+        return view('admin.groups.show', compact('group'));
     }
 
     /**

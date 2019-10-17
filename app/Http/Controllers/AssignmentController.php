@@ -191,9 +191,8 @@ class AssignmentController extends Controller
     }
     public function process(Request $request){
         $assignment = Assignment::find($request->assignment);
-
         if(!Auth::user() || time() > strtotime($assignment->due_date) ){
-            abort(401);
+            abort(401, 'Something went wrong');
         }
         
         $assignmentUserId = DB::table('assignment_user')->insertGetId(
