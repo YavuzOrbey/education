@@ -200,7 +200,7 @@ class AssignmentController extends Controller
         );
         $assignment = Assignment::find($request->assignment);
         $sections = $assignment->sections;
-        $studentAnswers = $request->studentAnswers;
+        $studentAnswers = json_decode($request->studentAnswers, true);
         $numRight = 0; $total = 0; $arr = array();
         foreach ($sections as $key=>$section) {
             $questions = $section->questions()->orderBy('pivot_sequence', 'asc')->get();
