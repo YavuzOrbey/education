@@ -365,7 +365,7 @@ td {
     float: right;
 }
 .pdf-link {
-    color: red;
+    color: #e03838;
     font-size: 26px;
 }
 .far.fa-check-square {
@@ -376,7 +376,7 @@ td {
     margin-right: 10px;
 }
 .due-date {
-    color: red;
+    color: #e03838;
     font-size: 18px;
     display: inline-block;
     margin-left: 30px;
@@ -384,4 +384,14 @@ td {
 .result {
     margin-left: 10px;
     display: inline-block;
+}
+.result a {
+    border: 3px solid #e03838;
+    padding: 5px;
+    text-decoration: none;
+    color: black;
+}
+.result a:hover {
+    background: #e03838;
+    color: white;
 }

@@ -78496,7 +78496,6 @@ function (_React$Component) {
       obj.id = _this.state.quiz;
       obj.answers = _this.state.answers;
       submit ? axios__WEBPACK_IMPORTED_MODULE_4___default.a.post("/submission", obj).then(function (response) {
-        console.log(response.data);
         response.data ? _this.setState({
           mode: 0,
           results: response.data
@@ -78552,8 +78551,6 @@ function (_React$Component) {
       _this.setState({
         answers: answers
       });
-
-      console.log(answers);
     });
 
     _defineProperty(_assertThisInitialized(_this), "markQuestion", function (number) {
@@ -78694,6 +78691,7 @@ function (_React$Component) {
       }), react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_QuestionSidebar__WEBPACK_IMPORTED_MODULE_2__["default"], {
         onClick: sideBarClick,
         questions: questions,
+        markedQuestions: markedQuestions,
         mode: mode
       })) : null;
     }
@@ -78901,11 +78899,16 @@ var QuestionNav = function QuestionNav(_ref) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @fortawesome/react-fontawesome */ "./node_modules/@fortawesome/react-fontawesome/index.es.js");
+/* harmony import */ var _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @fortawesome/free-solid-svg-icons */ "./node_modules/@fortawesome/free-solid-svg-icons/index.es.js");
+
+
 
 
 var QuestionSidebar = function QuestionSidebar(_ref) {
   var questions = _ref.questions,
-      _onClick = _ref.onClick;
+      _onClick = _ref.onClick,
+      markedQuestions = _ref.markedQuestions;
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "question-sidebar"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
@@ -78919,7 +78922,13 @@ var QuestionSidebar = function QuestionSidebar(_ref) {
       },
       key: i,
       className: "question"
-    }, question.number);
+    }, question.number, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, markedQuestions.includes(question.number) ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_1__["FontAwesomeIcon"], {
+      icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_2__["faEye"],
+      style: {
+        color: "red",
+        textAlign: "right"
+      }
+    }) : ""));
   })));
 };
 

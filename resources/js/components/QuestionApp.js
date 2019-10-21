@@ -111,7 +111,6 @@ class QuestionApp extends React.Component {
             ? axios
                   .post("/submission", obj)
                   .then(response => {
-                      console.log(response.data);
                       response.data
                           ? this.setState({ mode: 0, results: response.data }) //(window.location.href = "/")
                           : console.log("false");
@@ -151,7 +150,6 @@ class QuestionApp extends React.Component {
         const answers = [...this.state.answers];
         answers[number - 1] = answer;
         this.setState({ answers });
-        console.log(answers);
     };
 
     markQuestion = number => {
