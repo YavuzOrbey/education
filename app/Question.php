@@ -22,4 +22,8 @@ class Question extends Model
     public function assignments(){
         return $this->belongsToMany('App\Assignment');
     }
+
+    public function quizzes(){
+        return $this->belongsToMany('App\Quiz', 'quiz_questions')->withPivot('sequence');
+    }
 }

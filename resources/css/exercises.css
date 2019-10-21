@@ -66,11 +66,24 @@ body > .container {
 
 .question-choice {
     display: grid;
-    grid-template-columns: 1fr 12fr 1fr;
+    grid-template-columns: 1fr 1fr 22fr 1fr;
     cursor: pointer;
 }
 .question-choice:hover {
     background: rgba(240, 240, 240, 0.7);
+}
+.correct-answer-icon {
+    height: 34px;
+    width: 34px;
+    line-height: 30px;
+    text-align: center;
+    vertical-align: center;
+    cursor: pointer;
+    align-self: center;
+    justify-self: center;
+    font-size: 16px;
+    font-weight: 400;
+    margin: 0;
 }
 .answer-letter-choice.read {
     height: 34px;

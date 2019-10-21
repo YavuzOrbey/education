@@ -9,7 +9,7 @@
 @foreach($subjects as $subject)
 
     <div class="quiz">
-        <a href="/exercises/{{$subject->id}}">
+        <a href="/quizzes/{{$subject->id}}">
             <div class="quiz-header">{{$subject->name}}</div>
             <div class='quiz-icon'>
                 @if($subject->icon)<i class="{{$subject->icon}}"></i>

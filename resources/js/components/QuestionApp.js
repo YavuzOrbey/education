@@ -11,12 +11,14 @@ class QuestionApp extends React.Component {
         super(props);
         this.state = {
             currentQuestion: {},
+            mode: 1,
             answers: Array(),
             counter: 0,
             markedQuestions: Array(),
             questions: {},
             buttons: ["", "NEXT"],
-            realContent: {}
+            realContent: {},
+            results: null
         };
     }
 
@@ -33,47 +35,48 @@ class QuestionApp extends React.Component {
         });
     };
     componentDidMount() {
-        const { quiz } = this.props.match.params;
+        const quiz = this.props.match.params.subject;
         this.setState({ quiz });
         let relatedContent = [],
             realContent = {};
         axios.get(`/api/quizzes/${quiz}`).then(
             response => {
                 let questions = response.data;
-                Array.isArray(questions)
-                    ? questions.forEach(question => {
-                          question.question_text = this.convertStringtoMath(
-                              question.question_text
-                          );
-                          if (
-                              !relatedContent.includes(
-                                  question.related_content
-                              ) &&
-                              question.related_content
-                          ) {
-                              relatedContent.push(question.related_content);
-                              relatedContent.sort();
-                          }
-                          if (question.answer_choices) {
-                              let answerChoices = {};
-                              for (
-                                  let index = 0;
-                                  index <
-                                  Object.keys(question.answer_choices).length;
-                                  index++
-                              ) {
-                                  answerChoices[
-                                      String.fromCharCode(65 + index)
-                                  ] = this.convertStringtoMath(
-                                      question.answer_choices[
-                                          String.fromCharCode(65 + index)
-                                      ]
-                                  );
-                              }
-                              question.answer_choices = answerChoices;
-                          }
-                      })
-                    : "";
+
+                if (Array.isArray(questions)) {
+                    questions.forEach(question => {
+                        question.question_text = this.convertStringtoMath(
+                            question.question_text
+                        );
+                        if (
+                            !relatedContent.includes(
+                                question.related_content
+                            ) &&
+                            question.related_content
+                        ) {
+                            relatedContent.push(question.related_content);
+                            relatedContent.sort();
+                        }
+                        if (question.answer_choices) {
+                            let answerChoices = {};
+                            for (
+                                let index = 0;
+                                index <
+                                Object.keys(question.answer_choices).length;
+                                index++
+                            ) {
+                                answerChoices[
+                                    String.fromCharCode(65 + index)
+                                ] = this.convertStringtoMath(
+                                    question.answer_choices[
+                                        String.fromCharCode(65 + index)
+                                    ]
+                                );
+                            }
+                            question.answer_choices = answerChoices;
+                        }
+                    });
+                }
 
                 relatedContent.forEach(contentId => {
                     axios
@@ -84,12 +87,14 @@ class QuestionApp extends React.Component {
                                     response.data[0].content)
                         );
                 });
+                let answers = Array(questions.length);
                 this.setState({
-                    questions: questions,
+                    questions,
                     currentQuestion: Array.isArray(questions)
                         ? questions[0]
                         : null,
-                    realContent: realContent
+                    realContent,
+                    answers
                 });
             },
             error => {
@@ -100,15 +105,19 @@ class QuestionApp extends React.Component {
     submitAnswers = () => {
         let submit = window.confirm("Submit Answers?");
         let obj = {};
-        obj.subject = this.state.subject;
+        obj.id = this.state.quiz;
         obj.answers = this.state.answers;
         submit
             ? axios
                   .post("/submission", obj)
                   .then(response => {
+                      console.log(response.data);
                       response.data
-                          ? console.log(response) //(window.location.href = "/")
+                          ? this.setState({ mode: 0, results: response.data }) //(window.location.href = "/")
                           : console.log("false");
+                      this.setState({
+                          currentQuestion: this.state.questions[0]
+                      });
                   })
                   .catch(error => {
                       console.log(error.message);
@@ -116,7 +125,7 @@ class QuestionApp extends React.Component {
             : "";
     };
     handleClick = j => {
-        let { counter, questions, buttons } = this.state;
+        let { counter, questions, buttons, mode, results } = this.state;
         let { submitAnswers } = this;
         j ? counter++ : counter--;
         j === 2 ? submitAnswers() : "";
@@ -130,6 +139,7 @@ class QuestionApp extends React.Component {
             buttons = ["BACK", "NEXT", buttons[2]];
         }
         let currentQuestion = questions[counter];
+        mode ? "" : (currentQuestion.result = results[counter]);
         this.setState({
             currentQuestion,
             counter,
@@ -141,6 +151,7 @@ class QuestionApp extends React.Component {
         const answers = [...this.state.answers];
         answers[number - 1] = answer;
         this.setState({ answers });
+        console.log(answers);
     };
 
     markQuestion = number => {
@@ -182,12 +193,14 @@ class QuestionApp extends React.Component {
             questions,
             markedQuestions,
             buttons,
-            realContent
+            realContent,
+            mode,
+            results
         } = this.state;
         let marked = currentQuestion
             ? markedQuestions.includes(currentQuestion.number)
             : false;
-        return Array.isArray(questions) || questions.length ? (
+        return Array.isArray(questions) && questions.length ? (
             <div>
                 <QuestionBlock
                     handleClick={handleClick}
@@ -198,9 +211,15 @@ class QuestionApp extends React.Component {
                     marked={marked}
                     answers={answers}
                     buttons={buttons}
+                    mode={mode}
                 ></QuestionBlock>
 
-                <QuestionSidebar onClick={sideBarClick} questions={questions} />
+                <QuestionSidebar
+                    onClick={sideBarClick}
+                    questions={questions}
+                    markedQuestions={markedQuestions}
+                    mode={mode}
+                />
             </div>
         ) : null;
     }

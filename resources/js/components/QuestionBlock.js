@@ -6,16 +6,19 @@ import Question from "./Question";
 import PropTypes from "prop-types";
 import MathJax from "react-mathjax2";
 import "../../css/exercises.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCheck } from "@fortawesome/free-solid-svg-icons";
+import { faTimes } from "@fortawesome/free-solid-svg-icons";
 const QuestionBlock = ({
     handleClick,
     handleAnswerClick,
     markQuestion,
     marked,
-    questions,
     currentQuestion,
     realContent,
     answers,
-    buttons
+    buttons,
+    mode
 }) => {
     return (
         <div className="question-block read">
@@ -42,6 +45,7 @@ const QuestionBlock = ({
                     <div className="question-choices">
                         <AnswerChoices
                             choices={currentQuestion.answer_choices}
+                            result={currentQuestion.result}
                             handleAnswerClick={letter =>
                                 handleAnswerClick(
                                     currentQuestion.number,
@@ -49,9 +53,10 @@ const QuestionBlock = ({
                                 )
                             }
                             selected={answers[currentQuestion.number - 1]}
+                            mode={mode}
                         />
                     </div>
-                ) : (
+                ) : mode ? (
                     <div className="grid-input">
                         <input
                             onChange={e =>
@@ -63,6 +68,28 @@ const QuestionBlock = ({
                             type="number"
                         ></input>
                     </div>
+                ) : currentQuestion.result.correct_answer ===
+                  currentQuestion.result.response ? (
+                    <div>
+                        <FontAwesomeIcon
+                            icon={faCheck}
+                            style={{ color: green }}
+                        />
+                        <div className="grid-input">
+                            <input type="number" disabled></input>
+                        </div>
+                    </div>
+                ) : (
+                    <div>
+                        <FontAwesomeIcon
+                            icon={faTimes}
+                            style={{ color: "red" }}
+                        />
+                        <div className="grid-input">
+                            <input type="number" disabled></input>
+                        </div>
+                        {currentQuestion.result.correct_answer}
+                    </div>
                 )}
             </MathJax.Context>
             <QuestionNav
@@ -72,6 +99,7 @@ const QuestionBlock = ({
                 markQuestion={() => markQuestion(currentQuestion.number)}
                 buttons={buttons}
                 marked={marked}
+                mode={mode}
             />
         </div>
     );

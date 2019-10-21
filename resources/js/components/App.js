@@ -12,7 +12,7 @@ class App extends Component {
         return (
             <BrowserRouter>
                 <Switch>
-                    <Route path="/exercises/:subject" component={QuestionApp} />
+                    <Route path="/quizzes/:subject" component={QuestionApp} />
                     <Route
                         exact
                         path="/questions/create"
