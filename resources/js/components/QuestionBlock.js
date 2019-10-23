@@ -66,17 +66,24 @@ const QuestionBlock = ({
                                 )
                             }
                             type="number"
+                            placeholder={answers[currentQuestion.number - 1]}
                         ></input>
                     </div>
-                ) : currentQuestion.result.correct_answer ===
+                ) : currentQuestion.result.correct_answer ==
                   currentQuestion.result.response ? (
                     <div>
                         <FontAwesomeIcon
                             icon={faCheck}
-                            style={{ color: green }}
+                            style={{ color: "green" }}
                         />
                         <div className="grid-input">
-                            <input type="number" disabled></input>
+                            <input
+                                type="number"
+                                disabled
+                                placeholder={
+                                    answers[currentQuestion.number - 1]
+                                }
+                            ></input>
                         </div>
                     </div>
                 ) : (
@@ -86,7 +93,13 @@ const QuestionBlock = ({
                             style={{ color: "red" }}
                         />
                         <div className="grid-input">
-                            <input type="number" disabled></input>
+                            <input
+                                type="number"
+                                disabled
+                                placeholder={
+                                    answers[currentQuestion.number - 1]
+                                }
+                            ></input>
                         </div>
                         {currentQuestion.result.correct_answer}
                     </div>

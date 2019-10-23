@@ -17,6 +17,7 @@ class QuestionApp extends React.Component {
             markedQuestions: Array(),
             questions: {},
             buttons: ["", "NEXT"],
+            timer: null,
             realContent: {},
             results: null
         };
@@ -34,8 +35,26 @@ class QuestionApp extends React.Component {
             );
         });
     };
+    startTimer() {
+        const ONE_SECOND = 1000,
+            ONE_MINUTE = ONE_SECOND * 60;
+        let minutes = 0.1,
+            endTime = ONE_MINUTE * minutes;
+        let { submitAnswers, endTimer } = this;
+        let timer = setInterval(() => {
+            endTime = endTime - ONE_SECOND;
+            if (endTime < 0) {
+                submitAnswers(true);
+                endTimer(timer);
+            }
+        }, ONE_SECOND);
+    }
+    endTimer(timer) {
+        clearInterval(timer);
+    }
     componentDidMount() {
         const quiz = this.props.match.params.subject;
+        this.startTimer();
         this.setState({ quiz });
         let relatedContent = [],
             realContent = {};
@@ -102,8 +121,8 @@ class QuestionApp extends React.Component {
             }
         );
     }
-    submitAnswers = () => {
-        let submit = window.confirm("Submit Answers?");
+    submitAnswers = (timesUp = false) => {
+        let submit = timesUp ? true : window.confirm("Submit Answers?");
         let obj = {};
         obj.id = this.state.quiz;
         obj.answers = this.state.answers;
@@ -111,25 +130,36 @@ class QuestionApp extends React.Component {
             ? axios
                   .post("/submission", obj)
                   .then(response => {
-                      response.data
-                          ? this.setState({ mode: 0, results: response.data }) //(window.location.href = "/")
-                          : console.log("false");
-                      this.setState({
-                          currentQuestion: this.state.questions[0]
-                      });
+                      let { questions } = this.state;
+                      if (response.data) {
+                          let updatedQuestions = questions.map(
+                              (question, i) => {
+                                  let ques = {
+                                      ...question,
+                                      result: response.data[i]
+                                  };
+                                  return ques;
+                              }
+                          );
+                          this.setState(
+                              state => ({
+                                  mode: 0,
+                                  results: response.data,
+                                  counter: 0,
+                                  questions: updatedQuestions,
+                                  currentQuestion: updatedQuestions[0]
+                              }),
+                              state => this.changeNavButtons(this.state)
+                          );
+                      }
                   })
                   .catch(error => {
                       console.log(error.message);
                   })
             : "";
     };
-    handleClick = j => {
-        let { counter, questions, buttons, mode, results } = this.state;
-        let { submitAnswers } = this;
-        j ? counter++ : counter--;
-        j === 2 ? submitAnswers() : "";
-        if (counter > questions.length - 1 || counter < 0) return;
 
+    changeNavButtons = ({ counter, buttons, questions }) => {
         if (counter === 0) {
             buttons = ["", "NEXT", buttons[2]];
         } else if (counter === questions.length - 1) {
@@ -137,13 +167,22 @@ class QuestionApp extends React.Component {
         } else {
             buttons = ["BACK", "NEXT", buttons[2]];
         }
+        this.setState({ buttons });
+    };
+    handleClick = j => {
+        let { counter, questions, mode, results } = this.state;
+        let { submitAnswers, changeNavButtons } = this;
+        j ? counter++ : counter--;
+        if (j === 2) {
+            submitAnswers();
+            return;
+        }
+        if (counter > questions.length - 1 || counter < 0) return;
         let currentQuestion = questions[counter];
         mode ? "" : (currentQuestion.result = results[counter]);
-        this.setState({
-            currentQuestion,
-            counter,
-            buttons
-        });
+        this.setState({ counter, currentQuestion }, () =>
+            changeNavButtons(this.state)
+        );
     };
 
     handleAnswerClick = (number, answer) => {
@@ -166,17 +205,11 @@ class QuestionApp extends React.Component {
         this.setState({ markedQuestions, buttons });
     };
     sideBarClick = counter => {
-        let { questions, buttons } = this.state;
+        let { questions } = this.state;
         let currentQuestion = questions[counter];
-
-        if (counter === 0) {
-            buttons = ["", "NEXT"];
-        } else if (counter === questions.length - 1) {
-            buttons = ["BACK", "FINISH"];
-        } else {
-            buttons = ["BACK", "NEXT"];
-        }
-        this.setState({ currentQuestion, counter, buttons });
+        this.setState({ counter, currentQuestion }, () =>
+            this.changeNavButtons(this.state)
+        );
     };
     render() {
         const {
@@ -217,6 +250,7 @@ class QuestionApp extends React.Component {
                     questions={questions}
                     markedQuestions={markedQuestions}
                     mode={mode}
+                    results={results}
                 />
             </div>
         ) : null;

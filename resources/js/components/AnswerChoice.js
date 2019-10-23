@@ -6,7 +6,7 @@ import { faTimes } from "@fortawesome/free-solid-svg-icons";
 const AnswerChoice = ({
     num,
     letter = "",
-    text = "",
+    text = {},
     handleAnswerClick = f => f,
     selected = false,
     input = false,

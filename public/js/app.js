@@ -15879,7 +15879,7 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 
 
 // module
-exports.push([module.i, "body {\r\n    margin: 0;\r\n    padding: 0;\r\n    font-family: -apple-system, BlinkMacSystemFont, \"Segoe UI\", \"Roboto\",\r\n        \"Oxygen\", \"Ubuntu\", \"Cantarell\", \"Fira Sans\", \"Droid Sans\",\r\n        \"Helvetica Neue\", sans-serif;\r\n    -webkit-font-smoothing: antialiased;\r\n    -moz-osx-font-smoothing: grayscale;\r\n    background: rgba(240, 240, 240, 1);\r\n}\r\n\r\ncode {\r\n    font-family: source-code-pro, Menlo, Monaco, Consolas, \"Courier New\",\r\n        monospace;\r\n}\r\nbody > .container {\r\n    display: block;\r\n    overflow: hidden;\r\n}\r\n\r\n.question-block.read {\r\n    display: grid;\r\n    grid-area: content;\r\n    grid-template-columns: auto;\r\n    grid-template-rows: 2fr 4fr 1fr;\r\n    height: 600px;\r\n    padding: 20px;\r\n    align-content: center;\r\n    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);\r\n    background: white;\r\n    position: relative;\r\n}\r\n.question-proper {\r\n    display: grid;\r\n    grid-template-columns: 1fr 11fr;\r\n}\r\n\r\n.question-number {\r\n    background: #983532;\r\n    width: 50px;\r\n    height: 50px;\r\n    color: white;\r\n    font-size: 20px;\r\n    text-align: center;\r\n    vertical-align: center;\r\n    line-height: 50px;\r\n    padding: 5px;\r\n}\r\n@media (max-width: 430px) {\r\n    .question-number {\r\n        width: 100%;\r\n    }\r\n    .question-proper {\r\n        display: block;\r\n    }\r\n}\r\n.question-text.read {\r\n    font-size: 24px;\r\n}\r\n\r\n.question-choices {\r\n    display: grid;\r\n    grid-template-columns: 1fr;\r\n    grid-template-rows: repeat(4, 1fr);\r\n}\r\n\r\n.question-choice {\r\n    display: grid;\r\n    grid-template-columns: 1fr 1fr 22fr 1fr;\r\n    cursor: pointer;\r\n}\r\n.question-choice:hover {\r\n    background: rgba(240, 240, 240, 0.7);\r\n}\r\n.correct-answer-icon {\r\n    height: 34px;\r\n    width: 34px;\r\n    line-height: 30px;\r\n    text-align: center;\r\n    vertical-align: center;\r\n    cursor: pointer;\r\n    align-self: center;\r\n    justify-self: center;\r\n    font-size: 16px;\r\n    font-weight: 400;\r\n    margin: 0;\r\n}\r\n.answer-letter-choice.read {\r\n    height: 34px;\r\n    width: 34px;\r\n    border: 2px solid #325399;\r\n    line-height: 30px;\r\n    text-align: center;\r\n    vertical-align: center;\r\n    cursor: pointer;\r\n    align-self: center;\r\n    justify-self: center;\r\n    font-size: 16px;\r\n    font-weight: 400;\r\n    margin: 0;\r\n}\r\n\r\n.question-choice-text {\r\n    align-self: center;\r\n    margin-left: 20px;\r\n    font-size: 16px;\r\n    font-weight: 600;\r\n}\r\n\r\n.question-nav {\r\n    display: grid;\r\n    grid-template-columns: repeat(3, 1fr);\r\n    border-top: 2px solid black;\r\n    border-bottom: 2px solid black;\r\n}\r\n.nav-button {\r\n    border: none;\r\n    border-right: 1px solid gray;\r\n    cursor: pointer;\r\n}\r\n.nav-button:focus {\r\n    outline: none;\r\n}\r\n.nav-button:hover {\r\n    background: rgba(0, 0, 0, 0.4);\r\n    cursor: pointer;\r\n}\r\n.selected {\r\n    background: rgba(0, 0, 0, 0.8);\r\n    transition: background 0.3s;\r\n    -webkit-transition: background 0.3s; /* Safari prior 6.1 */\r\n    color: white;\r\n}\r\n.marked {\r\n    position: absolute;\r\n    right: 10px;\r\n    top: 0;\r\n    color: red;\r\n    font-size: 20px;\r\n}\r\n.question-sidebar {\r\n    position: absolute;\r\n    width: 200px;\r\n    top: 106px;\r\n    right: 0;\r\n    bottom: 0;\r\n    overflow: auto;\r\n    background: #fff;\r\n    border-left: 2px solid #ddd;\r\n    cursor: pointer;\r\n}\r\n.question-list > .question {\r\n    padding: 10px;\r\n    text-align: center;\r\n    border-bottom: 1px solid grey;\r\n}\r\n.question-list > .question:hover {\r\n    background: #eee;\r\n}\r\n.related-content {\r\n    position: absolute;\r\n    width: 500px;\r\n    height: 600px;\r\n    overflow: auto;\r\n    left: -500px;\r\n    padding: 10px;\r\n    border-right: 1px solid #afafaf;\r\n    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.05);\r\n}\r\n@media only screen and (max-width: 499px) {\r\n    .container {\r\n        padding: 0;\r\n        margin: 0;\r\n    }\r\n}\r\n@media only screen and (max-width: 500px) {\r\n    #app > .container {\r\n        width: 100vw;\r\n        display: block;\r\n        /* grid-template-columns: 10% auto 10%;\r\n        /*     grid-template-rows: 10% auto 10%; */\r\n        /* grid-template-areas:\r\n            \". . .\"\r\n            \". content .\"\r\n            \". . .\"; */\r\n    }\r\n}\r\n", ""]);
+exports.push([module.i, "body {\r\n    margin: 0;\r\n    padding: 0;\r\n    font-family: -apple-system, BlinkMacSystemFont, \"Segoe UI\", \"Roboto\",\r\n        \"Oxygen\", \"Ubuntu\", \"Cantarell\", \"Fira Sans\", \"Droid Sans\",\r\n        \"Helvetica Neue\", sans-serif;\r\n    -webkit-font-smoothing: antialiased;\r\n    -moz-osx-font-smoothing: grayscale;\r\n    background: rgba(240, 240, 240, 1);\r\n}\r\n\r\ncode {\r\n    font-family: source-code-pro, Menlo, Monaco, Consolas, \"Courier New\",\r\n        monospace;\r\n}\r\nbody > .container {\r\n    display: block;\r\n    overflow: hidden;\r\n}\r\n\r\n.question-block.read {\r\n    display: grid;\r\n    grid-area: content;\r\n    grid-template-columns: auto;\r\n    grid-template-rows: 2fr 4fr 1fr;\r\n    height: 600px;\r\n    padding: 20px;\r\n    align-content: center;\r\n    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);\r\n    background: white;\r\n    position: relative;\r\n}\r\n.question-proper {\r\n    display: grid;\r\n    grid-template-columns: 1fr 11fr;\r\n}\r\n\r\n.question-number {\r\n    background: #983532;\r\n    width: 50px;\r\n    height: 50px;\r\n    color: white;\r\n    font-size: 20px;\r\n    text-align: center;\r\n    vertical-align: center;\r\n    line-height: 50px;\r\n    padding: 5px;\r\n}\r\n@media (max-width: 430px) {\r\n    .question-number {\r\n        width: 100%;\r\n    }\r\n    .question-proper {\r\n        display: block;\r\n    }\r\n}\r\n.question-text.read {\r\n    font-size: 24px;\r\n}\r\n\r\n.question-choices {\r\n    display: grid;\r\n    grid-template-columns: 1fr;\r\n    grid-template-rows: repeat(4, 1fr);\r\n}\r\n\r\n.question-choice {\r\n    display: grid;\r\n    grid-template-columns: 1fr 1fr 22fr 1fr;\r\n    cursor: pointer;\r\n}\r\n.question-choice:hover {\r\n    background: rgba(240, 240, 240, 0.7);\r\n}\r\n.correct-answer-icon {\r\n    height: 34px;\r\n    width: 34px;\r\n    line-height: 30px;\r\n    text-align: center;\r\n    vertical-align: center;\r\n    cursor: pointer;\r\n    align-self: center;\r\n    justify-self: center;\r\n    font-size: 16px;\r\n    font-weight: 400;\r\n    margin: 0;\r\n}\r\n.answer-letter-choice.read {\r\n    height: 34px;\r\n    width: 34px;\r\n    border: 2px solid #325399;\r\n    line-height: 30px;\r\n    text-align: center;\r\n    vertical-align: center;\r\n    cursor: pointer;\r\n    align-self: center;\r\n    justify-self: center;\r\n    font-size: 16px;\r\n    font-weight: 400;\r\n    margin: 0;\r\n}\r\n\r\n.question-choice-text {\r\n    align-self: center;\r\n    margin-left: 20px;\r\n    font-size: 16px;\r\n    font-weight: 600;\r\n}\r\n\r\n.question-nav {\r\n    display: grid;\r\n    grid-template-columns: repeat(3, 1fr);\r\n    border-top: 2px solid black;\r\n    border-bottom: 2px solid black;\r\n}\r\n.nav-button {\r\n    border: none;\r\n    border-right: 1px solid gray;\r\n    cursor: pointer;\r\n}\r\n.nav-button:focus {\r\n    outline: none;\r\n}\r\n.nav-button:hover {\r\n    background: rgba(0, 0, 0, 0.4);\r\n    cursor: pointer;\r\n}\r\n.selected {\r\n    background: rgba(0, 0, 0, 0.8);\r\n    transition: background 0.3s;\r\n    -webkit-transition: background 0.3s; /* Safari prior 6.1 */\r\n    color: white;\r\n}\r\n.marked {\r\n    position: absolute;\r\n    right: 10px;\r\n    top: 0;\r\n    color: #e03838;\r\n    font-weight: 700;\r\n    font-size: 20px;\r\n}\r\n.question-sidebar {\r\n    position: absolute;\r\n    width: 200px;\r\n    top: 106px;\r\n    right: 0;\r\n    bottom: 0;\r\n    overflow: auto;\r\n    background: #fff;\r\n    border-left: 2px solid #ddd;\r\n    cursor: pointer;\r\n}\r\n.question-list > .question {\r\n    padding: 10px;\r\n    text-align: center;\r\n    border-bottom: 1px solid grey;\r\n}\r\n.question-list > .question:hover {\r\n    background: #eee;\r\n}\r\n.related-content {\r\n    position: absolute;\r\n    width: 500px;\r\n    height: 600px;\r\n    overflow: auto;\r\n    left: -500px;\r\n    padding: 10px;\r\n    border-right: 1px solid #afafaf;\r\n    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.05);\r\n}\r\n@media only screen and (max-width: 499px) {\r\n    .container {\r\n        padding: 0;\r\n        margin: 0;\r\n    }\r\n}\r\n@media only screen and (max-width: 500px) {\r\n    #app > .container {\r\n        width: 100vw;\r\n        display: block;\r\n        /* grid-template-columns: 10% auto 10%;\r\n        /*     grid-template-rows: 10% auto 10%; */\r\n        /* grid-template-areas:\r\n            \". . .\"\r\n            \". content .\"\r\n            \". . .\"; */\r\n    }\r\n}\r\n", ""]);
 
 // exports
 
@@ -77787,7 +77787,7 @@ var AnswerChoice = function AnswerChoice(_ref) {
       _ref$letter = _ref.letter,
       letter = _ref$letter === void 0 ? "" : _ref$letter,
       _ref$text = _ref.text,
-      text = _ref$text === void 0 ? "" : _ref$text,
+      text = _ref$text === void 0 ? {} : _ref$text,
       _ref$handleAnswerClic = _ref.handleAnswerClick,
       handleAnswerClick = _ref$handleAnswerClic === void 0 ? function (f) {
     return f;
@@ -78441,6 +78441,8 @@ function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.
 
 function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
 
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -78491,39 +78493,44 @@ function (_React$Component) {
     });
 
     _defineProperty(_assertThisInitialized(_this), "submitAnswers", function () {
-      var submit = window.confirm("Submit Answers?");
+      var timesUp = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
+      var submit = timesUp ? true : window.confirm("Submit Answers?");
       var obj = {};
       obj.id = _this.state.quiz;
       obj.answers = _this.state.answers;
       submit ? axios__WEBPACK_IMPORTED_MODULE_4___default.a.post("/submission", obj).then(function (response) {
-        response.data ? _this.setState({
-          mode: 0,
-          results: response.data
-        }) //(window.location.href = "/")
-        : console.log("false");
+        var questions = _this.state.questions;
 
-        _this.setState({
-          currentQuestion: _this.state.questions[0]
-        });
+        if (response.data) {
+          var updatedQuestions = questions.map(function (question, i) {
+            var ques = _objectSpread({}, question, {
+              result: response.data[i]
+            });
+
+            return ques;
+          });
+
+          _this.setState(function (state) {
+            return {
+              mode: 0,
+              results: response.data,
+              counter: 0,
+              questions: updatedQuestions,
+              currentQuestion: updatedQuestions[0]
+            };
+          }, function (state) {
+            return _this.changeNavButtons(_this.state);
+          });
+        }
       }).catch(function (error) {
         console.log(error.message);
       }) : "";
     });
 
-    _defineProperty(_assertThisInitialized(_this), "handleClick", function (j) {
-      var _this$state = _this.state,
-          counter = _this$state.counter,
-          questions = _this$state.questions,
-          buttons = _this$state.buttons,
-          mode = _this$state.mode,
-          results = _this$state.results;
-
-      var _assertThisInitialize = _assertThisInitialized(_this),
-          submitAnswers = _assertThisInitialize.submitAnswers;
-
-      j ? counter++ : counter--;
-      j === 2 ? submitAnswers() : "";
-      if (counter > questions.length - 1 || counter < 0) return;
+    _defineProperty(_assertThisInitialized(_this), "changeNavButtons", function (_ref) {
+      var counter = _ref.counter,
+          buttons = _ref.buttons,
+          questions = _ref.questions;
 
       if (counter === 0) {
         buttons = ["", "NEXT", buttons[2]];
@@ -78533,13 +78540,38 @@ function (_React$Component) {
         buttons = ["BACK", "NEXT", buttons[2]];
       }
 
+      _this.setState({
+        buttons: buttons
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "handleClick", function (j) {
+      var _this$state = _this.state,
+          counter = _this$state.counter,
+          questions = _this$state.questions,
+          mode = _this$state.mode,
+          results = _this$state.results;
+
+      var _assertThisInitialize = _assertThisInitialized(_this),
+          submitAnswers = _assertThisInitialize.submitAnswers,
+          changeNavButtons = _assertThisInitialize.changeNavButtons;
+
+      j ? counter++ : counter--;
+
+      if (j === 2) {
+        submitAnswers();
+        return;
+      }
+
+      if (counter > questions.length - 1 || counter < 0) return;
       var currentQuestion = questions[counter];
       mode ? "" : currentQuestion.result = results[counter];
 
       _this.setState({
-        currentQuestion: currentQuestion,
         counter: counter,
-        buttons: buttons
+        currentQuestion: currentQuestion
+      }, function () {
+        return changeNavButtons(_this.state);
       });
     });
 
@@ -78572,23 +78604,14 @@ function (_React$Component) {
     });
 
     _defineProperty(_assertThisInitialized(_this), "sideBarClick", function (counter) {
-      var _this$state2 = _this.state,
-          questions = _this$state2.questions,
-          buttons = _this$state2.buttons;
+      var questions = _this.state.questions;
       var currentQuestion = questions[counter];
 
-      if (counter === 0) {
-        buttons = ["", "NEXT"];
-      } else if (counter === questions.length - 1) {
-        buttons = ["BACK", "FINISH"];
-      } else {
-        buttons = ["BACK", "NEXT"];
-      }
-
       _this.setState({
-        currentQuestion: currentQuestion,
         counter: counter,
-        buttons: buttons
+        currentQuestion: currentQuestion
+      }, function () {
+        return _this.changeNavButtons(_this.state);
       });
     });
 
@@ -78600,6 +78623,7 @@ function (_React$Component) {
       markedQuestions: Array(),
       questions: {},
       buttons: ["", "NEXT"],
+      timer: null,
       realContent: {},
       results: null
     };
@@ -78607,11 +78631,35 @@ function (_React$Component) {
   }
 
   _createClass(QuestionApp, [{
+    key: "startTimer",
+    value: function startTimer() {
+      var ONE_SECOND = 1000,
+          ONE_MINUTE = ONE_SECOND * 60;
+      var minutes = 0.1,
+          endTime = ONE_MINUTE * minutes;
+      var submitAnswers = this.submitAnswers,
+          endTimer = this.endTimer;
+      var timer = setInterval(function () {
+        endTime = endTime - ONE_SECOND;
+
+        if (endTime < 0) {
+          submitAnswers(true);
+          endTimer(timer);
+        }
+      }, ONE_SECOND);
+    }
+  }, {
+    key: "endTimer",
+    value: function endTimer(timer) {
+      clearInterval(timer);
+    }
+  }, {
     key: "componentDidMount",
     value: function componentDidMount() {
       var _this2 = this;
 
       var quiz = this.props.match.params.subject;
+      this.startTimer();
       this.setState({
         quiz: quiz
       });
@@ -78668,15 +78716,15 @@ function (_React$Component) {
           handleAnswerClick = this.handleAnswerClick,
           markQuestion = this.markQuestion,
           sideBarClick = this.sideBarClick;
-      var _this$state3 = this.state,
-          currentQuestion = _this$state3.currentQuestion,
-          answers = _this$state3.answers,
-          questions = _this$state3.questions,
-          markedQuestions = _this$state3.markedQuestions,
-          buttons = _this$state3.buttons,
-          realContent = _this$state3.realContent,
-          mode = _this$state3.mode,
-          results = _this$state3.results;
+      var _this$state2 = this.state,
+          currentQuestion = _this$state2.currentQuestion,
+          answers = _this$state2.answers,
+          questions = _this$state2.questions,
+          markedQuestions = _this$state2.markedQuestions,
+          buttons = _this$state2.buttons,
+          realContent = _this$state2.realContent,
+          mode = _this$state2.mode,
+          results = _this$state2.results;
       var marked = currentQuestion ? markedQuestions.includes(currentQuestion.number) : false;
       return Array.isArray(questions) && questions.length ? react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_QuestionBlock__WEBPACK_IMPORTED_MODULE_1__["default"], {
         handleClick: handleClick,
@@ -78692,7 +78740,8 @@ function (_React$Component) {
         onClick: sideBarClick,
         questions: questions,
         markedQuestions: markedQuestions,
-        mode: mode
+        mode: mode,
+        results: results
       })) : null;
     }
   }]);
@@ -78782,17 +78831,19 @@ var QuestionBlock = function QuestionBlock(_ref) {
     onChange: function onChange(e) {
       return _handleAnswerClick(currentQuestion.number, e.target.value);
     },
-    type: "number"
-  })) : currentQuestion.result.correct_answer === currentQuestion.result.response ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_8__["FontAwesomeIcon"], {
+    type: "number",
+    placeholder: answers[currentQuestion.number - 1]
+  })) : currentQuestion.result.correct_answer == currentQuestion.result.response ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_8__["FontAwesomeIcon"], {
     icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_9__["faCheck"],
     style: {
-      color: green
+      color: "green"
     }
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "grid-input"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
     type: "number",
-    disabled: true
+    disabled: true,
+    placeholder: answers[currentQuestion.number - 1]
   }))) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_8__["FontAwesomeIcon"], {
     icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_9__["faTimes"],
     style: {
@@ -78802,7 +78853,8 @@ var QuestionBlock = function QuestionBlock(_ref) {
     className: "grid-input"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
     type: "number",
-    disabled: true
+    disabled: true,
+    placeholder: answers[currentQuestion.number - 1]
   })), currentQuestion.result.correct_answer)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_QuestionNav__WEBPACK_IMPORTED_MODULE_1__["default"], {
     onClick: function onClick(j) {
       handleClick(j);
@@ -78905,10 +78957,14 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
 var QuestionSidebar = function QuestionSidebar(_ref) {
   var questions = _ref.questions,
       _onClick = _ref.onClick,
-      markedQuestions = _ref.markedQuestions;
+      markedQuestions = _ref.markedQuestions,
+      mode = _ref.mode,
+      results = _ref.results;
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "question-sidebar"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
@@ -78922,10 +78978,20 @@ var QuestionSidebar = function QuestionSidebar(_ref) {
       },
       key: i,
       className: "question"
-    }, question.number, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, markedQuestions.includes(question.number) ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_1__["FontAwesomeIcon"], {
+    }, question.number, mode ? "" : results[i].response == results[i].correct_answer ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_1__["FontAwesomeIcon"], {
+      icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_2__["faCheck"],
+      style: {
+        color: "green"
+      }
+    }) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_1__["FontAwesomeIcon"], {
+      icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_2__["faTimes"],
+      style: {
+        color: "red"
+      }
+    }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, markedQuestions.includes(question.number) ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_1__["FontAwesomeIcon"], {
       icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_2__["faEye"],
       style: {
-        color: "red",
+        color: "#e03838",
         textAlign: "right"
       }
     }) : ""));

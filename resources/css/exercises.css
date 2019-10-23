@@ -135,7 +135,8 @@ body > .container {
     position: absolute;
     right: 10px;
     top: 0;
-    color: red;
+    color: #e03838;
+    font-weight: 700;
     font-size: 20px;
 }
 .question-sidebar {
