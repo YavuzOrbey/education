@@ -78641,8 +78641,9 @@ function (_React$Component) {
           endTimer = this.endTimer;
       var timer = setInterval(function () {
         endTime = endTime - ONE_SECOND;
+        console.log(endTime);
 
-        if (endTime < 0) {
+        if (endTime <= 0) {
           submitAnswers(true);
           endTimer(timer);
         }
