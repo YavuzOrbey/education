@@ -42,6 +42,7 @@ class QuestionApp extends React.Component {
             endTime = ONE_MINUTE * minutes;
         let { submitAnswers, endTimer } = this;
         let timer = setInterval(() => {
+            debugger;
             endTime = endTime - ONE_SECOND;
             console.log(endTime);
             if (endTime <= 0) {

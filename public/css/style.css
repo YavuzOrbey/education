@@ -146,7 +146,6 @@ nav {
 nav ul {
     list-style: none;
     display: inline-block;
-    padding: 10px;
 }
 nav ul li {
     display: inline-block;

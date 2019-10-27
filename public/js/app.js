@@ -78640,6 +78640,7 @@ function (_React$Component) {
       var submitAnswers = this.submitAnswers,
           endTimer = this.endTimer;
       var timer = setInterval(function () {
+        debugger;
         endTime = endTime - ONE_SECOND;
         console.log(endTime);
 
