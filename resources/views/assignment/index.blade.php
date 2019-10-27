@@ -16,7 +16,11 @@
                 <span class='due-date'>DUE: {{date("n/j  H:i", strtotime($assignment->due_date)-4*60*60)}}</span>
                 <span class="result">
                 @if(Auth::user() && Auth::user()->assignments()->where('assignments.id', $assignment->id)->exists())
-                    <i class='far fa-check-square'></i><a href="{{ route('assignments.results', $assignment->id) }}">Results</a>
+                    <i class='far fa-check-square'></i>
+                    @if (file_exists(public_path("/pdfs/" . str_replace(' ', '_', strtolower($assignment->name)) . '_solutions.pdf')))
+                    <a href="{{asset("/pdfs/" . str_replace(' ', '_', strtolower($assignment->name)) . '_solutions.pdf')}}" download>Solutions</a> 
+                    @endif
+                    <a href="{{ route('assignments.results', $assignment->id) }}">Results</a>
 
                 @elseif (Auth::user())
                 <a href="{{route('assignments.show', $assignment)}}">Submit</a> 
@@ -40,7 +44,9 @@
                 <span class='due-date'>DUE: {{date("n/j  H:i", strtotime($assignment->due_date)-4*60*60)}}</span>
                 <span class="result">
                 @if(Auth::user() && Auth::user()->assignments()->where('assignments.id', $assignment->id)->exists())
-                @if (file_exists(public_path("/pdfs/" . str_replace(' ', '_', strtolower($assignment->name)) . '_solutions.pdf')))<a href="{{asset("/pdfs/" . str_replace(' ', '_', strtolower($assignment->name)) . '_solutions.pdf')}}" download>Solutions</a> @endif
+                    @if (file_exists(public_path("/pdfs/" . str_replace(' ', '_', strtolower($assignment->name)) . '_solutions.pdf')))
+                    <a href="{{asset("/pdfs/" . str_replace(' ', '_', strtolower($assignment->name)) . '_solutions.pdf')}}" download>Solutions</a> 
+                    @endif
                 <a href="{{ route('assignments.results', $assignment->id) }}" >Results</a>
                 @endif
                 </span>
