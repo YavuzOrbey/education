@@ -4,7 +4,7 @@
 @stop
 @section('content')
 <div class="assignments-index results">
-<h2>{{$assignment->name}}</h2>
+<h2>{{Auth::user()->isAn('administrator') ? $user->first_name . " " . $user->last_name . ": " : "" }}{{$assignment->name}}</h2>
 <ul class="list-group">
         @foreach($sections as $section)
         <li><h5 class="subject-name">{{$section->subject->name}}</h5>

@@ -236,8 +236,10 @@ class AssignmentController extends Controller
             $studentAnswers[$key] = array();
             $questions = $section->questions()->orderBy('pivot_sequence', 'asc')->get();
             foreach($questions as $qKey =>$question){
-                if(Auth::user())
-                $completedQuestion = DB::table('user_answers')->where('book_question_id', $question->id)->where('assignment_user_id',$completedAssignment->id)->first();
+                if(Auth::user()){
+                    $completedQuestion = DB::table('user_answers')->where('book_question_id', $question->id)->where('assignment_user_id',$completedAssignment->id)->first();
+                }
+
                 if($completedQuestion){
                 array_push($studentAnswers[$key], $completedQuestion->user_answer);
                 }

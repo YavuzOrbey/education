@@ -23,7 +23,7 @@
     <td>{{$user->first_name}}</td>
     <td>{{$user->last_name}}</td>
     <td>{{$user->email}}</td>
-    <td>{{$user->group->name}}</td>
+    <td><a href="{{route('admin.groups.show', $user->group) }}">{{$user->group->name}}</a></td>
 </tr>
 
 @endforeach

@@ -29,7 +29,14 @@
     
         <td>{{ $user->last_login ? date("n/j  H:i", strtotime($user->last_login)-4*60*60): ""}}</td> 
         @foreach($group->assignments as $assignment)
-        <td>{{ $user->assignments->where('id',$assignment->id)->first() ?  $user->assignments->where('id',$assignment->id)->first()->pivot->score . "%": "" }}</td>
+        <td>
+            @if($user->assignments->where('id',$assignment->id)->first())
+            <a href='{{route('admin.users.assignment', ['user'=>$user->id, 'assignment'=>$assignment->id])}}'>
+                {{$user->assignments->where('id',$assignment->id)->first()->pivot->score . "%"}}
+            </a>
+            @endif
+        </td>
+
         @endforeach
     </tr>
     

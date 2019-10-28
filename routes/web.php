@@ -28,6 +28,7 @@ Route::group(['prefix'=>'admin', 'middleware'=>['role:administrator']], function
     Route::get('assignments/insert', 'AssignmentController@insert')->name('assignments.insert');
     Route::get('assignments/edit', 'AssignmentController@edit')->name('assignments.edit');
     Route::name('admin')->resource("/users", 'UserController');
+    Route::name('admin.users.assignment')->get('/users/{user}/{assignment}', 'UserController@getUserAssignment');
     Route::name('admin')->resource("/groups", 'GroupController');
     Route::resource("/permissions", 'PermissionController');
     Route::resource("/roles", 'RoleController')->except('destroy');
