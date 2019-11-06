@@ -22,12 +22,23 @@ body > .container {
     display: grid;
     grid-area: content;
     grid-template-columns: auto;
-    grid-template-rows: 2fr 4fr 1fr;
+    grid-template-rows: 1fr 3fr 5fr 1fr;
     height: 600px;
     padding: 20px;
     align-content: center;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
     background: white;
+    position: relative;
+}
+.timer-wrapper {
+    color: red;
+    font-size: 2em;
+    position: relative;
+    right: 0;
+}
+.timer {
+    display: inline-block;
+    padding: 5px;
     position: relative;
 }
 .question-proper {
@@ -68,9 +79,16 @@ body > .container {
     display: grid;
     grid-template-columns: 1fr 1fr 22fr 1fr;
     cursor: pointer;
+    position: relative;
 }
 .question-choice:hover {
     background: rgba(240, 240, 240, 0.7);
+}
+.eliminate {
+    position: absolute;
+}
+.eliminated {
+    opacity: 0.25;
 }
 .correct-answer-icon {
     height: 34px;

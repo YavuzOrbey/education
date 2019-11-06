@@ -1,10 +1,10 @@
 import MathJax from "react-mathjax2";
 import QuestionBlock from "./QuestionBlock";
 import QuestionSidebar from "./QuestionSidebar";
+
 import React from "react";
 import axios from "axios";
-
-import AnswerChoices from "./AnswerChoices";
+import ClockTime from "../functions/ClockTime";
 
 class QuestionApp extends React.Component {
     constructor(props) {
@@ -19,7 +19,8 @@ class QuestionApp extends React.Component {
             buttons: ["", "NEXT"],
             timer: null,
             realContent: {},
-            results: null
+            results: null,
+            time: null
         };
     }
 
@@ -42,9 +43,7 @@ class QuestionApp extends React.Component {
             endTime = ONE_MINUTE * minutes;
         let { submitAnswers, endTimer } = this;
         let timer = setInterval(() => {
-            debugger;
             endTime = endTime - ONE_SECOND;
-            console.log(endTime);
             if (endTime <= 0) {
                 submitAnswers(true);
                 endTimer(timer);
@@ -55,8 +54,17 @@ class QuestionApp extends React.Component {
         clearInterval(timer);
     }
     componentDidMount() {
+        ClockTime(
+            time => {
+                this.setState({ time });
+            },
+            (time, timer) => {
+                this.setState({ timer });
+                time < 0 ? this.submitAnswers(true) : null;
+            },
+            60
+        );
         const quiz = this.props.match.params.subject;
-        this.startTimer();
         this.setState({ quiz });
         let relatedContent = [],
             realContent = {};
@@ -95,6 +103,7 @@ class QuestionApp extends React.Component {
                                 );
                             }
                             question.answer_choices = answerChoices;
+                            question.eliminations = [];
                         }
                     });
                 }
@@ -129,7 +138,8 @@ class QuestionApp extends React.Component {
         obj.id = this.state.quiz;
         obj.answers = this.state.answers;
         submit
-            ? axios
+            ? (this.endTimer(this.state.timer),
+              axios
                   .post("/submission", obj)
                   .then(response => {
                       let { questions } = this.state;
@@ -157,7 +167,7 @@ class QuestionApp extends React.Component {
                   })
                   .catch(error => {
                       console.log(error.message);
-                  })
+                  }))
             : "";
     };
 
@@ -176,7 +186,7 @@ class QuestionApp extends React.Component {
         let { submitAnswers, changeNavButtons } = this;
         j ? counter++ : counter--;
         if (j === 2) {
-            submitAnswers();
+            submitAnswers(false);
             return;
         }
         if (counter > questions.length - 1 || counter < 0) return;
@@ -192,7 +202,16 @@ class QuestionApp extends React.Component {
         answers[number - 1] = answer;
         this.setState({ answers });
     };
-
+    eliminateAnswerChoice = (number, choice) => {
+        let { questions } = this.state;
+        let eliminations = questions[number - 1].eliminations;
+        eliminations.includes(choice)
+            ? eliminations.splice(eliminations.indexOf(choice), 1)
+            : eliminations.push(choice);
+        eliminations.sort();
+        questions[number - 1].elimations = eliminations;
+        this.setState({ questions });
+    };
     markQuestion = number => {
         let markedQuestions;
         let { buttons } = this.state;
@@ -218,7 +237,8 @@ class QuestionApp extends React.Component {
             handleClick,
             handleAnswerClick,
             markQuestion,
-            sideBarClick
+            sideBarClick,
+            eliminateAnswerChoice
         } = this;
         const {
             currentQuestion,
@@ -228,7 +248,8 @@ class QuestionApp extends React.Component {
             buttons,
             realContent,
             mode,
-            results
+            results,
+            time
         } = this.state;
         let marked = currentQuestion
             ? markedQuestions.includes(currentQuestion.number)
@@ -245,6 +266,8 @@ class QuestionApp extends React.Component {
                     answers={answers}
                     buttons={buttons}
                     mode={mode}
+                    time={time}
+                    eliminateAnswerChoice={eliminateAnswerChoice}
                 ></QuestionBlock>
 
                 <QuestionSidebar

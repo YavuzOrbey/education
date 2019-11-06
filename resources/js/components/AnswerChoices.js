@@ -6,6 +6,8 @@ const AnswerChoices = ({
     handleAnswerClick,
     selected = true,
     mode,
+    eliminations,
+    eliminateAnswerChoice,
     result
 }) => {
     const entries = Object.entries(choices);
@@ -17,6 +19,8 @@ const AnswerChoices = ({
             text={choice[1]}
             selected={i + 1 === selected ? true : false}
             handleAnswerClick={num => handleAnswerClick(num)}
+            eliminateAnswerChoice={num => eliminateAnswerChoice(num)}
+            eliminated={eliminations.includes(i + 1)}
             mode={mode}
             result={result}
         />

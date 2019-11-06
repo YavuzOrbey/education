@@ -5,6 +5,7 @@ import RelatedContent from "./RelatedContent";
 import Question from "./Question";
 import PropTypes from "prop-types";
 import MathJax from "react-mathjax2";
+import Timer from "./Timer";
 import "../../css/exercises.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
@@ -12,16 +13,19 @@ import { faTimes } from "@fortawesome/free-solid-svg-icons";
 const QuestionBlock = ({
     handleClick,
     handleAnswerClick,
+    eliminateAnswerChoice,
     markQuestion,
     marked,
     currentQuestion,
     realContent,
     answers,
     buttons,
-    mode
+    mode,
+    time
 }) => {
     return (
         <div className="question-block read">
+            <Timer time={time} />
             {currentQuestion.related_content ? (
                 <RelatedContent
                     relatedContent={
@@ -52,8 +56,15 @@ const QuestionBlock = ({
                                     letter
                                 )
                             }
+                            eliminateAnswerChoice={letter =>
+                                eliminateAnswerChoice(
+                                    currentQuestion.number,
+                                    letter
+                                )
+                            }
                             selected={answers[currentQuestion.number - 1]}
                             mode={mode}
+                            eliminations={currentQuestion.eliminations}
                         />
                     </div>
                 ) : mode ? (

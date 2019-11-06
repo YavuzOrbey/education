@@ -15879,7 +15879,7 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 
 
 // module
-exports.push([module.i, "body {\r\n    margin: 0;\r\n    padding: 0;\r\n    font-family: -apple-system, BlinkMacSystemFont, \"Segoe UI\", \"Roboto\",\r\n        \"Oxygen\", \"Ubuntu\", \"Cantarell\", \"Fira Sans\", \"Droid Sans\",\r\n        \"Helvetica Neue\", sans-serif;\r\n    -webkit-font-smoothing: antialiased;\r\n    -moz-osx-font-smoothing: grayscale;\r\n    background: rgba(240, 240, 240, 1);\r\n}\r\n\r\ncode {\r\n    font-family: source-code-pro, Menlo, Monaco, Consolas, \"Courier New\",\r\n        monospace;\r\n}\r\nbody > .container {\r\n    display: block;\r\n    overflow: hidden;\r\n}\r\n\r\n.question-block.read {\r\n    display: grid;\r\n    grid-area: content;\r\n    grid-template-columns: auto;\r\n    grid-template-rows: 2fr 4fr 1fr;\r\n    height: 600px;\r\n    padding: 20px;\r\n    align-content: center;\r\n    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);\r\n    background: white;\r\n    position: relative;\r\n}\r\n.question-proper {\r\n    display: grid;\r\n    grid-template-columns: 1fr 11fr;\r\n}\r\n\r\n.question-number {\r\n    background: #983532;\r\n    width: 50px;\r\n    height: 50px;\r\n    color: white;\r\n    font-size: 20px;\r\n    text-align: center;\r\n    vertical-align: center;\r\n    line-height: 50px;\r\n    padding: 5px;\r\n}\r\n@media (max-width: 430px) {\r\n    .question-number {\r\n        width: 100%;\r\n    }\r\n    .question-proper {\r\n        display: block;\r\n    }\r\n}\r\n.question-text.read {\r\n    font-size: 24px;\r\n}\r\n\r\n.question-choices {\r\n    display: grid;\r\n    grid-template-columns: 1fr;\r\n    grid-template-rows: repeat(4, 1fr);\r\n}\r\n\r\n.question-choice {\r\n    display: grid;\r\n    grid-template-columns: 1fr 1fr 22fr 1fr;\r\n    cursor: pointer;\r\n}\r\n.question-choice:hover {\r\n    background: rgba(240, 240, 240, 0.7);\r\n}\r\n.correct-answer-icon {\r\n    height: 34px;\r\n    width: 34px;\r\n    line-height: 30px;\r\n    text-align: center;\r\n    vertical-align: center;\r\n    cursor: pointer;\r\n    align-self: center;\r\n    justify-self: center;\r\n    font-size: 16px;\r\n    font-weight: 400;\r\n    margin: 0;\r\n}\r\n.answer-letter-choice.read {\r\n    height: 34px;\r\n    width: 34px;\r\n    border: 2px solid #325399;\r\n    line-height: 30px;\r\n    text-align: center;\r\n    vertical-align: center;\r\n    cursor: pointer;\r\n    align-self: center;\r\n    justify-self: center;\r\n    font-size: 16px;\r\n    font-weight: 400;\r\n    margin: 0;\r\n}\r\n\r\n.question-choice-text {\r\n    align-self: center;\r\n    margin-left: 20px;\r\n    font-size: 16px;\r\n    font-weight: 600;\r\n}\r\n\r\n.question-nav {\r\n    display: grid;\r\n    grid-template-columns: repeat(3, 1fr);\r\n    border-top: 2px solid black;\r\n    border-bottom: 2px solid black;\r\n}\r\n.nav-button {\r\n    border: none;\r\n    border-right: 1px solid gray;\r\n    cursor: pointer;\r\n}\r\n.nav-button:focus {\r\n    outline: none;\r\n}\r\n.nav-button:hover {\r\n    background: rgba(0, 0, 0, 0.4);\r\n    cursor: pointer;\r\n}\r\n.selected {\r\n    background: rgba(0, 0, 0, 0.8);\r\n    transition: background 0.3s;\r\n    -webkit-transition: background 0.3s; /* Safari prior 6.1 */\r\n    color: white;\r\n}\r\n.marked {\r\n    position: absolute;\r\n    right: 10px;\r\n    top: 0;\r\n    color: #e03838;\r\n    font-weight: 700;\r\n    font-size: 20px;\r\n}\r\n.question-sidebar {\r\n    position: absolute;\r\n    width: 200px;\r\n    top: 106px;\r\n    right: 0;\r\n    bottom: 0;\r\n    overflow: auto;\r\n    background: #fff;\r\n    border-left: 2px solid #ddd;\r\n    cursor: pointer;\r\n}\r\n.question-list > .question {\r\n    padding: 10px;\r\n    text-align: center;\r\n    border-bottom: 1px solid grey;\r\n}\r\n.question-list > .question:hover {\r\n    background: #eee;\r\n}\r\n.related-content {\r\n    position: absolute;\r\n    width: 500px;\r\n    height: 600px;\r\n    overflow: auto;\r\n    left: -500px;\r\n    padding: 10px;\r\n    border-right: 1px solid #afafaf;\r\n    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.05);\r\n}\r\n@media only screen and (max-width: 499px) {\r\n    .container {\r\n        padding: 0;\r\n        margin: 0;\r\n    }\r\n}\r\n@media only screen and (max-width: 500px) {\r\n    #app > .container {\r\n        width: 100vw;\r\n        display: block;\r\n        /* grid-template-columns: 10% auto 10%;\r\n        /*     grid-template-rows: 10% auto 10%; */\r\n        /* grid-template-areas:\r\n            \". . .\"\r\n            \". content .\"\r\n            \". . .\"; */\r\n    }\r\n}\r\n", ""]);
+exports.push([module.i, "body {\r\n    margin: 0;\r\n    padding: 0;\r\n    font-family: -apple-system, BlinkMacSystemFont, \"Segoe UI\", \"Roboto\",\r\n        \"Oxygen\", \"Ubuntu\", \"Cantarell\", \"Fira Sans\", \"Droid Sans\",\r\n        \"Helvetica Neue\", sans-serif;\r\n    -webkit-font-smoothing: antialiased;\r\n    -moz-osx-font-smoothing: grayscale;\r\n    background: rgba(240, 240, 240, 1);\r\n}\r\n\r\ncode {\r\n    font-family: source-code-pro, Menlo, Monaco, Consolas, \"Courier New\",\r\n        monospace;\r\n}\r\nbody > .container {\r\n    display: block;\r\n    overflow: hidden;\r\n}\r\n\r\n.question-block.read {\r\n    display: grid;\r\n    grid-area: content;\r\n    grid-template-columns: auto;\r\n    grid-template-rows: 1fr 3fr 5fr 1fr;\r\n    height: 600px;\r\n    padding: 20px;\r\n    align-content: center;\r\n    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);\r\n    background: white;\r\n    position: relative;\r\n}\r\n.timer-wrapper {\r\n    color: red;\r\n    font-size: 2em;\r\n    position: relative;\r\n    right: 0;\r\n}\r\n.timer {\r\n    display: inline-block;\r\n    padding: 5px;\r\n    position: relative;\r\n}\r\n.question-proper {\r\n    display: grid;\r\n    grid-template-columns: 1fr 11fr;\r\n}\r\n\r\n.question-number {\r\n    background: #983532;\r\n    width: 50px;\r\n    height: 50px;\r\n    color: white;\r\n    font-size: 20px;\r\n    text-align: center;\r\n    vertical-align: center;\r\n    line-height: 50px;\r\n    padding: 5px;\r\n}\r\n@media (max-width: 430px) {\r\n    .question-number {\r\n        width: 100%;\r\n    }\r\n    .question-proper {\r\n        display: block;\r\n    }\r\n}\r\n.question-text.read {\r\n    font-size: 24px;\r\n}\r\n\r\n.question-choices {\r\n    display: grid;\r\n    grid-template-columns: 1fr;\r\n    grid-template-rows: repeat(4, 1fr);\r\n}\r\n\r\n.question-choice {\r\n    display: grid;\r\n    grid-template-columns: 1fr 1fr 22fr 1fr;\r\n    cursor: pointer;\r\n    position: relative;\r\n}\r\n.question-choice:hover {\r\n    background: rgba(240, 240, 240, 0.7);\r\n}\r\n.eliminate {\r\n    position: absolute;\r\n}\r\n.eliminated {\r\n    opacity: 0.25;\r\n}\r\n.correct-answer-icon {\r\n    height: 34px;\r\n    width: 34px;\r\n    line-height: 30px;\r\n    text-align: center;\r\n    vertical-align: center;\r\n    cursor: pointer;\r\n    align-self: center;\r\n    justify-self: center;\r\n    font-size: 16px;\r\n    font-weight: 400;\r\n    margin: 0;\r\n}\r\n.answer-letter-choice.read {\r\n    height: 34px;\r\n    width: 34px;\r\n    border: 2px solid #325399;\r\n    line-height: 30px;\r\n    text-align: center;\r\n    vertical-align: center;\r\n    cursor: pointer;\r\n    align-self: center;\r\n    justify-self: center;\r\n    font-size: 16px;\r\n    font-weight: 400;\r\n    margin: 0;\r\n}\r\n\r\n.question-choice-text {\r\n    align-self: center;\r\n    margin-left: 20px;\r\n    font-size: 16px;\r\n    font-weight: 600;\r\n}\r\n\r\n.question-nav {\r\n    display: grid;\r\n    grid-template-columns: repeat(3, 1fr);\r\n    border-top: 2px solid black;\r\n    border-bottom: 2px solid black;\r\n}\r\n.nav-button {\r\n    border: none;\r\n    border-right: 1px solid gray;\r\n    cursor: pointer;\r\n}\r\n.nav-button:focus {\r\n    outline: none;\r\n}\r\n.nav-button:hover {\r\n    background: rgba(0, 0, 0, 0.4);\r\n    cursor: pointer;\r\n}\r\n.selected {\r\n    background: rgba(0, 0, 0, 0.8);\r\n    transition: background 0.3s;\r\n    -webkit-transition: background 0.3s; /* Safari prior 6.1 */\r\n    color: white;\r\n}\r\n.marked {\r\n    position: absolute;\r\n    right: 10px;\r\n    top: 0;\r\n    color: #e03838;\r\n    font-weight: 700;\r\n    font-size: 20px;\r\n}\r\n.question-sidebar {\r\n    position: absolute;\r\n    width: 200px;\r\n    top: 106px;\r\n    right: 0;\r\n    bottom: 0;\r\n    overflow: auto;\r\n    background: #fff;\r\n    border-left: 2px solid #ddd;\r\n    cursor: pointer;\r\n}\r\n.question-list > .question {\r\n    padding: 10px;\r\n    text-align: center;\r\n    border-bottom: 1px solid grey;\r\n}\r\n.question-list > .question:hover {\r\n    background: #eee;\r\n}\r\n.related-content {\r\n    position: absolute;\r\n    width: 500px;\r\n    height: 600px;\r\n    overflow: auto;\r\n    left: -500px;\r\n    padding: 10px;\r\n    border-right: 1px solid #afafaf;\r\n    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.05);\r\n}\r\n@media only screen and (max-width: 499px) {\r\n    .container {\r\n        padding: 0;\r\n        margin: 0;\r\n    }\r\n}\r\n@media only screen and (max-width: 500px) {\r\n    #app > .container {\r\n        width: 100vw;\r\n        display: block;\r\n        /* grid-template-columns: 10% auto 10%;\r\n        /*     grid-template-rows: 10% auto 10%; */\r\n        /* grid-template-areas:\r\n            \". . .\"\r\n            \". content .\"\r\n            \". . .\"; */\r\n    }\r\n}\r\n", ""]);
 
 // exports
 
@@ -77781,7 +77781,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 var AnswerChoice = function AnswerChoice(_ref) {
   var num = _ref.num,
       _ref$letter = _ref.letter,
@@ -77792,8 +77791,13 @@ var AnswerChoice = function AnswerChoice(_ref) {
       handleAnswerClick = _ref$handleAnswerClic === void 0 ? function (f) {
     return f;
   } : _ref$handleAnswerClic,
+      _ref$eliminateAnswerC = _ref.eliminateAnswerChoice,
+      eliminateAnswerChoice = _ref$eliminateAnswerC === void 0 ? function (f) {
+    return f;
+  } : _ref$eliminateAnswerC,
       _ref$selected = _ref.selected,
       selected = _ref$selected === void 0 ? false : _ref$selected,
+      eliminated = _ref.eliminated,
       _ref$input = _ref.input,
       input = _ref$input === void 0 ? false : _ref$input,
       mode = _ref.mode,
@@ -77810,11 +77814,21 @@ var AnswerChoice = function AnswerChoice(_ref) {
     }
   }) : "" : "";
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "question-choice",
-    onClick: mode ? function () {
+    className: "question-choice" + (eliminated ? " eliminated" : ""),
+    onClick: mode && !eliminated ? function () {
       return handleAnswerClick(num + 1);
     } : null
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    className: "eliminate",
+    onClick: mode ? function (e) {
+      return eliminateAnswerChoice(num + 1), e.stopPropagation();
+    } : null
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_2__["FontAwesomeIcon"], {
+    icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_3__["faTimesCircle"],
+    style: {
+      color: "orange"
+    }
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "correct-answer-icon"
   }, icon), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
     className: "answer-letter-choice read " + (selected ? "selected" : "")
@@ -77907,6 +77921,8 @@ var AnswerChoices = function AnswerChoices(_ref) {
       _ref$selected = _ref.selected,
       selected = _ref$selected === void 0 ? true : _ref$selected,
       mode = _ref.mode,
+      eliminations = _ref.eliminations,
+      _eliminateAnswerChoice = _ref.eliminateAnswerChoice,
       result = _ref.result;
   var entries = Object.entries(choices);
   return entries.map(function (choice, i) {
@@ -77919,6 +77935,10 @@ var AnswerChoices = function AnswerChoices(_ref) {
       handleAnswerClick: function handleAnswerClick(num) {
         return _handleAnswerClick(num);
       },
+      eliminateAnswerChoice: function eliminateAnswerChoice(num) {
+        return _eliminateAnswerChoice(num);
+      },
+      eliminated: eliminations.includes(i + 1),
       mode: mode,
       result: result
     });
@@ -78430,7 +78450,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _AnswerChoices__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./AnswerChoices */ "./resources/js/components/AnswerChoices.js");
+/* harmony import */ var _functions_ClockTime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../functions/ClockTime */ "./resources/js/functions/ClockTime.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
@@ -78498,7 +78518,7 @@ function (_React$Component) {
       var obj = {};
       obj.id = _this.state.quiz;
       obj.answers = _this.state.answers;
-      submit ? axios__WEBPACK_IMPORTED_MODULE_4___default.a.post("/submission", obj).then(function (response) {
+      submit ? (_this.endTimer(_this.state.timer), axios__WEBPACK_IMPORTED_MODULE_4___default.a.post("/submission", obj).then(function (response) {
         var questions = _this.state.questions;
 
         if (response.data) {
@@ -78524,7 +78544,7 @@ function (_React$Component) {
         }
       }).catch(function (error) {
         console.log(error.message);
-      }) : "";
+      })) : "";
     });
 
     _defineProperty(_assertThisInitialized(_this), "changeNavButtons", function (_ref) {
@@ -78559,7 +78579,7 @@ function (_React$Component) {
       j ? counter++ : counter--;
 
       if (j === 2) {
-        submitAnswers();
+        submitAnswers(false);
         return;
       }
 
@@ -78582,6 +78602,18 @@ function (_React$Component) {
 
       _this.setState({
         answers: answers
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "eliminateAnswerChoice", function (number, choice) {
+      var questions = _this.state.questions;
+      var eliminations = questions[number - 1].eliminations;
+      eliminations.includes(choice) ? eliminations.splice(eliminations.indexOf(choice), 1) : eliminations.push(choice);
+      eliminations.sort();
+      questions[number - 1].elimations = eliminations;
+
+      _this.setState({
+        questions: questions
       });
     });
 
@@ -78625,7 +78657,8 @@ function (_React$Component) {
       buttons: ["", "NEXT"],
       timer: null,
       realContent: {},
-      results: null
+      results: null,
+      time: null
     };
     return _this;
   }
@@ -78640,9 +78673,7 @@ function (_React$Component) {
       var submitAnswers = this.submitAnswers,
           endTimer = this.endTimer;
       var timer = setInterval(function () {
-        debugger;
         endTime = endTime - ONE_SECOND;
-        console.log(endTime);
 
         if (endTime <= 0) {
           submitAnswers(true);
@@ -78660,8 +78691,18 @@ function (_React$Component) {
     value: function componentDidMount() {
       var _this2 = this;
 
+      Object(_functions_ClockTime__WEBPACK_IMPORTED_MODULE_5__["default"])(function (time) {
+        _this2.setState({
+          time: time
+        });
+      }, function (time, timer) {
+        _this2.setState({
+          timer: timer
+        });
+
+        time < 0 ? _this2.submitAnswers(true) : null;
+      }, 60);
       var quiz = this.props.match.params.subject;
-      this.startTimer();
       this.setState({
         quiz: quiz
       });
@@ -78687,6 +78728,7 @@ function (_React$Component) {
               }
 
               question.answer_choices = answerChoices;
+              question.eliminations = [];
             }
           });
         }
@@ -78717,7 +78759,8 @@ function (_React$Component) {
       var handleClick = this.handleClick,
           handleAnswerClick = this.handleAnswerClick,
           markQuestion = this.markQuestion,
-          sideBarClick = this.sideBarClick;
+          sideBarClick = this.sideBarClick,
+          eliminateAnswerChoice = this.eliminateAnswerChoice;
       var _this$state2 = this.state,
           currentQuestion = _this$state2.currentQuestion,
           answers = _this$state2.answers,
@@ -78726,7 +78769,8 @@ function (_React$Component) {
           buttons = _this$state2.buttons,
           realContent = _this$state2.realContent,
           mode = _this$state2.mode,
-          results = _this$state2.results;
+          results = _this$state2.results,
+          time = _this$state2.time;
       var marked = currentQuestion ? markedQuestions.includes(currentQuestion.number) : false;
       return Array.isArray(questions) && questions.length ? react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_QuestionBlock__WEBPACK_IMPORTED_MODULE_1__["default"], {
         handleClick: handleClick,
@@ -78737,7 +78781,9 @@ function (_React$Component) {
         marked: marked,
         answers: answers,
         buttons: buttons,
-        mode: mode
+        mode: mode,
+        time: time,
+        eliminateAnswerChoice: eliminateAnswerChoice
       }), react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_QuestionSidebar__WEBPACK_IMPORTED_MODULE_2__["default"], {
         onClick: sideBarClick,
         questions: questions,
@@ -78776,10 +78822,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var react_mathjax2__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-mathjax2 */ "./node_modules/react-mathjax2/lib/index.js");
 /* harmony import */ var react_mathjax2__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(react_mathjax2__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var _css_exercises_css__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../css/exercises.css */ "./resources/css/exercises.css");
-/* harmony import */ var _css_exercises_css__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_css_exercises_css__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var _fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @fortawesome/react-fontawesome */ "./node_modules/@fortawesome/react-fontawesome/index.es.js");
-/* harmony import */ var _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @fortawesome/free-solid-svg-icons */ "./node_modules/@fortawesome/free-solid-svg-icons/index.es.js");
+/* harmony import */ var _Timer__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./Timer */ "./resources/js/components/Timer.js");
+/* harmony import */ var _css_exercises_css__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../css/exercises.css */ "./resources/css/exercises.css");
+/* harmony import */ var _css_exercises_css__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_css_exercises_css__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var _fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @fortawesome/react-fontawesome */ "./node_modules/@fortawesome/react-fontawesome/index.es.js");
+/* harmony import */ var _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @fortawesome/free-solid-svg-icons */ "./node_modules/@fortawesome/free-solid-svg-icons/index.es.js");
+
 
 
 
@@ -78795,16 +78843,20 @@ __webpack_require__.r(__webpack_exports__);
 var QuestionBlock = function QuestionBlock(_ref) {
   var handleClick = _ref.handleClick,
       _handleAnswerClick = _ref.handleAnswerClick,
+      _eliminateAnswerChoice = _ref.eliminateAnswerChoice,
       _markQuestion = _ref.markQuestion,
       marked = _ref.marked,
       currentQuestion = _ref.currentQuestion,
       realContent = _ref.realContent,
       answers = _ref.answers,
       buttons = _ref.buttons,
-      mode = _ref.mode;
+      mode = _ref.mode,
+      time = _ref.time;
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "question-block read"
-  }, currentQuestion.related_content ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_RelatedContent__WEBPACK_IMPORTED_MODULE_3__["default"], {
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Timer__WEBPACK_IMPORTED_MODULE_7__["default"], {
+    time: time
+  }), currentQuestion.related_content ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_RelatedContent__WEBPACK_IMPORTED_MODULE_3__["default"], {
     relatedContent: realContent[currentQuestion.related_content]
   }) : "", marked ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
     className: "marked"
@@ -78825,8 +78877,12 @@ var QuestionBlock = function QuestionBlock(_ref) {
     handleAnswerClick: function handleAnswerClick(letter) {
       return _handleAnswerClick(currentQuestion.number, letter);
     },
+    eliminateAnswerChoice: function eliminateAnswerChoice(letter) {
+      return _eliminateAnswerChoice(currentQuestion.number, letter);
+    },
     selected: answers[currentQuestion.number - 1],
-    mode: mode
+    mode: mode,
+    eliminations: currentQuestion.eliminations
   })) : mode ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "grid-input"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
@@ -78835,8 +78891,8 @@ var QuestionBlock = function QuestionBlock(_ref) {
     },
     type: "number",
     placeholder: answers[currentQuestion.number - 1]
-  })) : currentQuestion.result.correct_answer == currentQuestion.result.response ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_8__["FontAwesomeIcon"], {
-    icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_9__["faCheck"],
+  })) : currentQuestion.result.correct_answer == currentQuestion.result.response ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_9__["FontAwesomeIcon"], {
+    icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_10__["faCheck"],
     style: {
       color: "green"
     }
@@ -78846,8 +78902,8 @@ var QuestionBlock = function QuestionBlock(_ref) {
     type: "number",
     disabled: true,
     placeholder: answers[currentQuestion.number - 1]
-  }))) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_8__["FontAwesomeIcon"], {
-    icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_9__["faTimes"],
+  }))) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_9__["FontAwesomeIcon"], {
+    icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_10__["faTimes"],
     style: {
       color: "red"
     }
@@ -79140,6 +79196,128 @@ MathInput
         );
     }
  */
+
+/***/ }),
+
+/***/ "./resources/js/components/Timer.js":
+/*!******************************************!*\
+  !*** ./resources/js/components/Timer.js ***!
+  \******************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+
+var Timer = function Timer(_ref) {
+  var time = _ref.time;
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "timer-wrapper"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "timer"
+  }, "Time left: ", time, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "closeBtn",
+    style: {
+      borderRadius: 0,
+      backgroundColor: "rgb(120, 120, 120, 0.9)"
+    }
+  })));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Timer);
+
+/***/ }),
+
+/***/ "./resources/js/functions/ClockTime.js":
+/*!*********************************************!*\
+  !*** ./resources/js/functions/ClockTime.js ***!
+  \*********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var compose = function compose() {
+  for (var _len = arguments.length, fns = new Array(_len), _key = 0; _key < _len; _key++) {
+    fns[_key] = arguments[_key];
+  }
+
+  return function (arg) {
+    return fns.reduce(function (composed, f) {
+      return f(composed);
+    }, arg);
+  };
+};
+/* // compose = function(...fns){
+        return function(arg){
+            return fns.reduce(function(composed,f){
+                return f(composed)
+            }, arg)
+        }
+    } */
+
+
+var display = function display(target) {
+  return function (time) {
+    return target(time);
+  };
+};
+
+var oneSecond = function oneSecond() {
+  return 1000;
+};
+
+var convertToMilliseconds = function convertToMilliseconds(seconds) {
+  return seconds * oneSecond();
+};
+
+var serializeClockTime = function serializeClockTime(time) {
+  var hours = Math.floor(time / (oneSecond() * 60 * 60));
+  var remainingTime = time - hours * 60 * 60 * oneSecond();
+  var minutes = Math.floor(remainingTime / (oneSecond() * 60));
+  remainingTime = remainingTime - minutes * 60 * oneSecond();
+  var seconds = Math.floor(remainingTime / oneSecond());
+  return {
+    hours: hours,
+    minutes: minutes,
+    seconds: seconds
+  };
+};
+
+var prependZero = function prependZero(key) {
+  return function (clockTime) {
+    return _objectSpread({}, clockTime, _defineProperty({}, key, clockTime[key] < 10 ? "0" + clockTime[key] : clockTime[key]));
+  };
+};
+
+var doubleDigits = function doubleDigits(civilianTime) {
+  return compose(prependZero("hours"), prependZero("minutes"), prependZero("seconds"))(civilianTime);
+};
+
+var formatClock = function formatClock(format) {
+  return function (time) {
+    return format.replace("hh", time.hours).replace("mm", time.minutes).replace("ss", time.seconds);
+  };
+}; // ClockTime accepts three arguments: a function that sets the time in state, a function that clears the interval and submits answers, and a timeLimit integer
+
+
+var ClockTime = function ClockTime(setTime, endFunction) {
+  var limit = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 60;
+  var timer = setInterval(function () {
+    compose(convertToMilliseconds, serializeClockTime, doubleDigits, formatClock("hh:mm:ss"), display(setTime))(limit);
+    endFunction(limit -= 1, timer);
+  }, oneSecond());
+  return timer;
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (ClockTime);
 
 /***/ }),
 
