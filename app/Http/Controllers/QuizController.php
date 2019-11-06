@@ -13,8 +13,8 @@ use Illuminate\Support\Collection;
 class QuizController extends Controller
 {
     public function index(){
-       $subjects = Subject::all();
-       return view('quiz.index', compact('subjects'));
+       $quizzes = Quiz::all();
+       return view('quiz.index', compact('quizzes'));
     }
 
     public function submit(Request $request){

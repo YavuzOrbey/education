@@ -5,10 +5,21 @@
 <div style="grid-area: content">
 
 <h3 class="quiz-category" style="border-bottom: 1px lightgrey solid; width: 300px;">Test Prep</h3>
-<div class="">
-@foreach($quizzes as $quiz)
+<div class="quiz-selection">
+@foreach($subjects as $subject)
 
-<a href="/quizzes/{{$quiz->id}}"><div class="">{{$quiz->name}}</div></a>
+    <div class="quiz">
+        <a href="/quizzes/{{$subject->id}}">
+            <div class="quiz-header">{{$subject->name}}</div>
+            <div class='quiz-icon'>
+                @if($subject->icon)<i class="{{$subject->icon}}"></i>
+                @else
+                <span style="font-size: 16px">No Image</span>
+                @endif
+            
+            </div>
+        </a>
+    </div>
 
 @endforeach
 </div>
