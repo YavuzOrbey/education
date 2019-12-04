@@ -79687,7 +79687,9 @@ var Timer = function Timer(_ref) {
   }, "Time left: ", time), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
     className: "",
     onClick: hide
-  }, "Hide"));
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    class: countdown ? "btn btn-danger" : "btn btn-primary"
+  }, visibility ? "Hide" : "Show Timer")));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Timer);
