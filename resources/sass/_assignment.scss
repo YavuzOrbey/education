@@ -1,0 +1,8 @@
+$arraySize: 7;
+
+@for $i from 1 through $arraySize {
+    .bar:nth-child(#{$i}):hover
+        ~ .text-group-item:nth-child(#{$i + $arraySize}) {
+        visibility: visible;
+    }
+}

@@ -1,16 +1,18 @@
 import React from "react";
-const Timer = ({ time }) => (
+const Timer = ({ time, countdown, visibility, hide }) => (
     <div className="timer-wrapper">
-        <div className="timer">
-            Time left: {time}
+        {visibility && (
             <div
-                className="closeBtn"
-                style={{
-                    borderRadius: 0,
-                    backgroundColor: "rgb(120, 120, 120, 0.9)"
-                }}
-            ></div>
-        </div>
+                className="timer"
+                style={countdown ? { color: "red" } : { color: "black" }}
+            >
+                Time left: {time}
+            </div>
+        )}
+
+        <span className="" onClick={hide}>
+            Hide
+        </span>
     </div>
 );
 export default Timer;

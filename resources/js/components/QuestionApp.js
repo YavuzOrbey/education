@@ -1,7 +1,6 @@
 import MathJax from "react-mathjax2";
 import QuestionBlock from "./QuestionBlock";
 import QuestionSidebar from "./QuestionSidebar";
-
 import React from "react";
 import axios from "axios";
 import ClockTime from "../functions/ClockTime";
@@ -16,12 +15,18 @@ class QuestionApp extends React.Component {
             counter: 0,
             markedQuestions: Array(),
             questions: {},
-            buttons: ["", "NEXT"],
+            buttons: ["", "NEXT", "MARK"],
             timer: null,
             realContent: {},
             results: null,
-            time: null
+            timeDisplay: null,
+            timerVisibility: true
         };
+    }
+    setVisible(selector, visible) {
+        document.querySelector(selector).style.display = visible
+            ? "block"
+            : "none";
     }
 
     convertStringtoMath = s => {
@@ -36,34 +41,23 @@ class QuestionApp extends React.Component {
             );
         });
     };
-    startTimer() {
-        const ONE_SECOND = 1000,
-            ONE_MINUTE = ONE_SECOND * 60;
-        let minutes = 0.1,
-            endTime = ONE_MINUTE * minutes;
-        let { submitAnswers, endTimer } = this;
-        let timer = setInterval(() => {
-            endTime = endTime - ONE_SECOND;
-            if (endTime <= 0) {
-                submitAnswers(true);
-                endTimer(timer);
-            }
-        }, ONE_SECOND);
-    }
-    endTimer(timer) {
-        clearInterval(timer);
-    }
-    componentDidMount() {
+
+    startTimer = () => {
+        this.setVisible(".page", true);
+        this.setVisible("#loading", false);
         ClockTime(
-            time => {
-                this.setState({ time });
+            timeDisplay => {
+                this.setState({ timeDisplay });
             },
             (time, timer) => {
                 this.setState({ timer });
+                time < 60 ? this.setState({ countdown: time }) : null;
                 time < 0 ? this.submitAnswers(true) : null;
             },
-            60
+            70
         );
+    };
+    componentDidMount() {
         const quiz = this.props.match.params.subject;
         this.setState({ quiz });
         let relatedContent = [],
@@ -118,6 +112,7 @@ class QuestionApp extends React.Component {
                         );
                 });
                 let answers = Array(questions.length);
+                console.log(questions);
                 this.setState({
                     questions,
                     currentQuestion: Array.isArray(questions)
@@ -132,13 +127,15 @@ class QuestionApp extends React.Component {
             }
         );
     }
+
+    componentDidUpdate() {}
     submitAnswers = (timesUp = false) => {
         let submit = timesUp ? true : window.confirm("Submit Answers?");
         let obj = {};
         obj.id = this.state.quiz;
         obj.answers = this.state.answers;
         submit
-            ? (this.endTimer(this.state.timer),
+            ? (clearInterval(this.state.timer),
               axios
                   .post("/submission", obj)
                   .then(response => {
@@ -153,16 +150,14 @@ class QuestionApp extends React.Component {
                                   return ques;
                               }
                           );
-                          this.setState(
-                              state => ({
-                                  mode: 0,
-                                  results: response.data,
-                                  counter: 0,
-                                  questions: updatedQuestions,
-                                  currentQuestion: updatedQuestions[0]
-                              }),
-                              state => this.changeNavButtons(this.state)
-                          );
+                          this.setState(state => ({
+                              mode: 0,
+                              results: response.data,
+                              counter: 0,
+                              questions: updatedQuestions,
+                              currentQuestion: updatedQuestions[0]
+                          }));
+                          this.changeNavButtons(this.state);
                       }
                   })
                   .catch(error => {
@@ -196,7 +191,13 @@ class QuestionApp extends React.Component {
             changeNavButtons(this.state)
         );
     };
-
+    sideBarClick = counter => {
+        let { questions } = this.state;
+        let currentQuestion = questions[counter];
+        this.setState({ counter, currentQuestion }, () =>
+            this.changeNavButtons(this.state)
+        );
+    };
     handleAnswerClick = (number, answer) => {
         const answers = [...this.state.answers];
         answers[number - 1] = answer;
@@ -225,20 +226,19 @@ class QuestionApp extends React.Component {
 
         this.setState({ markedQuestions, buttons });
     };
-    sideBarClick = counter => {
-        let { questions } = this.state;
-        let currentQuestion = questions[counter];
-        this.setState({ counter, currentQuestion }, () =>
-            this.changeNavButtons(this.state)
-        );
-    };
+    sendReady = () => this.startTimer();
+    hideTimer = () =>
+        this.setState(state => ({ timerVisibility: !state.timerVisibility }));
     render() {
         const {
             handleClick,
             handleAnswerClick,
             markQuestion,
             sideBarClick,
-            eliminateAnswerChoice
+            eliminateAnswerChoice,
+            hideTimer,
+            startTimer,
+            sendReady
         } = this;
         const {
             currentQuestion,
@@ -249,36 +249,46 @@ class QuestionApp extends React.Component {
             realContent,
             mode,
             results,
-            time
+            timeDisplay,
+            countdown,
+            timerVisibility
         } = this.state;
         let marked = currentQuestion
             ? markedQuestions.includes(currentQuestion.number)
             : false;
-        return Array.isArray(questions) && questions.length ? (
-            <div>
-                <QuestionBlock
-                    handleClick={handleClick}
-                    handleAnswerClick={handleAnswerClick}
-                    markQuestion={markQuestion}
-                    currentQuestion={currentQuestion}
-                    realContent={realContent}
-                    marked={marked}
-                    answers={answers}
-                    buttons={buttons}
-                    mode={mode}
-                    time={time}
-                    eliminateAnswerChoice={eliminateAnswerChoice}
-                ></QuestionBlock>
+        return (
+            Array.isArray(questions) &&
+            questions.length && (
+                <div>
+                    <QuestionBlock
+                        handleClick={handleClick}
+                        handleAnswerClick={handleAnswerClick}
+                        markQuestion={markQuestion}
+                        currentQuestion={currentQuestion}
+                        realContent={realContent}
+                        marked={marked}
+                        answers={answers}
+                        buttons={buttons}
+                        mode={mode}
+                        time={timeDisplay}
+                        eliminateAnswerChoice={eliminateAnswerChoice}
+                        countdown={countdown}
+                        timerVisibility={timerVisibility}
+                        hideTimer={hideTimer}
+                        startTimer={startTimer}
+                        sendReady={sendReady}
+                    ></QuestionBlock>
 
-                <QuestionSidebar
-                    onClick={sideBarClick}
-                    questions={questions}
-                    markedQuestions={markedQuestions}
-                    mode={mode}
-                    results={results}
-                />
-            </div>
-        ) : null;
+                    <QuestionSidebar
+                        onClick={sideBarClick}
+                        questions={questions}
+                        markedQuestions={markedQuestions}
+                        mode={mode}
+                        results={results}
+                    />
+                </div>
+            )
+        );
     }
 }
 QuestionApp.propTypes = {};

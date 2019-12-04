@@ -16,12 +16,11 @@ class CreateAssignmentsTable extends Migration
         Schema::create('assignments', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->dateTime('due_date');
             $table->timestamps();
         });
         $tests = array();
         for ($i=1; $i < 5; $i++) { 
-            array_push($tests, ['name'=>'SAT Practice Test ' . $i , 'due_date'=> Carbon::now(), 'created_at'=>Carbon::now(), 'updated_at'=>Carbon::now()]);
+            array_push($tests, ['name'=>'SAT Practice Test ' . $i ,'created_at'=>Carbon::now(), 'updated_at'=>Carbon::now()]);
         }
         DB::table('assignments')->insert($tests);
     }

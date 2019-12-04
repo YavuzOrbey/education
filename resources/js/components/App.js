@@ -8,6 +8,15 @@ import QuestionApp from "./QuestionApp";
 import CreateQuestionApp from "./CreateQuestionApp";
 import Test from "./Test";
 class App extends Component {
+    onReady(callback) {
+        var intervalId = window.setInterval(function() {
+            if (document.getElementsByTagName("body")[0] !== undefined) {
+                window.clearInterval(intervalId);
+                callback.call(this);
+            }
+        }, 1000);
+    }
+
     render() {
         return (
             <BrowserRouter>

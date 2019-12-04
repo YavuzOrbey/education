@@ -8,7 +8,7 @@
           <div class="collapse navbar-collapse flex-grow-1 text-right" style="background:white" id="navbarSupportedContent">
           <ul class="navbar-nav ml-auto flex-nowrap">
             <li class="nav-item {{Request::is('/') ? 'active': ''}}"><a href="/" class="nav-link">Home</a></li>
-              <li class="nav-item {{Request::is('assignments') ? 'active': ''}}"><a href="{{route('assignments.index')}}" class="nav-link">Assignments</a></li>
+              <li class="nav-item {{Request::is('assignments') ? 'active': ''}}"><a href="{{route('assignments.list')}}" class="nav-link">Assignments</a></li>
               <li class="nav-item {{Request::is('quizzes') ? 'active': ''}}"><a href="/quizzes" class="nav-link">Quizzes</a></li>
               @guest
               <li class="nav-item">

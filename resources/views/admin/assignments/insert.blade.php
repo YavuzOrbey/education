@@ -84,7 +84,7 @@ let getQuestionIds = function(obj){
 
 questionList.addEventListener('click', removeQuestion, false);
 function drawLeftForm(thingToSend){
-    let form =`<form action="/assignments/${thingToSend.id}" method="POST">
+    let form =`<form action="/admin/assignments/${thingToSend.id}" method="POST">
         <input id="obj" type="hidden" name="obj" value=${thingToSend}>@csrf @method('PUT')
         <button id="submission">SUBMIT</button></form>`;
     return form;

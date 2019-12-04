@@ -8,6 +8,5 @@
       @yield('content') 
       </div>
       @include('inc._foot')
-    </div>
 
 

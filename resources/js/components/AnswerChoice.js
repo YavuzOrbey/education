@@ -52,7 +52,7 @@ const AnswerChoice = ({
                     style={{ color: "orange" }}
                 />
             </label>
-            <div className="correct-answer-icon">{icon}</div>
+            <label className="correct-answer-icon">{icon}</label>
 
             <label
                 className={

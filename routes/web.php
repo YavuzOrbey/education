@@ -16,17 +16,20 @@ Route::get('/math', function () {
 });
 Route::view('/quizzes/{subject}', 'app'); //{path?}
 Route::get('/quizzes', 'QuizController@index');
-Route::resource('assignments','AssignmentController');
+
 Route::prefix('assignments')->group(function(){
     Route::post('/confirm', 'AssignmentController@confirm')->name('assignments.confirm');
     Route::post('/process', 'AssignmentController@process')->name('assignments.process');
     Route::get('/results/{assignment}', 'AssignmentController@results')->name('assignments.results');
+    Route::get('/list', 'AssignmentController@list')->name('assignments.list');
     });
 Route::group(['prefix'=>'admin', 'middleware'=>['role:administrator']], function(){
     Route::get("/", 'AdminController@index');
+    Route::get("/assignments/manage", 'AssignmentController@manage')->name('assignments.manage');
+    Route::get("/assignments/insert", 'AssignmentController@insert')->name('assignments.insert');
+    Route::resource('assignments', 'AssignmentController');
     Route::get("/dashboard", 'AdminController@dashboard')->name('admin.dashboard');
-    Route::get('assignments/insert', 'AssignmentController@insert')->name('assignments.insert');
-    Route::get('assignments/edit', 'AssignmentController@edit')->name('assignments.edit');
+
     Route::name('admin')->resource("/users", 'UserController');
     Route::name('admin.users.assignment')->get('/users/{user}/{assignment}', 'UserController@getUserAssignment');
     Route::name('admin')->resource("/groups", 'GroupController');

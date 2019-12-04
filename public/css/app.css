@@ -1,5 +1,33 @@
 @import url(https://fonts.googleapis.com/css?family=Nunito);@charset "UTF-8";
 
+.bar:nth-child(1):hover ~ .text-group-item:nth-child(8) {
+  visibility: visible;
+}
+
+.bar:nth-child(2):hover ~ .text-group-item:nth-child(9) {
+  visibility: visible;
+}
+
+.bar:nth-child(3):hover ~ .text-group-item:nth-child(10) {
+  visibility: visible;
+}
+
+.bar:nth-child(4):hover ~ .text-group-item:nth-child(11) {
+  visibility: visible;
+}
+
+.bar:nth-child(5):hover ~ .text-group-item:nth-child(12) {
+  visibility: visible;
+}
+
+.bar:nth-child(6):hover ~ .text-group-item:nth-child(13) {
+  visibility: visible;
+}
+
+.bar:nth-child(7):hover ~ .text-group-item:nth-child(14) {
+  visibility: visible;
+}
+
 /*!
  * Bootstrap v4.3.1 (https://getbootstrap.com/)
  * Copyright 2011-2019 The Bootstrap Authors

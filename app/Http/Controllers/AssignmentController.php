@@ -19,7 +19,6 @@ class AssignmentController extends Controller
         $theData['id'] = $assignment->id;
         $theData['name'] = $assignment->name;
         $theData['sections'] = array();
-        $theData['due_date'] = $assignment->due_date;
         foreach ($sections as $i => $section) {
 
             $questions = array();
@@ -36,40 +35,40 @@ class AssignmentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function list()
     {
 
         $currentAssignments = []; 
         $pastAssignments=[];
-        //get only assignments that aren't practice tests
+        //get only assignments that aren't practice tests and that have been assigned to the current user's group
         if(Auth::user()){
             $assignments = Auth::user()->group->assignments()->where('name', 'NOT LIKE', '%Practice%')->get();
-            // get only assignments that have been assigned to the current user's group
-            //Auth::user()
             //find only assignments that have at least one question in each of their sections
             foreach($assignments as $assignment){
                         foreach($assignment->sections as $section){
                             if(count($section->questions)){
-                                if(strtotime($assignment->due_date) > time()){
-                                    array_push($currentAssignments, $assignment->id);
+                                if(strtotime($assignment->pivot->due_date) > time()){
+                                    array_push($currentAssignments, $assignment);
                                     break;
                                 }
                                 else{
-                                    array_push($pastAssignments, $assignment->id);
+                                    array_push($pastAssignments, $assignment);
                                     break;
                                 }
                             }
                         }
                     }
 
-            $currentAssignments = Assignment::find($currentAssignments);
-            $currentAssignments = $currentAssignments->sortBy(function ($assignment, $key) {
-                return $assignment['due_date'];
+            usort($currentAssignments, function ($assignment, $key) {
+                return $assignment->pivot->due_date;
             });
-            $pastAssignments = Assignment::find($pastAssignments);
+            usort($pastAssignments, function ($assignment, $key) {
+                return $assignment->pivot->due_date;
+            });
+            /*$pastAssignments = Assignment::find($pastAssignments);
             $pastAssignments = $pastAssignments->sortBy(function ($assignment, $key) {
                 return $assignment['due_date'];
-            });
+            }); */
             $completed= Auth::user()->assignments;
             return view('assignment.index', compact('currentAssignments', 'pastAssignments', 'completed'));
         }
@@ -119,7 +118,20 @@ class AssignmentController extends Controller
     public function show(Assignment $assignment)
     {
         $sections = $assignment->sections;
-        if(Auth::user() && Auth::user()->assignments()->where('assignments.id', $assignment->id)->exists())
+        $scores = [];
+        if(Auth::user() && Auth::user()->hasRole('administrator')){
+            foreach($assignment->users as $user){
+                array_push($scores, [$user->first_name . " " . $user->last_name, $user->pivot->score]);
+            }
+            usort($scores, function($a,$b){
+                if($a[1]==$b[1]){
+                    return 0;
+                }
+                return  ($a[1] <$b[1]) ? -1:1;
+            });
+             return view('admin.assignments.show',  compact('assignment', 'scores'));
+        }
+        else if(Auth::user() && Auth::user()->assignments()->where('assignments.id', $assignment->id)->exists())
             return view('assignment.completed',  compact('assignment'));
         else if(Auth::user()  && !empty($sections->all())){
             return view('assignment.show', compact('sections', 'assignment'));
@@ -138,11 +150,15 @@ class AssignmentController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function edit(){
+    public function edit(Assignment $assignment){
+        return view('admin.assignments.edit', compact('assignment'));
+    }
+
+    public function manage(){
         $assignments = Assignment::all()->filter(function ($value, $key){
             return !strpos($value->name, "Practice");
         })->pluck('name', 'id');
-        return view('admin.assignments.edit', compact('assignments'));
+        return view('admin.assignments.manage', compact('assignments'));
     }
     public function insert()
     {

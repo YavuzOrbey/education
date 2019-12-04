@@ -3,7 +3,6 @@
 @section('content')
 @include('inc._messages')
 <div style="grid-area: content">
-
 <h3 class="quiz-category" style="border-bottom: 1px lightgrey solid; width: 300px;">Test Prep</h3>
 <div class="">
 @foreach($quizzes as $quiz)

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import QuestionNav from "./QuestionNav";
 import AnswerChoices from "./AnswerChoices";
 import RelatedContent from "./RelatedContent";
@@ -10,6 +10,7 @@ import "../../css/exercises.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
+
 const QuestionBlock = ({
     handleClick,
     handleAnswerClick,
@@ -21,11 +22,21 @@ const QuestionBlock = ({
     answers,
     buttons,
     mode,
-    time
+    time,
+    countdown,
+    hideTimer,
+    timerVisibility,
+    startTimer,
+    sendReady
 }) => {
     return (
         <div className="question-block read">
-            <Timer time={time} />
+            <Timer
+                time={time}
+                countdown={countdown}
+                hide={hideTimer}
+                visibility={timerVisibility}
+            />
             {currentQuestion.related_content ? (
                 <RelatedContent
                     relatedContent={
@@ -36,12 +47,14 @@ const QuestionBlock = ({
                 ""
             )}
             {marked ? <span className="marked">Marked</span> : ""}
-            <MathJax.Context input="tex">
+            <MathJax.Context input="tex" onLoad={() => sendReady()}>
+                {/* When Mathjax gets loaded need to start the timer */}
                 <Question
                     data={{
                         number: currentQuestion.number,
                         text: currentQuestion.question_text
                     }}
+                    //yavuz is the best and i love him <3 -c
                 />
             </MathJax.Context>
             <MathJax.Context input="tex">
