@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Group;
+use App\AssignmentGroup;
 use Illuminate\Http\Request;
 
 class GroupController extends Controller
@@ -81,5 +82,10 @@ class GroupController extends Controller
     public function destroy(Group $group)
     {
         //
+    }
+    
+    public function assignments(){
+        $groupassignments = AssignmentGroup::all();
+        return json_encode($groupassignments, JSON_PRETTY_PRINT);
     }
 }

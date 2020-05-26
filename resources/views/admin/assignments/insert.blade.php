@@ -42,7 +42,10 @@ let rightResults = document.getElementById('right-results');
 let thingToSend={}, thingReceived; 
 let leftQuestions=[], rightQuestions;
 function drawResultList(thingToSend){
-    let resultList = `<input class='test-title' id='test-title' value='${thingToSend['name']}' placeholder='${thingToSend['name']}'>`;
+    console.log(thingToSend);
+    let resultList = `<input class='test-title' id='test-title' value='${thingToSend['name']}' placeholder='${thingToSend['name']}'>
+
+    `;
     
     thingToSend.sections.forEach((section, i) => {
         resultList+=`<div class="section" data-section="${section.id}"><div class="section-title">${section.name}</div><i class="fas fa-trash"></i>
@@ -85,7 +88,9 @@ let getQuestionIds = function(obj){
 questionList.addEventListener('click', removeQuestion, false);
 function drawLeftForm(thingToSend){
     let form =`<form action="/admin/assignments/${thingToSend.id}" method="POST">
-        <input id="obj" type="hidden" name="obj" value=${thingToSend}>@csrf @method('PUT')
+        @csrf @method('PUT')
+        <input id="obj" type="hidden" name="obj" value=${thingToSend}>
+
         <button id="submission">SUBMIT</button></form>`;
     return form;
 }

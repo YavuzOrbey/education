@@ -4,7 +4,10 @@
         <ul class="menu-list">
         <li><a href="{{route('admin.dashboard')}}">Dashboard</a></li>
         </ul>
-
+        <p class="menu-label">Subjects</p>
+        <ul class="menu-list">
+            <li><a href="{{route('subjects.create')}}">Create</a></li>
+        </ul>
         <p class="menu-label">Assignments</p>
         <ul class="menu-list">
             <li><a href="{{route('assignments.create')}}">Create</a></li>

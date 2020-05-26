@@ -5,7 +5,8 @@
 
 
 @section('content')
-<table class='admin-table'>
+<h1>Group: {{$group->name}}</h1>
+<table class='admin-table table table-striped table-bordered'>
     <thead>
         <tr>
             <th>ID</th>

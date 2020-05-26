@@ -6,6 +6,8 @@ use App\Assignment;
 use App\Question;
 use App\BookQuestion;
 use App\Section;
+use App\Group;
+use App\AssignmentGroup;
 use Validator;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -103,7 +105,7 @@ class AssignmentController extends Controller
         ])->validate();
         $assignment = new Assignment;
         $assignment->name = $request->assignment['name'];
-        $assignment->due_date = date("Y-m-d H:i:s", strtotime($request->assignment['due_date']) +60*60*23 +60*59 + 59+4*60*60);
+        //$assignment->due_date = date("Y-m-d H:i:s", strtotime($request->assignment['due_date']) +60*60*23 +60*59 + 59+4*60*60);
         $assignment->save();
         $assignment->subjects()->sync($request->subjects);
         return redirect()->route('assignments.insert');
@@ -117,7 +119,9 @@ class AssignmentController extends Controller
      */
     public function show(Assignment $assignment)
     {
+
         $sections = $assignment->sections;
+
         $scores = [];
         if(Auth::user() && Auth::user()->hasRole('administrator')){
             foreach($assignment->users as $user){
@@ -131,13 +135,16 @@ class AssignmentController extends Controller
             });
              return view('admin.assignments.show',  compact('assignment', 'scores'));
         }
-        else if(Auth::user() && Auth::user()->assignments()->where('assignments.id', $assignment->id)->exists())
+        else if(Auth::user() && Auth::user()->assignments()->where('assignments.id', $assignment->id)->exists()){
+           
             return view('assignment.completed',  compact('assignment'));
+        }
+            
         else if(Auth::user()  && !empty($sections->all())){
             return view('assignment.show', compact('sections', 'assignment'));
         }
         else{
-            return redirect()->route('assignments.index');
+            return redirect()->route('assignments.list');
         }
 
 
@@ -155,10 +162,11 @@ class AssignmentController extends Controller
     }
 
     public function manage(){
+        $groups = Group::all()->pluck('name', 'id');
         $assignments = Assignment::all()->filter(function ($value, $key){
             return !strpos($value->name, "Practice");
         })->pluck('name', 'id');
-        return view('admin.assignments.manage', compact('assignments'));
+        return view('admin.assignments.manage', compact('assignments', 'groups'));
     }
     public function insert()
     {
@@ -199,18 +207,21 @@ class AssignmentController extends Controller
     }
     public function confirm(Request $request){
         $assignment = Assignment::find($request->assignment);
-        $correctString = "";
         $sections = $assignment->sections;
         $studentAnswers = $request->answers;
         $guide = [0=>'',1=>'A', 2=>'B', 3=>'C', 4=>'D'];
         return view('assignment.confirm', compact('assignment', 'studentAnswers', 'guide'));
     }
     public function process(Request $request){
+
         $assignment = Assignment::find($request->assignment);
-        if(!Auth::user() || time() > strtotime($assignment->due_date) ){
+        // need the group and assignment id
+        $dueDate= AssignmentGroup::where('group_id', Auth::user()->group->id)->where('assignment_id', $assignment->id)->first()->due_date;
+        
+
+        if(!Auth::user() || time() > strtotime($dueDate) ){
             abort(401, 'Something went wrong');
         }
-        
         $assignmentUserId = DB::table('assignment_user')->insertGetId(
             ['assignment_id' => $assignment->id, 'user_id'=>Auth::user()->id, 'score'=>0, 'created_at'=>Carbon::now(), 'updated_at'=>Carbon::now()]
         );

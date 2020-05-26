@@ -8,5 +8,8 @@
       @yield('content') 
       </div>
       @include('inc._foot')
-
+      
+      @section('stylesheets')
+      {{Html::style('css/admin.css') }}
+      @stop
 

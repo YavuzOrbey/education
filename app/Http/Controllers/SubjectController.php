@@ -25,7 +25,7 @@ class SubjectController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.subjects.create');
     }
 
     /**
@@ -36,7 +36,7 @@ class SubjectController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return 'stored!';
     }
 
     /**

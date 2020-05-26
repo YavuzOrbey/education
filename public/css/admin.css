@@ -28,8 +28,11 @@
     left: 200px;
     overflow: auto;
 }
-table.admin-table td {
-    width: 150px;
+.admin-table {
+    font-size: 12px;
+}
+table.admin-table thead {
+    background: #ffa2a2;
 }
 table.admin-table td,
 table.admin-table th {

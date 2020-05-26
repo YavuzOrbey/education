@@ -94,12 +94,25 @@ code {
         monospace;
 }
 .banner {
-    height: 46px;
-    background: rgb(62, 74, 126);
+    display: flex;
+    height: 500px;
+    background-image: url("../images/banner.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    box-shadow: 0 2px 5px #dde;
+    justify-content: center;
+    align-items: center;
+}
+.input-group {
+    margin: 30px 0;
 }
 @media only screen and (min-width: 500px) {
+    .auth-group {
+        margin-left: 110px;
+        width: initial;
+    }
     .container {
-        width: 100vw;
         display: grid;
         grid-template-columns: 10% auto 10%;
         grid-template-rows: 100px auto 100px;
@@ -109,13 +122,25 @@ code {
             ". . .";
     }
     .modal > .modal-content-auth {
-        margin: 15vw auto;
-        width: 40vw;
+        margin: 5vw auto;
+        width: 682px;
         box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2),
             0 7px 20px 0 rgba(0, 0, 0, 1);
+        padding: 0;
     }
     .input-control {
-        width: 28vw;
+        width: calc(100% - 120px);
+    }
+
+    .carousel-item-description > span {
+        display: inline-block;
+        width: 400px;
+    }
+
+    .carousel-item-description-text {
+        width: 400px;
+        margin-left: 30px;
+        display: inline-block;
     }
 }
 .message {
@@ -125,8 +150,6 @@ code {
     grid-area: content;
 }
 
-.nav-button {
-}
 .editable {
     width: 100px;
     height: 40px;
@@ -176,28 +199,47 @@ nav a:hover {
     font-size: 12px;
 }
 .auth-btn {
-    /*width: 28vw; */
-    background: #d04747;
+    background: linear-gradient(
+        145deg,
+        rgba(146, 18, 70, 1),
+        rgba(145, 18, 69, 1),
+        rgba(143, 18, 67, 1),
+        rgba(237, 107, 159, 1)
+    );
     color: white;
     font-size: 20px;
     letter-spacing: 3px;
-    border-radius: 0;
+    border: none;
+    border-radius: 5px;
+    float: right;
 }
-.auth-btn:hover,
+.white-btn {
+    background: white;
+    border: 1px solid black;
+    color: black;
+}
 .closeBtn:hover {
-    background: #902828;
+    background: white;
     cursor: pointer;
     backface-visibility: hidden;
     transition: transform 0.15s;
     transform: scale(1.01);
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
 }
-
+.closeBtn:hover::after {
+    color: #a85295;
+}
+.login-additional {
+    margin: 0 auto;
+}
 .login-additional a {
-    margin-top: 30px;
     text-decoration: none;
     margin-right: 30px;
-    color: black;
+}
+.login-buttons .btn {
+    font-size: 20px;
+    border-radius: 5px;
+    box-shadow: 0px 3px 3px #d4d0d0;
 }
 .modal {
     background: rgba(0, 0, 0, 0.7);
@@ -207,7 +249,7 @@ nav a:hover {
 .modal-content-auth {
     background: #f4f4f4;
     font-size: 20px;
-
+    border-radius: 10px;
     animation-name: open;
     animation-duration: 0.4s;
     animation-timing-function: ease-in;
@@ -215,16 +257,29 @@ nav a:hover {
     grid-area: content;
 }
 
+.modal-header {
+    background-image: url("../images/login.png");
+    background-origin: padding-box;
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 400px;
+    padding: 0;
+    position: relative;
+}
+
 @media only screen and (max-width: 600px) {
     .modal-content-auth {
         width: 100%;
         margin: 0 auto;
     }
-}
-.modal-header {
-    background-color: coral;
-    padding: 15px;
-    color: white;
+    .modal-header {
+        height: 40vh;
+    }
+
+    .btn {
+        width: 100%;
+    }
 }
 .modal-header h2,
 .modal-footer h3 {
@@ -249,9 +304,7 @@ nav a:hover {
         opacity: 1;
     }
 }
-.input-group {
-    margin: 30px 0;
-}
+
 .input-group > label {
     margin: 0;
     width: 100px;
@@ -261,18 +314,18 @@ nav a:hover {
     width: 70%;
 }
 .display {
-    display: block;
+    display: block !important;
 }
 .closeBtn {
-    float: right;
+    position: absolute;
+    right: 0;
     color: #fff;
     font-size: 30px;
     padding: 5px;
     border-radius: 20px;
-    position: relative;
     width: 30px;
     height: 30px;
-    background: #d04747;
+    background: #a85295;
     margin: 10px;
     box-shadow: 0 2px 3px rgba(0, 0, 0, 0.25);
 }
@@ -290,9 +343,28 @@ nav a:hover {
     display: block;
     font-family: sans-serif;
 }
-.auth-group {
-    /*margin-left: 110px; */
-    width: initial;
+.auth-group a {
+    color: black;
+    text-transform: none;
+}
+.auth-group a:hover {
+    color: linear-gradient(45deg, #ed6a9f, rgba(199, 76, 219, 0.43));
+    text-decoration: none;
+}
+.login-helpers {
+    font-size: 14px;
+}
+.login-helpers > div {
+    display: inline-block;
+}
+.auth-group > div {
+    width: 100%;
+}
+.auth-group > div > div {
+    padding: 0;
+}
+#remember {
+    margin-right: 5px;
 }
 .list-group {
     list-style: none;
@@ -327,6 +399,12 @@ td {
     border: none;
     border-bottom: 1px solid rgba(30, 30, 30, 0.1);
     border-top: 1px solid rgba(30, 30, 30, 0.1);
+}
+#login-content {
+    display: none;
+}
+#register-content {
+    display: none;
 }
 .list-group-item .due-date {
     vertical-align: middle;
@@ -394,4 +472,38 @@ td {
 .result a:hover {
     background: #e03838;
     color: white;
+}
+#carouselExampleControls {
+    position: absolute;
+}
+.carousel-item img {
+    box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.1);
+}
+.carousel-item-description {
+    color: #fff;
+    font-size: 22px;
+    font-family: "Montserrat", sans-serif;
+    overflow: hidden;
+    align-items: flex-start;
+    display: flex;
+}
+.carousel-item-description > div:first-child {
+    border-radius: 50%;
+    background-color: #ff9400;
+    width: 50px;
+    height: 50px;
+    display: inline-block;
+}
+
+.carousel-item-number {
+    vertical-align: middle;
+    line-height: 30px;
+    text-align: center;
+    padding: 10px;
+}
+.carousel-control-prev-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='black' viewBox='0 0 8 8'%3E%3Cpath d='M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3E%3C/svg%3E");
+}
+.carousel-control-next-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='black' viewBox='0 0 8 8'%3E%3Cpath d='M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E");
 }

@@ -5,7 +5,8 @@
 
 
 @section('content')
-<table>
+<h1>List of All Users</h1>
+<table class='admin-table table table-striped table-bordered'>
 <thead>
     <tr>
         <th>ID</th>

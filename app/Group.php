@@ -11,6 +11,6 @@ class Group extends Model
     }
 
     public function assignments(){
-        return $this->belongsToMany('App\Assignment')->withPivot('due_date');
+        return $this->belongsToMany('App\Assignment')->using('App\AssignmentGroup')->withPivot('due_date');
     }
 }

@@ -32,12 +32,14 @@ class UserController extends Controller
             foreach($questions as $qKey =>$question){
                 if($user){
                     $completedQuestion = DB::table('user_answers')->where('book_question_id', $question->id)->where('assignment_user_id',$completedAssignment->id)->first();
+                    if($completedQuestion){
+                        array_push($studentAnswers[$key], $completedQuestion->user_answer);
+                        }
                 }
-                if($completedQuestion){
-                array_push($studentAnswers[$key], $completedQuestion->user_answer);
-                }
+
             }
         }
+
         $guide = [0=>'',1=>'A', 2=>'B', 3=>'C', 4=>'D'];
         return view('assignment.results', compact('assignment', 'user', 'sections', 'studentAnswers', 'guide'));
 

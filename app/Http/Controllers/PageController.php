@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
-class HomeController extends Controller
+use Illuminate\Support\Facades\Auth;
+class PageController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -23,6 +23,13 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        
+        $authorized = Auth::user()->hasRole('administrator');
+        if($authorized){
+            return redirect('/admin');
+        }
+        else{
+            return redirect('/');
+        }
     }
 }

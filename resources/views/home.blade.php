@@ -1,9 +1,64 @@
 @extends('layouts.main')
-
+@section('stylesheets')
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap" rel="stylesheet">
+@stop
 
 @section('welcome')
 @auth <div style="color:white; font-size: 1.3em; margin-left: 10px; font-weight: 600">Welcome {{Auth::user()->first_name}} </div>@endauth
-@stop
+
+
+<div class="banner">
+    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+              <div class='row  justify-content-around'>
+                  <div class='col-12 col-md-5'><img class="d-block img-fluid" src="{{asset('images/assignment.png')}}" alt="First slide"></div>
+                  <div class='col-12 col-md-5 carousel-item-description'>
+                    <div class='carousel-item-number'>1</div>
+                    <div class='carousel-item-description-text'><span>Read and work through assignments</span></div>
+                  </div>
+              </div>
+          </div>
+          <div class="carousel-item">
+                <div class='row  justify-content-around'>
+                    <div class='col-12 col-md-5'> <img class="d-block img-fluid" src="{{asset('images/submit.png')}}" alt="Second slide"></div>
+                    <div class='col-12 col-md-5 carousel-item-description'>
+                      <div class='carousel-item-number'>2</div>
+                      <div class='carousel-item-description-text'><span>When you're ready submit your answers to the assignment</span></div>
+                    </div>
+                </div>
+          </div>
+          <div class="carousel-item">
+            <div class='row  justify-content-around'>
+                <div class='col-12 col-md-5'> <img class="d-block img-fluid" src="{{asset('images/results.png')}}" alt="Second slide"></div>
+                <div class='col-12 col-md-5 carousel-item-description'>
+                  <div class='carousel-item-number'>3</div>
+                  <div class='carousel-item-description-text'><span>Get instant results</span></div>
+                </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class='row  justify-content-around'>
+                <div class='col-12 col-md-5'> <img class="d-block img-fluid" src="{{asset('images/quiz.png')}}" alt="Second slide"></div>
+                  <div class='col-12 col-md-5 carousel-item-description'>
+                    <div class='carousel-item-number'>4</div>
+                    <div class='carousel-item-description-text'><span>For an extra challenge try some of the quizzes</span></div>
+                  </div>
+            </div>
+            </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+    </div>
+    
+    @stop
 @section('content')
 
                     @if (session('status'))

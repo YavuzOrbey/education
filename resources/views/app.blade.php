@@ -1,7 +1,8 @@
 @extends('layouts.main')
 @section('stylesheets')
-<link href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css" rel="stylesheet"/>
+{{-- <link href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css" rel="stylesheet"/> --}}
 <link href="https://fonts.googleapis.com/css?family=Alex+Brush" rel="stylesheet">
+
 <style>
         
 .page {
@@ -33,7 +34,9 @@
     background-repeat: no-repeat;
     background-position: center;
 }
-
+#app > div{
+    position: relative;
+}
         </style>
 @stop
 @section('content')

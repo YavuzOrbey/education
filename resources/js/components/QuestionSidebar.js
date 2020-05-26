@@ -1,6 +1,6 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEye } from "@fortawesome/free-solid-svg-icons";
+import { faThumbtack } from "@fortawesome/free-solid-svg-icons";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 const QuestionSidebar = ({
@@ -36,7 +36,7 @@ const QuestionSidebar = ({
                     <span>
                         {markedQuestions.includes(question.number) ? (
                             <FontAwesomeIcon
-                                icon={faEye}
+                                icon={faThumbtack}
                                 style={{ color: "#e03838", textAlign: "right" }}
                             />
                         ) : (
