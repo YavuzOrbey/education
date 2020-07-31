@@ -22,7 +22,7 @@
         "cross-env": "^5.1",
         "jquery": "^3.4.1",
         "laravel-mix": "^4.0.7",
-        "lodash": "^4.17.14",
+        "lodash": "^4.17.19",
         "neo-async": "^2.6.1",
         "popper.js": "^1.12",
         "react": "^16.11.0",
