@@ -1,11 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-    faCheck,
-    faTimesCircle,
-    faTimes
-} from "@fortawesome/free-solid-svg-icons";
+import { faCheck, faBan, faTimes } from "@fortawesome/free-solid-svg-icons";
 const AnswerChoice = ({
     num,
     letter = "",
@@ -47,10 +43,7 @@ const AnswerChoice = ({
                         : null
                 }
             >
-                <FontAwesomeIcon
-                    icon={faTimesCircle}
-                    style={{ color: "orange" }}
-                />
+                <FontAwesomeIcon icon={faBan} style={{ color: "orange" }} />
             </label>
             <label className="correct-answer-icon">{icon}</label>
 

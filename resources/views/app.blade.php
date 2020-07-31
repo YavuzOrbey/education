@@ -8,6 +8,7 @@
 .page {
     display: none;
     padding: 0 0.5em;
+    margin-top: 100px;
 }
 .page h1 {
     font-size: 2em;

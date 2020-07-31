@@ -10,8 +10,8 @@ const Timer = ({ time, countdown, visibility, hide }) => (
             </div>
         )}
 
-        <span className="" onClick={hide}>
-            <span class={countdown ? "btn btn-danger" : "btn btn-primary"}>
+        <span id="timer-toggle" onClick={hide}>
+            <span className={countdown ? "btn btn-danger" : "btn btn-primary"}>
                 {visibility ? "Hide" : "Show Timer"}
             </span>
         </span>

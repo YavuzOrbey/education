@@ -12,7 +12,6 @@ const QuestionSidebar = ({
 }) => (
     <div className="question-sidebar">
         <ul className="question-list">
-            <li className="question-list-title">Questions</li>
             {questions.map((question, i) => (
                 <li
                     onClick={() => onClick(question.number - 1)}

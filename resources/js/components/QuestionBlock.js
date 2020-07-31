@@ -54,7 +54,6 @@ const QuestionBlock = ({
                         number: currentQuestion.number,
                         text: currentQuestion.question_text
                     }}
-                    //yavuz is the best and i love him <3 -c
                 />
             </MathJax.Context>
             <MathJax.Context input="tex">
@@ -82,6 +81,7 @@ const QuestionBlock = ({
                     </div>
                 ) : mode ? (
                     <div className="grid-input">
+                        <span>Enter your answer here:</span>
                         <input
                             onChange={e =>
                                 handleAnswerClick(
@@ -91,7 +91,7 @@ const QuestionBlock = ({
                             }
                             type="number"
                             placeholder={answers[currentQuestion.number - 1]}
-                        ></input>
+                        />
                     </div>
                 ) : currentQuestion.result.correct_answer ==
                   currentQuestion.result.response ? (
@@ -101,13 +101,14 @@ const QuestionBlock = ({
                             style={{ color: "green" }}
                         />
                         <div className="grid-input">
+                            <span>Enter your answer here:</span>
                             <input
                                 type="number"
                                 disabled
                                 placeholder={
                                     answers[currentQuestion.number - 1]
                                 }
-                            ></input>
+                            />
                         </div>
                     </div>
                 ) : (
@@ -117,13 +118,14 @@ const QuestionBlock = ({
                             style={{ color: "red" }}
                         />
                         <div className="grid-input">
+                            <span>Enter your answer here:</span>
                             <input
                                 type="number"
                                 disabled
                                 placeholder={
                                     answers[currentQuestion.number - 1]
                                 }
-                            ></input>
+                            />
                         </div>
                         {currentQuestion.result.correct_answer}
                     </div>

@@ -259,7 +259,7 @@ class QuestionApp extends React.Component {
         return (
             Array.isArray(questions) &&
             questions.length && (
-                <div>
+                <div className="question-app-container">
                     <QuestionBlock
                         handleClick={handleClick}
                         handleAnswerClick={handleAnswerClick}
@@ -277,7 +277,7 @@ class QuestionApp extends React.Component {
                         hideTimer={hideTimer}
                         startTimer={startTimer}
                         sendReady={sendReady}
-                    ></QuestionBlock>
+                    />
 
                     <QuestionSidebar
                         onClick={sideBarClick}

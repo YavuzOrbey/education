@@ -90,4 +90,12 @@ class QuizController extends Controller
         }
         return $sentQuestions;
     }
+
+    public function create()
+    {
+        $gridQuestions = GridQuestion::all();
+        $questions = Question::all();
+        dd($questions);
+        return view('admin.quizzes.create', compact('subjects', 'answers'));
+    }
 }

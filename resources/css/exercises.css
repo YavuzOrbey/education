@@ -17,18 +17,28 @@ body > .container {
     display: block;
     overflow: hidden;
 }
-
+.question-app-container {
+    display: flex;
+}
 .question-block.read {
     display: grid;
     grid-area: content;
     grid-template-columns: auto;
     grid-template-rows: 1fr 3fr 5fr 1fr;
-    height: 600px;
     padding: 20px;
     align-content: center;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
     background: white;
     position: relative;
+}
+
+@media only screen and (min-width: 800px) {
+    .question-block.read {
+        width: 1400px;
+    }
+    .question-sidebar {
+        width: 200px;
+    }
 }
 .timer-wrapper {
     font-size: 2em;
@@ -57,9 +67,6 @@ body > .container {
     padding: 5px;
 }
 @media (max-width: 430px) {
-    .question-number {
-        width: 100%;
-    }
     .question-proper {
         display: block;
     }
@@ -156,15 +163,17 @@ body > .container {
     font-size: 20px;
 }
 .question-sidebar {
-    position: absolute;
-    width: 200px;
     top: 0px;
     right: 0;
     bottom: 0;
-    overflow: auto;
+    overflow-y: auto;
+    overflow-x: hidden;
     background: #fff;
     border-left: 2px solid #ddd;
     cursor: pointer;
+}
+.grid-input {
+    width: 200px;
 }
 .question-list > .question {
     padding: 10px;
@@ -202,8 +211,33 @@ body > .container {
             ". . ."; */
     }
 }
-@media only screen and (max-width: 1200px) {
-    .question-sidebar {
+@media only screen and (max-width: 800px) {
+    .question-block.read {
+        grid-template-rows: 1fr 5fr 5fr 1fr;
+    }
+    .question-choice {
+        grid-template-columns: 1fr 3fr 17fr 1fr;
+    }
+    .question-app-container {
+        flex-direction: column-reverse;
+    }
+    .question-list {
+        overflow-x: auto;
+    }
+    .question-list > li {
+        display: inline-block;
+        width: 50px;
+        border: 1px solid black;
+    }
+    .question-block.read {
+        align-content: stretch;
+    }
+    .question-number {
+        width: 100%;
+    }
+    #timer-toggle {
         display: none;
+    }
+    .timer-wrapper {
     }
 }

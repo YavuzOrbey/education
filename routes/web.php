@@ -14,9 +14,10 @@
 Route::get('/math', function () {
     return view('math');
 });
-Route::view('/quizzes/{subject}', 'app'); //{path?}
-Route::get('/quizzes', 'QuizController@index');
 
+Route::get('/quizzes', 'QuizController@index');
+Route::get('/quizzes/create', 'QuizController@create');
+Route::view('/quizzes/{subject}', 'app'); //{path?}
 Route::prefix('assignments')->group(function(){
     Route::post('/confirm', 'AssignmentController@confirm')->name('assignments.confirm');
     Route::post('/process', 'AssignmentController@process')->name('assignments.process');

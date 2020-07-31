@@ -15879,7 +15879,7 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 
 
 // module
-exports.push([module.i, "body {\r\n    margin: 0;\r\n    padding: 0;\r\n    font-family: -apple-system, BlinkMacSystemFont, \"Segoe UI\", \"Roboto\",\r\n        \"Oxygen\", \"Ubuntu\", \"Cantarell\", \"Fira Sans\", \"Droid Sans\",\r\n        \"Helvetica Neue\", sans-serif;\r\n    -webkit-font-smoothing: antialiased;\r\n    -moz-osx-font-smoothing: grayscale;\r\n    background: rgba(240, 240, 240, 1);\r\n}\r\n\r\ncode {\r\n    font-family: source-code-pro, Menlo, Monaco, Consolas, \"Courier New\",\r\n        monospace;\r\n}\r\nbody > .container {\r\n    display: block;\r\n    overflow: hidden;\r\n}\r\n\r\n.question-block.read {\r\n    display: grid;\r\n    grid-area: content;\r\n    grid-template-columns: auto;\r\n    grid-template-rows: 1fr 3fr 5fr 1fr;\r\n    height: 600px;\r\n    padding: 20px;\r\n    align-content: center;\r\n    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);\r\n    background: white;\r\n    position: relative;\r\n}\r\n.timer-wrapper {\r\n    font-size: 2em;\r\n    position: relative;\r\n    right: 0;\r\n}\r\n.timer {\r\n    display: inline-block;\r\n    padding: 5px;\r\n    position: relative;\r\n}\r\n.question-proper {\r\n    display: grid;\r\n    grid-template-columns: 1fr 11fr;\r\n}\r\n\r\n.question-number {\r\n    background: #983532;\r\n    width: 50px;\r\n    height: 50px;\r\n    color: white;\r\n    font-size: 20px;\r\n    text-align: center;\r\n    vertical-align: center;\r\n    line-height: 50px;\r\n    padding: 5px;\r\n}\r\n@media (max-width: 430px) {\r\n    .question-number {\r\n        width: 100%;\r\n    }\r\n    .question-proper {\r\n        display: block;\r\n    }\r\n}\r\n.question-text.read {\r\n    font-size: 20px;\r\n}\r\n\r\n.question-choices {\r\n    display: grid;\r\n    grid-template-columns: 1fr;\r\n    grid-template-rows: repeat(4, 1fr);\r\n}\r\n\r\n.question-choice {\r\n    display: grid;\r\n    grid-template-columns: 1fr 1fr 22fr 1fr;\r\n    cursor: pointer;\r\n    position: relative;\r\n}\r\n.question-choice:hover {\r\n    background: rgba(240, 240, 240, 0.7);\r\n}\r\n\r\n.question-choice-text {\r\n    align-self: center;\r\n    margin-left: 20px;\r\n    font-size: 16px;\r\n    font-weight: 400;\r\n}\r\n.eliminate {\r\n    position: absolute;\r\n    align-self: center;\r\n    font-size: 20px;\r\n}\r\n.eliminated {\r\n    opacity: 0.25;\r\n}\r\n.correct-answer-icon {\r\n    text-align: center;\r\n    vertical-align: center;\r\n    cursor: pointer;\r\n    align-self: center;\r\n    justify-self: center;\r\n    font-size: 20px;\r\n    font-weight: 400;\r\n    margin-left: 20px;\r\n}\r\n.answer-letter-choice.read {\r\n    height: 34px;\r\n    width: 34px;\r\n    border: 2px solid #325399;\r\n    line-height: 30px;\r\n    text-align: center;\r\n    vertical-align: center;\r\n    cursor: pointer;\r\n    align-self: center;\r\n    justify-self: center;\r\n    font-size: 16px;\r\n    font-weight: 400;\r\n    margin: 0;\r\n}\r\n\r\n.question-nav {\r\n    display: grid;\r\n    grid-template-columns: repeat(3, 1fr);\r\n    border-top: 2px solid black;\r\n    border-bottom: 2px solid black;\r\n}\r\n.nav-button {\r\n    border: none;\r\n    border-right: 1px solid gray;\r\n    cursor: pointer;\r\n}\r\n.nav-button:focus {\r\n    outline: none;\r\n}\r\n.nav-button:hover {\r\n    background: rgba(0, 0, 0, 0.4);\r\n    cursor: pointer;\r\n}\r\n.selected {\r\n    background: rgba(0, 0, 0, 0.8);\r\n    transition: background 0.3s;\r\n    -webkit-transition: background 0.3s; /* Safari prior 6.1 */\r\n    color: white;\r\n}\r\n.marked {\r\n    position: absolute;\r\n    right: 10px;\r\n    top: 0;\r\n    color: #e03838;\r\n    font-weight: 700;\r\n    font-size: 20px;\r\n}\r\n.question-sidebar {\r\n    position: absolute;\r\n    width: 200px;\r\n    top: 0px;\r\n    right: 0;\r\n    bottom: 0;\r\n    overflow: auto;\r\n    background: #fff;\r\n    border-left: 2px solid #ddd;\r\n    cursor: pointer;\r\n}\r\n.question-list > .question {\r\n    padding: 10px;\r\n    text-align: center;\r\n    border-bottom: 1px solid grey;\r\n}\r\n.question-list > .question:hover {\r\n    background: #eee;\r\n}\r\n.related-content {\r\n    position: absolute;\r\n    width: 500px;\r\n    height: 600px;\r\n    overflow: auto;\r\n    left: -500px;\r\n    padding: 10px;\r\n    border-right: 1px solid #afafaf;\r\n    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.05);\r\n}\r\n@media only screen and (max-width: 499px) {\r\n    .container {\r\n        padding: 0;\r\n        margin: 0;\r\n    }\r\n}\r\n@media only screen and (max-width: 500px) {\r\n    #app > .container {\r\n        width: 100vw;\r\n        display: block;\r\n        /* grid-template-columns: 10% auto 10%;\r\n        /*     grid-template-rows: 10% auto 10%; */\r\n        /* grid-template-areas:\r\n            \". . .\"\r\n            \". content .\"\r\n            \". . .\"; */\r\n    }\r\n}\r\n@media only screen and (max-width: 1200px) {\r\n    .question-sidebar {\r\n        display: none;\r\n    }\r\n}\r\n", ""]);
+exports.push([module.i, "body {\r\n    margin: 0;\r\n    padding: 0;\r\n    font-family: -apple-system, BlinkMacSystemFont, \"Segoe UI\", \"Roboto\",\r\n        \"Oxygen\", \"Ubuntu\", \"Cantarell\", \"Fira Sans\", \"Droid Sans\",\r\n        \"Helvetica Neue\", sans-serif;\r\n    -webkit-font-smoothing: antialiased;\r\n    -moz-osx-font-smoothing: grayscale;\r\n    background: rgba(240, 240, 240, 1);\r\n}\r\n\r\ncode {\r\n    font-family: source-code-pro, Menlo, Monaco, Consolas, \"Courier New\",\r\n        monospace;\r\n}\r\nbody > .container {\r\n    display: block;\r\n    overflow: hidden;\r\n}\r\n.question-app-container {\r\n    display: flex;\r\n}\r\n.question-block.read {\r\n    display: grid;\r\n    grid-area: content;\r\n    grid-template-columns: auto;\r\n    grid-template-rows: 1fr 3fr 5fr 1fr;\r\n    padding: 20px;\r\n    align-content: center;\r\n    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);\r\n    background: white;\r\n    position: relative;\r\n}\r\n\r\n@media only screen and (min-width: 800px) {\r\n    .question-block.read {\r\n        width: 1400px;\r\n    }\r\n    .question-sidebar {\r\n        width: 200px;\r\n    }\r\n}\r\n.timer-wrapper {\r\n    font-size: 2em;\r\n    position: relative;\r\n    right: 0;\r\n}\r\n.timer {\r\n    display: inline-block;\r\n    padding: 5px;\r\n    position: relative;\r\n}\r\n.question-proper {\r\n    display: grid;\r\n    grid-template-columns: 1fr 11fr;\r\n}\r\n\r\n.question-number {\r\n    background: #983532;\r\n    width: 50px;\r\n    height: 50px;\r\n    color: white;\r\n    font-size: 20px;\r\n    text-align: center;\r\n    vertical-align: center;\r\n    line-height: 50px;\r\n    padding: 5px;\r\n}\r\n@media (max-width: 430px) {\r\n    .question-proper {\r\n        display: block;\r\n    }\r\n}\r\n.question-text.read {\r\n    font-size: 20px;\r\n}\r\n\r\n.question-choices {\r\n    display: grid;\r\n    grid-template-columns: 1fr;\r\n    grid-template-rows: repeat(4, 1fr);\r\n}\r\n\r\n.question-choice {\r\n    display: grid;\r\n    grid-template-columns: 1fr 1fr 22fr 1fr;\r\n    cursor: pointer;\r\n    position: relative;\r\n}\r\n.question-choice:hover {\r\n    background: rgba(240, 240, 240, 0.7);\r\n}\r\n\r\n.question-choice-text {\r\n    align-self: center;\r\n    margin-left: 20px;\r\n    font-size: 16px;\r\n    font-weight: 400;\r\n}\r\n.eliminate {\r\n    position: absolute;\r\n    align-self: center;\r\n    font-size: 20px;\r\n}\r\n.eliminated {\r\n    opacity: 0.25;\r\n}\r\n.correct-answer-icon {\r\n    text-align: center;\r\n    vertical-align: center;\r\n    cursor: pointer;\r\n    align-self: center;\r\n    justify-self: center;\r\n    font-size: 20px;\r\n    font-weight: 400;\r\n    margin-left: 20px;\r\n}\r\n.answer-letter-choice.read {\r\n    height: 34px;\r\n    width: 34px;\r\n    border: 2px solid #325399;\r\n    line-height: 30px;\r\n    text-align: center;\r\n    vertical-align: center;\r\n    cursor: pointer;\r\n    align-self: center;\r\n    justify-self: center;\r\n    font-size: 16px;\r\n    font-weight: 400;\r\n    margin: 0;\r\n}\r\n\r\n.question-nav {\r\n    display: grid;\r\n    grid-template-columns: repeat(3, 1fr);\r\n    border-top: 2px solid black;\r\n    border-bottom: 2px solid black;\r\n}\r\n.nav-button {\r\n    border: none;\r\n    border-right: 1px solid gray;\r\n    cursor: pointer;\r\n}\r\n.nav-button:focus {\r\n    outline: none;\r\n}\r\n.nav-button:hover {\r\n    background: rgba(0, 0, 0, 0.4);\r\n    cursor: pointer;\r\n}\r\n.selected {\r\n    background: rgba(0, 0, 0, 0.8);\r\n    transition: background 0.3s;\r\n    -webkit-transition: background 0.3s; /* Safari prior 6.1 */\r\n    color: white;\r\n}\r\n.marked {\r\n    position: absolute;\r\n    right: 10px;\r\n    top: 0;\r\n    color: #e03838;\r\n    font-weight: 700;\r\n    font-size: 20px;\r\n}\r\n.question-sidebar {\r\n    top: 0px;\r\n    right: 0;\r\n    bottom: 0;\r\n    overflow-y: auto;\r\n    overflow-x: hidden;\r\n    background: #fff;\r\n    border-left: 2px solid #ddd;\r\n    cursor: pointer;\r\n}\r\n.grid-input {\r\n    width: 200px;\r\n}\r\n.question-list > .question {\r\n    padding: 10px;\r\n    text-align: center;\r\n    border-bottom: 1px solid grey;\r\n}\r\n.question-list > .question:hover {\r\n    background: #eee;\r\n}\r\n.related-content {\r\n    position: absolute;\r\n    width: 500px;\r\n    height: 600px;\r\n    overflow: auto;\r\n    left: -500px;\r\n    padding: 10px;\r\n    border-right: 1px solid #afafaf;\r\n    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.05);\r\n}\r\n@media only screen and (max-width: 499px) {\r\n    .container {\r\n        padding: 0;\r\n        margin: 0;\r\n    }\r\n}\r\n@media only screen and (max-width: 500px) {\r\n    #app > .container {\r\n        width: 100vw;\r\n        display: block;\r\n        /* grid-template-columns: 10% auto 10%;\r\n        /*     grid-template-rows: 10% auto 10%; */\r\n        /* grid-template-areas:\r\n            \". . .\"\r\n            \". content .\"\r\n            \". . .\"; */\r\n    }\r\n}\r\n@media only screen and (max-width: 800px) {\r\n    .question-block.read {\r\n        grid-template-rows: 1fr 5fr 5fr 1fr;\r\n    }\r\n    .question-choice {\r\n        grid-template-columns: 1fr 3fr 17fr 1fr;\r\n    }\r\n    .question-app-container {\r\n        flex-direction: column-reverse;\r\n    }\r\n    .question-list {\r\n        overflow-x: auto;\r\n    }\r\n    .question-list > li {\r\n        display: inline-block;\r\n        width: 50px;\r\n        border: 1px solid black;\r\n    }\r\n    .question-block.read {\r\n        align-content: stretch;\r\n    }\r\n    .question-number {\r\n        width: 100%;\r\n    }\r\n    #timer-toggle {\r\n        display: none;\r\n    }\r\n    .timer-wrapper {\r\n    }\r\n}\r\n", ""]);
 
 // exports
 
@@ -78241,7 +78241,7 @@ var AnswerChoice = function AnswerChoice(_ref) {
       return eliminateAnswerChoice(num + 1), e.stopPropagation();
     } : null
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_2__["FontAwesomeIcon"], {
-    icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_3__["faTimesCircle"],
+    icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_3__["faBan"],
     style: {
       color: "orange"
     }
@@ -79213,7 +79213,9 @@ function (_React$Component) {
           countdown = _this$state2.countdown,
           timerVisibility = _this$state2.timerVisibility;
       var marked = currentQuestion ? markedQuestions.includes(currentQuestion.number) : false;
-      return Array.isArray(questions) && questions.length && react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_QuestionBlock__WEBPACK_IMPORTED_MODULE_1__["default"], {
+      return Array.isArray(questions) && questions.length && react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("div", {
+        className: "question-app-container"
+      }, react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_QuestionBlock__WEBPACK_IMPORTED_MODULE_1__["default"], {
         handleClick: handleClick,
         handleAnswerClick: handleAnswerClick,
         markQuestion: markQuestion,
@@ -79323,8 +79325,7 @@ var QuestionBlock = function QuestionBlock(_ref) {
     data: {
       number: currentQuestion.number,
       text: currentQuestion.question_text
-    } //yavuz is the best and i love him <3 -c
-
+    }
   })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_mathjax2__WEBPACK_IMPORTED_MODULE_6___default.a.Context, {
     input: "tex"
   }, currentQuestion.answer_choices ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -79343,7 +79344,7 @@ var QuestionBlock = function QuestionBlock(_ref) {
     eliminations: currentQuestion.eliminations
   })) : mode ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "grid-input"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Enter your answer here:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
     onChange: function onChange(e) {
       return _handleAnswerClick(currentQuestion.number, e.target.value);
     },
@@ -79356,7 +79357,7 @@ var QuestionBlock = function QuestionBlock(_ref) {
     }
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "grid-input"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Enter your answer here:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
     type: "number",
     disabled: true,
     placeholder: answers[currentQuestion.number - 1]
@@ -79367,7 +79368,7 @@ var QuestionBlock = function QuestionBlock(_ref) {
     }
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "grid-input"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Enter your answer here:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
     type: "number",
     disabled: true,
     placeholder: answers[currentQuestion.number - 1]
@@ -79485,9 +79486,7 @@ var QuestionSidebar = function QuestionSidebar(_ref) {
     className: "question-sidebar"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
     className: "question-list"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-    className: "question-list-title"
-  }, "Questions"), questions.map(function (question, i) {
+  }, questions.map(function (question, i) {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
       onClick: function onClick() {
         return _onClick(question.number - 1);
@@ -79685,10 +79684,10 @@ var Timer = function Timer(_ref) {
       color: "black"
     }
   }, "Time left: ", time), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-    className: "",
+    id: "timer-toggle",
     onClick: hide
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-    class: countdown ? "btn btn-danger" : "btn btn-primary"
+    className: countdown ? "btn btn-danger" : "btn btn-primary"
   }, visibility ? "Hide" : "Show Timer")));
 };
 
